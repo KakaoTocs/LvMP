@@ -123,7 +123,19 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KxC-Uh-4lQ"/>
                     </view>
-                    <navigationItem key="navigationItem" id="eQr-gw-bDQ"/>
+                    <navigationItem key="navigationItem" id="eQr-gw-bDQ">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="bXs-tB-Q4H">
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="First"/>
+                                <segment title="Second"/>
+                                <segment title=""/>
+                                <segment title=""/>
+                                <segment title=""/>
+                            </segments>
+                        </segmentedControl>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rHq-fa-mPU" sceneMemberID="firstResponder"/>
             </objects>
