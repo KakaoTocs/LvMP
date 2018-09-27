@@ -21,6 +21,12 @@
 
 ## 4. 시스템 구성도
 각 뷰에서 사용자의 응답을 컨트롤러로 어떻게 알리고 반응 할지 등 설명 + 전체 구성도
+각 화면에 검색 기능이 있고 RxSwift로 구현!
+Model:
+1. Music: 앨범, 아티스트와 연결되 프로퍼티를 가지고 있음
+    2. Album
+    3. Artist
+    4. PlayList
 
 ## 5. 일정
 9월 10일 ~ 9월 16일: Swift 문법 복습\n
@@ -30,20 +36,31 @@
 10월 15일 ~ 10월 21일: 안정화 및 보수\n
 10월 22일 ~ 10월 23일: 정리 
 
-## 6. 추가 기능
-**월 **일: **기능 추가
+## 6. 진행 사항
+9월 27일: [UX]각 화면을 스와이프로 넘기기위해 예제 공부
 
-## 7. 버그 및 수정
+## 7. 버그 수정
 **월 **일: **버그 수정
 
-## 8. 기타 설명
+## 8. 미니 프로젝트
+프로젝트 진행중 필요에 의해 구현해야할 기능, 컨포넌트가 생길경우 미니 프로젝트로 진행후 적용
+9월 27일: [탐색바] 화면전환을 스와이프외 터치로 넘길수 있는 컨트롤러 필요. 기존의 탭바, 세그컨트롤러와 목적이 맞지않음
+
+## 9. 기타 설명
 1. Swift 문법 복습
     - 몰랐거나 적용해보지 못한 문법 탐색
+    RxSwift, 함수형/프로토콜 프로그래밍, MVC or MVVM아키텍처적용해 프로젝트 완성이 목표
 
-## 9. 참고
+## 10. 참고
 RxSwift
 1. pilgwon's blog(github Page):  https://pilgwon.github.io/blog/2017/09/26/RxSwift-By-Examples-1-The-Basics.html
 2. Wade(Brunch): https://brunch.co.kr/@tilltue/2
 
 ContainerView
 1. ClintJang(github): https://github.com/ClintJang/sample-swift-containerview
+
+MVC
+
+MVVM
+
+MVP
