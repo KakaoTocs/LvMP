@@ -51,6 +51,7 @@ Model:
 
 ## 6. 진행 사항
 9월 27일: [UX]각 화면을 스와이프로 넘기기위해 예제 공부
+9월 28일 ~ : [Dev] Mac App 개발 
 
 ## 7. 버그 수정
 **월 **일: **버그 수정
@@ -65,21 +66,25 @@ Model:
     RxSwift, 함수형/프로토콜 프로그래밍, MVC or MVVM아키텍처적용해 프로젝트 완성이 목표
 
 ## 10. 참고
-Naming
-    https://swift.org/documentation/api-design-guidelines/
-    https://github.com/yoonhg84/boostcamp_iOS_5InQueue
-RxSwift
-1. pilgwon's blog(github Page):  https://pilgwon.github.io/blog/2017/09/26/RxSwift-By-Examples-1-The-Basics.html
-2. Wade(Brunch): https://brunch.co.kr/@tilltue/2
+- Naming
+    1. https://swift.org/documentation/api-design-guidelines/
+    2. https://github.com/yoonhg84/boostcamp_iOS_5InQueue
+- RxSwift
+    1. pilgwon's blog(github Page):  https://pilgwon.github.io/blog/2017/09/26/RxSwift-By-Examples-1-The-Basics.html
+    2. Wade(Brunch): https://brunch.co.kr/@tilltue/2
 
-ContainerView
-1. ClintJang(github): https://github.com/ClintJang/sample-swift-containerview
+- ContainerView
+    1. ClintJang(github): https://github.com/ClintJang/sample-swift-containerview
+    
+- Project
+    1. AudioPlayer: 이 프로젝트의 시초의자 망한 프로젝트 -> 플레이어, 파일 읽기 기능 재활용
+    2. naver-music-for-mac: (https://github.com/kjisoo/naver-music-for-mac) mac용 naver music player
+
+- Cocoa
+    1. https://josercc.gitbooks.io/cocoa-programming-for-osx/content/
 
 MVC
 
 MVVM
 
 MVP
-
-AudioPlayer: 이 프로젝트의 시초의자 망한 프로젝트 -> 플레이어, 파일 읽기 기능 재활용
-naver-music-for-mac: (https://github.com/kjisoo/naver-music-for-mac) mac용 naver music player
