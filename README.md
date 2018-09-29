@@ -1,17 +1,23 @@
 # LvMP
-- - - 
+
 ## 1. 설명
 로컬 음악재생 iOS앱
 
 ## 2. 기능
-아이튠즈를 통해 폴더 구조로 음악을 넣을 수 있고, 해당 폴더 구조를 유지한체 음악목록을 볼 수 있다.
+~ 9월 27일 :아이튠즈를 통해 폴더 구조로 음악을 넣을 수 있고, 해당 폴더 구조를 유지한체 음악목록을 볼 수 있다.
 잠금화면에서 재생 제어
+9월 28일 ~: 웹에서 음악 파일들을 선택시 앱에서 받아 저장 및 재생
 
 ## 3. 사용 기술
 1. Swift
 2. Realm
 3. RxSwift
 4. RxCocoa
+
+1. Node.js
+2. Express.js
+3. Socket.io
+4. Vue.js
 
 ## 3. 화면 구성
 메인 화면: 상단 일부만 최근 추가된 앨범 리스트, 노래 리스트
@@ -52,6 +58,9 @@ Model:
     RxSwift, 함수형/프로토콜 프로그래밍, MVC or MVVM아키텍처적용해 프로젝트 완성이 목표
 
 ## 10. 참고
+Naming
+    https://swift.org/documentation/api-design-guidelines/
+    https://github.com/yoonhg84/boostcamp_iOS_5InQueue
 RxSwift
 1. pilgwon's blog(github Page):  https://pilgwon.github.io/blog/2017/09/26/RxSwift-By-Examples-1-The-Basics.html
 2. Wade(Brunch): https://brunch.co.kr/@tilltue/2
@@ -64,3 +73,6 @@ MVC
 MVVM
 
 MVP
+
+AudioPlayer: 이 프로젝트의 시초의자 망한 프로젝트 -> 플레이어, 파일 읽기 기능 재활용
+naver-music-for-mac: (https://github.com/kjisoo/naver-music-for-mac) mac용 naver music player

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B36CF9371F482A1072F5D67 /* Pods_LvMP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5038AF3FCC4D999012F26665 /* Pods_LvMP.framework */; };
+		65547799215F27C500DA7BE9 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65547798215F27C500DA7BE9 /* Networking.swift */; };
 		657C887A215D0FA900C10363 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C8879215D0FA900C10363 /* Artist.swift */; };
 		657C887C215D0FAE00C10363 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C887B215D0FAE00C10363 /* Album.swift */; };
 		657C887E215D0FE300C10363 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C887D215D0FE300C10363 /* Music.swift */; };
@@ -27,6 +29,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		38BF3092048BFBF9E6190E82 /* Pods-LvMP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LvMP.release.xcconfig"; path = "Pods/Target Support Files/Pods-LvMP/Pods-LvMP.release.xcconfig"; sourceTree = "<group>"; };
+		5038AF3FCC4D999012F26665 /* Pods_LvMP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LvMP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		65547798215F27C500DA7BE9 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		657C8879215D0FA900C10363 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
 		657C887B215D0FAE00C10363 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		657C887D215D0FE300C10363 /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
@@ -46,6 +51,7 @@
 		65DE809B215CEACD00D4EEB4 /* Artist.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Artist.storyboard; sourceTree = "<group>"; };
 		65DE809D215CEBF200D4EEB4 /* Album.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Album.storyboard; sourceTree = "<group>"; };
 		65DE809F215CEC2600D4EEB4 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		D2F16CE1EB45C20E1AF67012 /* Pods-LvMP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LvMP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LvMP/Pods-LvMP.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,18 +59,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B36CF9371F482A1072F5D67 /* Pods_LvMP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		23947B67D0028EFA5F84C345 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5038AF3FCC4D999012F26665 /* Pods_LvMP.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		36B2A04554E83A7A06C1A22C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D2F16CE1EB45C20E1AF67012 /* Pods-LvMP.debug.xcconfig */,
+				38BF3092048BFBF9E6190E82 /* Pods-LvMP.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		657C8878215D0F7F00C10363 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				657C8879215D0FA900C10363 /* Artist.swift */,
-				657C887B215D0FAE00C10363 /* Album.swift */,
 				657C887D215D0FE300C10363 /* Music.swift */,
+				657C887B215D0FAE00C10363 /* Album.swift */,
+				657C8879215D0FA900C10363 /* Artist.swift */,
 				657C887F215D0FF600C10363 /* Playlist.swift */,
 			);
 			path = Model;
@@ -73,6 +97,7 @@
 		657C8881215D204000C10363 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				65547798215F27C500DA7BE9 /* Networking.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -94,6 +119,8 @@
 			children = (
 				65C5C7E62146299A0061F884 /* LvMP */,
 				65C5C7E52146299A0061F884 /* Products */,
+				36B2A04554E83A7A06C1A22C /* Pods */,
+				23947B67D0028EFA5F84C345 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -108,10 +135,10 @@
 		65C5C7E62146299A0061F884 /* LvMP */ = {
 			isa = PBXGroup;
 			children = (
+				65DE8098215CEA9100D4EEB4 /* Storyboard */,
 				657C8882215D205100C10363 /* Controller */,
 				657C8881215D204000C10363 /* Network */,
 				657C8878215D0F7F00C10363 /* Model */,
-				65DE8098215CEA9100D4EEB4 /* Storyboard */,
 				65C5C7E72146299A0061F884 /* AppDelegate.swift */,
 				65C5C7E92146299A0061F884 /* ViewController.swift */,
 				65C5C7EE2146299B0061F884 /* Assets.xcassets */,
@@ -139,9 +166,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 65C5C7F62146299B0061F884 /* Build configuration list for PBXNativeTarget "LvMP" */;
 			buildPhases = (
+				421A6B741716AA873CCE0AE0 /* [CP] Check Pods Manifest.lock */,
 				65C5C7E02146299A0061F884 /* Sources */,
 				65C5C7E12146299A0061F884 /* Frameworks */,
 				65C5C7E22146299A0061F884 /* Resources */,
+				EB9A01C359DE652CF90B570A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -164,6 +193,7 @@
 				TargetAttributes = {
 					65C5C7E32146299A0061F884 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -201,6 +231,47 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		421A6B741716AA873CCE0AE0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LvMP-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EB9A01C359DE652CF90B570A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-LvMP/Pods-LvMP-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LvMP/Pods-LvMP-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		65C5C7E02146299A0061F884 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -209,6 +280,7 @@
 				657C8884215D206400C10363 /* MainViewController.swift in Sources */,
 				657C887A215D0FA900C10363 /* Artist.swift in Sources */,
 				65C5C7EA2146299A0061F884 /* ViewController.swift in Sources */,
+				65547799215F27C500DA7BE9 /* Networking.swift in Sources */,
 				657C8886215D207400C10363 /* ArtistListViewController.swift in Sources */,
 				657C887E215D0FE300C10363 /* Music.swift in Sources */,
 				65C5C7E82146299A0061F884 /* AppDelegate.swift in Sources */,
@@ -350,6 +422,7 @@
 		};
 		65C5C7F72146299B0061F884 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D2F16CE1EB45C20E1AF67012 /* Pods-LvMP.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -361,13 +434,14 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = KakaoTocs.LvMP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		65C5C7F82146299B0061F884 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 38BF3092048BFBF9E6190E82 /* Pods-LvMP.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -379,7 +453,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = KakaoTocs.LvMP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
