@@ -6,18 +6,25 @@
 ## 2. 기능
 ~ 9월 27일 :아이튠즈를 통해 폴더 구조로 음악을 넣을 수 있고, 해당 폴더 구조를 유지한체 음악목록을 볼 수 있다.
 잠금화면에서 재생 제어
-9월 28일 ~: 웹에서 음악 파일들을 선택시 앱에서 받아 저장 및 재생
+9월 28일 ~: 컴퓨터에서 음악 파일들을 선택시 서버(네트워크)를 통해 앱에서 받아 저장 및 재생
 
 ## 3. 사용 기술
-1. Swift
-2. Realm
-3. RxSwift
-4. RxCocoa
+- Moblie APP
+    1. Swift
+    2. UIKit
+    3. Realm
+    4. RxSwift
+    5. RxCocoa
 
-1. Node.js
-2. Express.js
-3. Socket.io
-4. Vue.js
+- Desktop APP
+    1. Swift
+    2. Cocoa
+    
+- Server
+    1. Node.js
+    2. Express.js
+    3. Socket.io
+
 
 ## 3. 화면 구성
 메인 화면: 상단 일부만 최근 추가된 앨범 리스트, 노래 리스트
