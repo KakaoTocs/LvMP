@@ -7,69 +7,124 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		65547807215F659200DA7BE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65547806215F659200DA7BE9 /* AppDelegate.swift */; };
-		65547809215F659300DA7BE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65547808215F659300DA7BE9 /* Assets.xcassets */; };
-		6554780C215F659300DA7BE9 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6554780A215F659300DA7BE9 /* MainMenu.xib */; };
+		6515D2F12161125E0073763C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6515D2F02161125E0073763C /* AppDelegate.swift */; };
+		6515D2F32161125E0073763C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6515D2F22161125E0073763C /* ViewController.swift */; };
+		6515D2F52161125E0073763C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6515D2F42161125E0073763C /* Assets.xcassets */; };
+		6515D2F82161125E0073763C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6515D2F62161125E0073763C /* Main.storyboard */; };
+		6515D301216113640073763C /* DataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6515D300216113640073763C /* DataType.swift */; };
+		6515D309216114D10073763C /* StateIcon_Off.png in Resources */ = {isa = PBXBuildFile; fileRef = 6515D307216114D10073763C /* StateIcon_Off.png */; };
+		6515D30A216114D10073763C /* StateIcon_On.png in Resources */ = {isa = PBXBuildFile; fileRef = 6515D308216114D10073763C /* StateIcon_On.png */; };
+		6515D30C216118760073763C /* OutlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6515D30B216118760073763C /* OutlineView.swift */; };
+		657FEA3F2161A76000664BC5 /* Folder.png in Resources */ = {isa = PBXBuildFile; fileRef = 657FEA3E2161A76000664BC5 /* Folder.png */; };
+		658635A92161BBBC007CE164 /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658635A82161BBBC007CE164 /* SocketIOManager.swift */; };
+		D1B0EBD74D8D7F6948EDF6AC /* Pods_LvMP_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5AE03A5E2CE092096A7EA3 /* Pods_LvMP_Mac.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		65547803215F659200DA7BE9 /* LvMP-Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LvMP-Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		65547806215F659200DA7BE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		65547808215F659300DA7BE9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		6554780B215F659300DA7BE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		6554780D215F659300DA7BE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6554780E215F659300DA7BE9 /* LvMP_Mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LvMP_Mac.entitlements; sourceTree = "<group>"; };
+		6515D2ED2161125E0073763C /* LvMP-Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LvMP-Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6515D2F02161125E0073763C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6515D2F22161125E0073763C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6515D2F42161125E0073763C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6515D2F72161125E0073763C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6515D2F92161125E0073763C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6515D2FA2161125E0073763C /* LvMP_Mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LvMP_Mac.entitlements; sourceTree = "<group>"; };
+		6515D300216113640073763C /* DataType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataType.swift; sourceTree = "<group>"; };
+		6515D307216114D10073763C /* StateIcon_Off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StateIcon_Off.png; sourceTree = "<group>"; };
+		6515D308216114D10073763C /* StateIcon_On.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StateIcon_On.png; sourceTree = "<group>"; };
+		6515D30B216118760073763C /* OutlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineView.swift; sourceTree = "<group>"; };
+		657FEA3E2161A76000664BC5 /* Folder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Folder.png; sourceTree = "<group>"; };
+		658635A82161BBBC007CE164 /* SocketIOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
+		86CC3A6285F68E2E1AEF1088 /* Pods-LvMP-Mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LvMP-Mac.release.xcconfig"; path = "Pods/Target Support Files/Pods-LvMP-Mac/Pods-LvMP-Mac.release.xcconfig"; sourceTree = "<group>"; };
+		8A5AE03A5E2CE092096A7EA3 /* Pods_LvMP_Mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LvMP_Mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AD31E7778170A2D62AD3C6D /* Pods-LvMP-Mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LvMP-Mac.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LvMP-Mac/Pods-LvMP-Mac.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		65547800215F659200DA7BE9 /* Frameworks */ = {
+		6515D2EA2161125E0073763C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1B0EBD74D8D7F6948EDF6AC /* Pods_LvMP_Mac.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		655477FA215F659200DA7BE9 = {
+		043D750A719D45AE513A34E4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				65547805215F659200DA7BE9 /* LvMP-Mac */,
-				65547804215F659200DA7BE9 /* Products */,
+				9AD31E7778170A2D62AD3C6D /* Pods-LvMP-Mac.debug.xcconfig */,
+				86CC3A6285F68E2E1AEF1088 /* Pods-LvMP-Mac.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		6515D2E42161125E0073763C = {
+			isa = PBXGroup;
+			children = (
+				6515D2EF2161125E0073763C /* LvMP-Mac */,
+				6515D2EE2161125E0073763C /* Products */,
+				043D750A719D45AE513A34E4 /* Pods */,
+				EB86A3301CB7B0103890EF54 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		65547804215F659200DA7BE9 /* Products */ = {
+		6515D2EE2161125E0073763C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				65547803215F659200DA7BE9 /* LvMP-Mac.app */,
+				6515D2ED2161125E0073763C /* LvMP-Mac.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		65547805215F659200DA7BE9 /* LvMP-Mac */ = {
+		6515D2EF2161125E0073763C /* LvMP-Mac */ = {
 			isa = PBXGroup;
 			children = (
-				65547806215F659200DA7BE9 /* AppDelegate.swift */,
-				65547808215F659300DA7BE9 /* Assets.xcassets */,
-				6554780A215F659300DA7BE9 /* MainMenu.xib */,
-				6554780D215F659300DA7BE9 /* Info.plist */,
-				6554780E215F659300DA7BE9 /* LvMP_Mac.entitlements */,
+				6515D302216114810073763C /* Icon */,
+				6515D2F02161125E0073763C /* AppDelegate.swift */,
+				6515D2F22161125E0073763C /* ViewController.swift */,
+				6515D30B216118760073763C /* OutlineView.swift */,
+				658635A82161BBBC007CE164 /* SocketIOManager.swift */,
+				6515D300216113640073763C /* DataType.swift */,
+				6515D2F42161125E0073763C /* Assets.xcassets */,
+				6515D2F62161125E0073763C /* Main.storyboard */,
+				6515D2F92161125E0073763C /* Info.plist */,
+				6515D2FA2161125E0073763C /* LvMP_Mac.entitlements */,
 			);
 			path = "LvMP-Mac";
+			sourceTree = "<group>";
+		};
+		6515D302216114810073763C /* Icon */ = {
+			isa = PBXGroup;
+			children = (
+				657FEA3E2161A76000664BC5 /* Folder.png */,
+				6515D307216114D10073763C /* StateIcon_Off.png */,
+				6515D308216114D10073763C /* StateIcon_On.png */,
+			);
+			path = Icon;
+			sourceTree = "<group>";
+		};
+		EB86A3301CB7B0103890EF54 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8A5AE03A5E2CE092096A7EA3 /* Pods_LvMP_Mac.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		65547802215F659200DA7BE9 /* LvMP-Mac */ = {
+		6515D2EC2161125E0073763C /* LvMP-Mac */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 65547811215F659300DA7BE9 /* Build configuration list for PBXNativeTarget "LvMP-Mac" */;
+			buildConfigurationList = 6515D2FD2161125E0073763C /* Build configuration list for PBXNativeTarget "LvMP-Mac" */;
 			buildPhases = (
-				655477FF215F659200DA7BE9 /* Sources */,
-				65547800215F659200DA7BE9 /* Frameworks */,
-				65547801215F659200DA7BE9 /* Resources */,
+				F3D7A64705AEC62DAEBA1132 /* [CP] Check Pods Manifest.lock */,
+				6515D2E92161125E0073763C /* Sources */,
+				6515D2EA2161125E0073763C /* Frameworks */,
+				6515D2EB2161125E0073763C /* Resources */,
+				2C641F8B4029DC0A85FA0318 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -77,25 +132,25 @@
 			);
 			name = "LvMP-Mac";
 			productName = "LvMP-Mac";
-			productReference = 65547803215F659200DA7BE9 /* LvMP-Mac.app */;
+			productReference = 6515D2ED2161125E0073763C /* LvMP-Mac.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		655477FB215F659200DA7BE9 /* Project object */ = {
+		6515D2E52161125E0073763C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1000;
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "Jinu Kim";
 				TargetAttributes = {
-					65547802215F659200DA7BE9 = {
+					6515D2EC2161125E0073763C = {
 						CreatedOnToolsVersion = 10.0;
 					};
 				};
 			};
-			buildConfigurationList = 655477FE215F659200DA7BE9 /* Build configuration list for PBXProject "LvMP-Mac" */;
+			buildConfigurationList = 6515D2E82161125E0073763C /* Build configuration list for PBXProject "LvMP-Mac" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -103,52 +158,100 @@
 				en,
 				Base,
 			);
-			mainGroup = 655477FA215F659200DA7BE9;
-			productRefGroup = 65547804215F659200DA7BE9 /* Products */;
+			mainGroup = 6515D2E42161125E0073763C;
+			productRefGroup = 6515D2EE2161125E0073763C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				65547802215F659200DA7BE9 /* LvMP-Mac */,
+				6515D2EC2161125E0073763C /* LvMP-Mac */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		65547801215F659200DA7BE9 /* Resources */ = {
+		6515D2EB2161125E0073763C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65547809215F659300DA7BE9 /* Assets.xcassets in Resources */,
-				6554780C215F659300DA7BE9 /* MainMenu.xib in Resources */,
+				6515D2F52161125E0073763C /* Assets.xcassets in Resources */,
+				6515D30A216114D10073763C /* StateIcon_On.png in Resources */,
+				657FEA3F2161A76000664BC5 /* Folder.png in Resources */,
+				6515D2F82161125E0073763C /* Main.storyboard in Resources */,
+				6515D309216114D10073763C /* StateIcon_Off.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2C641F8B4029DC0A85FA0318 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-LvMP-Mac/Pods-LvMP-Mac-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LvMP-Mac/Pods-LvMP-Mac-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F3D7A64705AEC62DAEBA1132 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LvMP-Mac-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		655477FF215F659200DA7BE9 /* Sources */ = {
+		6515D2E92161125E0073763C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65547807215F659200DA7BE9 /* AppDelegate.swift in Sources */,
+				6515D2F32161125E0073763C /* ViewController.swift in Sources */,
+				658635A92161BBBC007CE164 /* SocketIOManager.swift in Sources */,
+				6515D301216113640073763C /* DataType.swift in Sources */,
+				6515D2F12161125E0073763C /* AppDelegate.swift in Sources */,
+				6515D30C216118760073763C /* OutlineView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		6554780A215F659300DA7BE9 /* MainMenu.xib */ = {
+		6515D2F62161125E0073763C /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				6554780B215F659300DA7BE9 /* Base */,
+				6515D2F72161125E0073763C /* Base */,
 			);
-			name = MainMenu.xib;
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		6554780F215F659300DA7BE9 /* Debug */ = {
+		6515D2FB2161125E0073763C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -209,7 +312,7 @@
 			};
 			name = Debug;
 		};
-		65547810215F659300DA7BE9 /* Release */ = {
+		6515D2FC2161125E0073763C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -263,8 +366,9 @@
 			};
 			name = Release;
 		};
-		65547812215F659300DA7BE9 /* Debug */ = {
+		6515D2FE2161125E0073763C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9AD31E7778170A2D62AD3C6D /* Pods-LvMP-Mac.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "LvMP-Mac/LvMP_Mac.entitlements";
@@ -282,8 +386,9 @@
 			};
 			name = Debug;
 		};
-		65547813215F659300DA7BE9 /* Release */ = {
+		6515D2FF2161125E0073763C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 86CC3A6285F68E2E1AEF1088 /* Pods-LvMP-Mac.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "LvMP-Mac/LvMP_Mac.entitlements";
@@ -304,25 +409,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		655477FE215F659200DA7BE9 /* Build configuration list for PBXProject "LvMP-Mac" */ = {
+		6515D2E82161125E0073763C /* Build configuration list for PBXProject "LvMP-Mac" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6554780F215F659300DA7BE9 /* Debug */,
-				65547810215F659300DA7BE9 /* Release */,
+				6515D2FB2161125E0073763C /* Debug */,
+				6515D2FC2161125E0073763C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		65547811215F659300DA7BE9 /* Build configuration list for PBXNativeTarget "LvMP-Mac" */ = {
+		6515D2FD2161125E0073763C /* Build configuration list for PBXNativeTarget "LvMP-Mac" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				65547812215F659300DA7BE9 /* Debug */,
-				65547813215F659300DA7BE9 /* Release */,
+				6515D2FE2161125E0073763C /* Debug */,
+				6515D2FF2161125E0073763C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 655477FB215F659200DA7BE9 /* Project object */;
+	rootObject = 6515D2E52161125E0073763C /* Project object */;
 }

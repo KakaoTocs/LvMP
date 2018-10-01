@@ -14,18 +14,44 @@ class Music: Object {
     @objc dynamic var name: String = ""
     @objc dynamic var lyrics: String = ""
     @objc dynamic var playTime: UInt32 = 0
-    @objc dynamic var data: Data?
+    @objc dynamic var url: String = ""
+    @objc dynamic var type: String = ""
     @objc dynamic var artist: Artist?
     @objc dynamic var album: Album?
     
 //    override func primary
     
-    convenience init(name: String, lyrics: String, data: Data, artist: Artist, album: Album) {
+    convenience init(name: String, lyrics: String, url: String, artist: Artist, album: Album) {
         self.init()
         self.name = name
         self.lyrics = lyrics
-        self.data = data
+        self.url = url
         self.artist = artist
         self.album = album
+    }
+    
+    func save(file: Data) {
+        let realm: Realm! = try! Realm()
+        var fileURL: URL = URL(string: self.url)!
+        fileURL.appendPathComponent("\(name).\(type)")
+        do {
+            file.write(to: fileURL)
+            try realm.write {
+                realm.add(self)
+            }
+        } catch {
+            print("Error >> Save >> Music")
+        }
+    }
+    
+    func delete() {
+        let realm: Realm! = try! Realm()
+        do {
+            try realm.write {
+                realm.delete(self)
+            }
+        } catch {
+            print("Error >> Delete >> Music")
+        }
     }
 }

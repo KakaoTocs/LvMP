@@ -4,9 +4,7 @@
 로컬 음악재생 iOS앱
 
 ## 2. 기능
-~ 9월 27일 :아이튠즈를 통해 폴더 구조로 음악을 넣을 수 있고, 해당 폴더 구조를 유지한체 음악목록을 볼 수 있다.  
-잠금화면에서 재생 제어  
-9월 28일 ~: 컴퓨터에서 음악 파일들을 선택시 서버(네트워크)를 통해 앱에서 받아 저장 및 재생  
+컴퓨터에서 음악 파일들을 선택시 서버(네트워크)를 통해 앱에서 받아 저장 및 재생  
 
 ## 3. 사용 기술
 - Moblie APP
@@ -15,10 +13,12 @@
     3. Realm
     4. RxSwift
     5. RxCocoa
+    6. Socket.io
 
 - Desktop APP
     1. Swift
     2. Cocoa
+    3. Socket.io
     
 - Server
     1. Node.js
@@ -84,9 +84,3 @@ Model:
 - Cocoa
     1. 关于 Cocoa Programming For OSX 中文第五版(gitbook): https://josercc.gitbooks.io/cocoa-programming-for-osx/content/
     2. Warren Burton(raywenderlich): https://www.raywenderlich.com/830-macos-nstableview-tutorial
-
-MVC  
-
-MVVM  
-
-MVP  
