@@ -20,6 +20,11 @@ io.on('connection', (socket) => {
     console.log("Received data: " + data);
   });
 
+  socket.on("server_test", (data) => {
+    console.log("Test success: " + data);
+    socket.emit("client_test", "Hello Socket.io");
+  });
+
   socket.on('disconnect', () => {
     console.log("Client disconnected: " + socket.id);
   });
