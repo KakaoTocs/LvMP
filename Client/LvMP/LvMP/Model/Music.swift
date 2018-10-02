@@ -35,7 +35,6 @@ class Music: Object {
         var fileURL: URL = URL(string: self.url)!
         fileURL.appendPathComponent("\(name).\(type)")
         do {
-            file.write(to: fileURL)
             try realm.write {
                 realm.add(self)
             }

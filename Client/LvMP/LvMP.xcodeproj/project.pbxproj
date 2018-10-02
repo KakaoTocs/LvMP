@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0B36CF9371F482A1072F5D67 /* Pods_LvMP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5038AF3FCC4D999012F26665 /* Pods_LvMP.framework */; };
 		65547799215F27C500DA7BE9 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65547798215F27C500DA7BE9 /* Networking.swift */; };
+		656D8C6621633913001D707C /* FilesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656D8C6521633913001D707C /* FilesManager.swift */; };
 		657C887A215D0FA900C10363 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C8879215D0FA900C10363 /* Artist.swift */; };
 		657C887C215D0FAE00C10363 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C887B215D0FAE00C10363 /* Album.swift */; };
 		657C887E215D0FE300C10363 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C887D215D0FE300C10363 /* Music.swift */; };
@@ -32,6 +33,7 @@
 		38BF3092048BFBF9E6190E82 /* Pods-LvMP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LvMP.release.xcconfig"; path = "Pods/Target Support Files/Pods-LvMP/Pods-LvMP.release.xcconfig"; sourceTree = "<group>"; };
 		5038AF3FCC4D999012F26665 /* Pods_LvMP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LvMP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65547798215F27C500DA7BE9 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		656D8C6521633913001D707C /* FilesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesManager.swift; sourceTree = "<group>"; };
 		657C8879215D0FA900C10363 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
 		657C887B215D0FAE00C10363 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		657C887D215D0FE300C10363 /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				657C887B215D0FAE00C10363 /* Album.swift */,
 				657C8879215D0FA900C10363 /* Artist.swift */,
 				657C887F215D0FF600C10363 /* Playlist.swift */,
+				656D8C6521633913001D707C /* FilesManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				657C887A215D0FA900C10363 /* Artist.swift in Sources */,
 				65C5C7EA2146299A0061F884 /* ViewController.swift in Sources */,
 				65547799215F27C500DA7BE9 /* Networking.swift in Sources */,
+				656D8C6621633913001D707C /* FilesManager.swift in Sources */,
 				657C8886215D207400C10363 /* ArtistListViewController.swift in Sources */,
 				657C887E215D0FE300C10363 /* Music.swift in Sources */,
 				65C5C7E82146299A0061F884 /* AppDelegate.swift in Sources */,
@@ -434,7 +438,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = KakaoTocs.LvMP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -453,7 +457,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = KakaoTocs.LvMP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

@@ -57,7 +57,7 @@ class HomeListViewController: UIViewController, UITableViewDataSource, AVAudioPl
         var cur = 0
         for List in MusicList{
             audioFileURL = Bundle(url: documentsUrl)!.url(forResource: List, withExtension: "mp3")! as NSURL
-            //print(audioFileURL)
+            print(audioFileURL)
             let ListItem = AVPlayerItem(url: audioFileURL as URL)
             let matadataList = ListItem.asset.metadata
             

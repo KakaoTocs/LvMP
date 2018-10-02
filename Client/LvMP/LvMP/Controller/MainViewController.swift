@@ -14,8 +14,9 @@ class MainViewController: UIViewController {
     // 서버에서 받은 후 데이터 저장
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        // 노래 ㅓ장시 경로 확인 파일 url렘에 저장후 url로 노재 재생
         // Do any additional setup after loading the view.
+        FilesManager.shared.test()
     }
     
 
