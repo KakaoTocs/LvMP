@@ -1,10 +1,10 @@
 PODS:
-  - Alamofire (4.7.2)
-  - Crashlytics (3.10.2):
-    - Fabric (~> 1.7.7)
-  - Fabric (1.7.7)
-  - Kanna (4.0.0)
-  - Kingfisher (4.7.0)
+  - Alamofire (4.7.3)
+  - Crashlytics (3.10.8):
+    - Fabric (~> 1.7.12)
+  - Fabric (1.7.12)
+  - Kanna (4.0.2)
+  - Kingfisher (4.10.0)
   - MediaKeyTap (2.1.0)
   - Moya/Core (11.0.2):
     - Alamofire (~> 4.1)
@@ -12,17 +12,17 @@ PODS:
   - Moya/RxSwift (11.0.2):
     - Moya/Core
     - RxSwift (~> 4.0)
-  - Nimble (7.0.3)
-  - Quick (1.2.0)
-  - Realm (3.2.0):
-    - Realm/Headers (= 3.2.0)
-  - Realm/Headers (3.2.0)
-  - RealmSwift (3.2.0):
-    - Realm (= 3.2.0)
+  - Nimble (7.3.1)
+  - Quick (1.3.2)
+  - Realm (3.10.0):
+    - Realm/Headers (= 3.10.0)
+  - Realm/Headers (3.10.0)
+  - RealmSwift (3.10.0):
+    - Realm (= 3.10.0)
   - Result (3.2.4)
-  - RxBlocking (4.1.2):
+  - RxBlocking (4.3.1):
     - RxSwift (~> 4.0)
-  - RxCocoa (4.1.2):
+  - RxCocoa (4.3.1):
     - RxSwift (~> 4.0)
   - RxRealm (0.7.5):
     - RealmSwift (~> 3.0)
@@ -32,10 +32,10 @@ PODS:
     - RxCocoa (~> 4.0)
     - RxRealm (~> 0.7.3)
     - RxSwift (~> 4.0)
-  - RxSwift (4.1.2)
-  - RxTest (4.1.2):
+  - RxSwift (4.3.1)
+  - RxTest (4.3.1):
     - RxSwift (~> 4.0)
-  - SnapKit (4.0.0)
+  - SnapKit (4.0.1)
 
 DEPENDENCIES:
   - Crashlytics
@@ -55,7 +55,7 @@ DEPENDENCIES:
   - SnapKit
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - Alamofire
     - Crashlytics
     - Fabric
@@ -77,26 +77,26 @@ SPEC REPOS:
     - SnapKit
 
 SPEC CHECKSUMS:
-  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
-  Crashlytics: 0360624eea1c978a743feddb2fb1ef8b37fb7a0d
-  Fabric: bda89e242bce1b7b8ab264248cf3407774ce0095
-  Kanna: d5ae2a26472f7e7a474e7f36a9cd8aa2c8c63ad3
-  Kingfisher: da6b005aa96d37698e3e4f1ccfe96a5b9bbf27d6
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  Crashlytics: 058dc1ba579f6c100bc60a6878703779bff383c4
+  Fabric: d7387db9a31aadff63b147a4b91d982c53afaa4f
+  Kanna: c60b61d72554bf04ed1ee074f9b379855cab4892
+  Kingfisher: 43c4b802d8b5256cf1f4379e9cd10b329be6d3e2
   MediaKeyTap: 1849cb1882ebd1ece5fed6b3cec6565a5f30da00
   Moya: a725035953bc1c0eb1be505ab903984501d82440
-  Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
-  Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
-  Realm: ae552b9b9eca3a12374a589fa842f220e286a80a
-  RealmSwift: 05727129547dcab3fe828bd87bc30be903736b9c
+  Nimble: 04f732da099ea4d153122aec8c2a88fd0c7219ae
+  Quick: 2623cb30d7a7f41ca62f684f679586558f483d46
+  Realm: 85ab9e4f779d66f6e9ffeb118dc25b7f130c96ac
+  RealmSwift: 69121c8b86d0ae005fb779efdb10e606732e1c74
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
-  RxBlocking: f6054985901412fc8c02daa84e92d4ba68c61389
-  RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
+  RxBlocking: 64c051285261ca2339481e91b5f70eb06b03660a
+  RxCocoa: 78763c7b07d02455598d9fc3c1ad091a28b73635
   RxRealm: a6c6c0a07cb61f34209969ca6657734edfdfff30
   RxRealmDataSources: 798303f1d7db18d80da9e95bab9605010378040e
-  RxSwift: e49536837d9901277638493ea537394d4b55f570
-  RxTest: e634f15fd2c2cd0e0120132ef7a4f7be69ad0393
-  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
+  RxTest: ea97a208826906f3904c0debdd09575ebcbfe216
+  SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
 
 PODFILE CHECKSUM: bcd4eb84e5b117bf9f024c37ad2c1f95471f1e3e
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3

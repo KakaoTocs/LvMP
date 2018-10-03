@@ -15,6 +15,9 @@ class Album: Object {
     @objc dynamic var artist: Artist?
     let musics = LinkingObjects(fromType: Music.self, property: "album")
     
+    override static func primaryKey() -> String? {
+        return "id"
+    }
     convenience init(name: String, artist: Artist) {
         self.init()
         self.name = name

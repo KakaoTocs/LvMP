@@ -16,6 +16,10 @@ class Artist: Object {
     let musics = LinkingObjects(fromType: Music.self, property: "artist")
     let albums = LinkingObjects(fromType: Album.self, property: "artist")
     
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+    
     convenience init(name: String) {
         self.init()
         self.name = name

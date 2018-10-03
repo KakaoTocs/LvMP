@@ -19,7 +19,9 @@ class Music: Object {
     @objc dynamic var artist: Artist?
     @objc dynamic var album: Album?
     
-//    override func primary
+    override static func primaryKey() -> String? {
+        return "id"
+    }
     
     convenience init(name: String, lyrics: String, url: String, artist: Artist, album: Album) {
         self.init()

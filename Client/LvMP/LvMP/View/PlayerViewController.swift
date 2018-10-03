@@ -1,14 +1,14 @@
 //
-//  FolderListController.swift
-//  AudioPlayer
+//  PlayerViewController.swift
+//  LvMP
 //
-//  Created by DGSW_TEACHER on 2017. 2. 8..
-//  Copyright © 2017년 dgsw. All rights reserved.
+//  Created by Jinu Kim on 03/10/2018.
+//  Copyright © 2018 Jinu Kim. All rights reserved.
 //
 
 import UIKit
 
-class FolderListController: UIViewController {
+class PlayerViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
