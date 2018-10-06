@@ -14,10 +14,12 @@ server.listen(3000, () => {
 
 io.on('connection', (socket) => {
   console.log("Socket connected: " + socket.id);
-  io.emit('paring', data)
+  io.emit('paringMac', data)
+  io.emit('paringiPhone', data)
 
   socket.on("data", (data) => {
-    console.log("Received data: " + data);
+    console.log("Received data: " + data.count);
+    io.emit("clientData", data);
   });
 
   socket.on("server_test", (data) => {

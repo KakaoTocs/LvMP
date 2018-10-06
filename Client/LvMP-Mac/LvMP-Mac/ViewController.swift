@@ -142,6 +142,72 @@ class ViewController: NSViewController {
         for item in metaData {
             switch item.commonKey?.rawValue {
             case "title":
+                let encoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingASCII)
+                let euc = item.stringValue?.cString(using: String.Encoding(rawValue: encoding))
+                print("1: \(String(utf8String: euc ?? [CChar(0)]))")
+                // ?? Data(bytes: [UInt8(0)])
+                
+                let string = item.stringValue ?? "0"
+                print(string)
+                print(try NSString(contentsOfFile: string, encoding: 0))
+//                let cp = String(data: string.data(using: String.Encoding.utf8)!, encoding: String.Encoding(rawValue: CFStringConvertEncodingToNSStringEncoding(0x422)))
+                let response = NSString(data: string.data(using: String.Encoding.utf8)!, encoding: String.Encoding.ascii.rawValue)
+                let a = response
+                print(a)
+                let result2 = response?.utf8String
+                let b = String(cString: result2!, encoding: String.Encoding(rawValue: CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingASCII)))
+                let c = String(cString: result2!, encoding: String.Encoding(rawValue: CFStringConvertEncodingToNSStringEncoding(0x422)))
+                
+                let gTemp = (c ?? "하이루").cString(using: String.Encoding.utf8)
+                let g = String(cString: gTemp ?? [0, 0, 0], encoding: String.Encoding(rawValue: CFStringConvertEncodingToNSStringEncoding(0x422)))
+//                let dTemp = c!.data(using: .utf8)
+//                let d = String(data: dTemp!, encoding: .ascii)
+                let e = euckrEncoding(item.stringValue!)
+                let fTemp = e.data(using: .ascii)
+                let f = String(data: fTemp!, encoding: .utf8)
+                
+//                let enco = CFStringConvertEncodingToNSStringEncoding(CFStringEncoding(CFStringEncodings.EUC_KR.rawValue))
+//                let enco = CFStringConvertEncodingToNSStringEncoding(CFStringEncoding(kCFStringEncodingASCII))
+//                let enco = String.Encoding.utf8
+                let enco = String.Encoding.utf16
+                print(enco)
+                print(string.cString(using: enco))
+                let encoData = string.data(using: enco) ?? Data()
+                print(encoData)
+                let attribu = try? NSAttributedString(data: encoData, options: [:], documentAttributes: nil)
+                print(attribu?.string ?? "NULL")
+                
+                let hTemp1 = Array(string)
+                print(hTemp1)
+                let temp3 = String(hTemp1).utf8.map{ String($0).unicodeScalars }
+                print(temp3)
+                let hTemp2 = String(hTemp1).utf8.map{ Int8($0) }
+                print(hTemp2)
+                let h = String(cString: UnsafePointer<Int8>(hTemp2), encoding: String.Encoding(rawValue: CFStringConvertEncodingToNSStringEncoding(0x422)))
+                // C7 D8 B9 D9 B6 F3 B1 E2
+                print("2-1: \(a)")
+                print("2-2: \(b)")
+                print("2-3: \(c), C: ")
+                print(gTemp)
+                print(g)
+                print("2-7: \(h)")
+//                for char in c {
+//                    print("\(char)-")
+//                }
+//                print("2-4: \(d)")
+                print("2-5: \(e)")
+                print("2-6: \(f)")
+                
+                
+                let encoding2 = String.Encoding(rawValue: CFStringConvertEncodingToNSStringEncoding(0x422))
+                let result3 = String(cString: item.stringValue!, encoding: encoding2)
+                print("3: \(result3)\n")
+                
+                let encodingEUCKR = CFStringConvertEncodingToNSStringEncoding(0x0422)
+                let size = (item.stringValue?.lengthOfBytes(using: String.Encoding(rawValue: encodingEUCKR)))! + 1
+                var buffer: [CChar] = [CChar](repeating: 0, count: size)
+                let result4 = item.stringValue?.getCString(&buffer, maxLength: size, encoding: String.Encoding(rawValue: encodingEUCKR))
+                print("4-1: \(buffer)")
                 title = item.stringValue ?? "제목 없음"
             case "artist":
                 artist = item.stringValue ?? "아티스트 없음"
@@ -159,6 +225,29 @@ class ViewController: NSViewController {
             }
         }
         return Music(title: title!, artist: artist!, album: album!, size: size, type: type, artwork: artwork ?? Data(bytes: [UInt8(0)]), playTime: playTime, file: fileData!)
+    }
+    
+    func euckrEncoding(_ query: String) -> String { //EUC-KR 인코딩
+        
+        let rawEncoding = CFStringConvertEncodingToNSStringEncoding(CFStringEncoding(CFStringEncodings.EUC_KR.rawValue))
+        let encoding = String.Encoding(rawValue: rawEncoding)
+        
+        let eucKRStringData = query.data(using: encoding) ?? Data()
+        let outputQuery = eucKRStringData.map {byte->String in
+            if byte >= UInt8(ascii: "A") && byte <= UInt8(ascii: "Z")
+                || byte >= UInt8(ascii: "a") && byte <= UInt8(ascii: "z")
+                || byte >= UInt8(ascii: "0") && byte <= UInt8(ascii: "9")
+                || byte == UInt8(ascii: "_") || byte == UInt8(ascii: ".") || byte == UInt8(ascii: "-")
+            {
+                return String(Character(UnicodeScalar(UInt32(byte))!))
+            } else if byte == UInt8(ascii: " ") {
+                return "+"
+            } else {
+                return String(format: "%%%02X", byte)
+            }
+            }.joined()
+        
+        return outputQuery
     }
 }
 

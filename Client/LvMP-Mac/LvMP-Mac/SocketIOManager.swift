@@ -24,13 +24,14 @@ class SocketIOManager: NSObject {
             print("Server Connected!")
         }
         
-        socket?.on("paring") { data, ack in
+        socket?.on("paringMac") { data, ack in
             let state = data[0] as? Bool ?? false
             print("Receive data: \(state)")
             NotificationCenter.default.post(name: SocketIOManager.stateUpdateNotificationKey, object: nil, userInfo: ["state":state])
         }
         
         socket?.on(clientEvent: .disconnect) { data, ack in
+            print("-Server Disconnected!")
             NotificationCenter.default.post(name: SocketIOManager.stateUpdateNotificationKey, object: nil, userInfo: ["state":false])
         }
     }
@@ -45,7 +46,7 @@ class SocketIOManager: NSObject {
     
     func sendFile(folder: Folder) {
         let files: [Data] = readAllFileInFolder(folder: folder)
-        socket?.emit("data", ["files": files])
+        socket?.emit("data", files)
     }
     
     func readAllFileInFolder(folder: Folder) -> [Data] {

@@ -11,7 +11,7 @@ import RealmSwift
 
 class Music: Object {
     @objc dynamic var id: String = UUID().uuidString
-    @objc dynamic var name: String = ""
+    @objc dynamic var title: String = ""
     @objc dynamic var lyrics: String = ""
     @objc dynamic var playTime: UInt32 = 0
     @objc dynamic var url: String = ""
@@ -23,9 +23,9 @@ class Music: Object {
         return "id"
     }
     
-    convenience init(name: String, lyrics: String, url: String, artist: Artist, album: Album) {
+    convenience init(title: String, lyrics: String, url: String, artist: Artist, album: Album) {
         self.init()
-        self.name = name
+        self.title = title
         self.lyrics = lyrics
         self.url = url
         self.artist = artist
@@ -34,14 +34,20 @@ class Music: Object {
     
     func save(file: Data) {
         let realm: Realm! = try! Realm()
-        var fileURL: URL = URL(string: self.url)!
-        fileURL.appendPathComponent("\(name).\(type)")
-        do {
-            try realm.write {
-                realm.add(self)
+        var fileURL: URL = URL(string: self.id)!
+        fileURL.appendPathComponent(id + ".\(type)")
+        self.url = fileURL.absoluteString
+        let result = FilesManager.shared.writeFile(at: fileURL, file: file)
+        if result {
+            do {
+                try realm.write {
+                    realm.add(self)
+                }
+            } catch {
+                print("Error >> Save >> Music >> save: db write error")
             }
-        } catch {
-            print("Error >> Save >> Music")
+        } else {
+            print("Error >> Music >> save: file write error")
         }
     }
     

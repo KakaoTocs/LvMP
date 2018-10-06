@@ -14,18 +14,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+        SocketIOManager.shared.connect()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
-    }
-    
-    func applicationDidBecomeActive(_ notification: Notification) {
-        SocketIOManager.shared.connect()
-    }
-    
-    func applicationDidResignActive(_ notification: Notification) {
         SocketIOManager.shared.disconnect()
     }
 

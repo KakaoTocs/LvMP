@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1000"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "795460582261F154FC26C038711B9EBE"
+               BlueprintIdentifier = "64966C3C0DB129AED079B7ACF0FB06A1"
                BuildableName = "Pods_LvMP.framework"
                BlueprintName = "Pods-LvMP"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "795460582261F154FC26C038711B9EBE"
+            BlueprintIdentifier = "64966C3C0DB129AED079B7ACF0FB06A1"
             BuildableName = "Pods_LvMP.framework"
             BlueprintName = "Pods-LvMP"
             ReferencedContainer = "container:Pods.xcodeproj">

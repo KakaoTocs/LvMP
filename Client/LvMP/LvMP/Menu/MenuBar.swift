@@ -13,11 +13,15 @@ class MenuBar: UIView {
     @IBOutlet var contentView: UIView!
     
     @IBOutlet weak var homeButton: UIButton!
+    @IBOutlet weak var musicButton: UIButton!
     @IBOutlet weak var artistButton: UIButton!
     @IBOutlet weak var albumButton: UIButton!
-    @IBOutlet weak var homeState: UIView!
-    @IBOutlet weak var artistState: UIView!
-    @IBOutlet weak var albumState: UIView!
+    @IBOutlet weak var itemState: UIView!
+    @IBOutlet var itemStateleadingConstraint: NSLayoutConstraint!
+    
+    var itemWidth: CGFloat {
+        return homeButton.bounds.width
+    }
     
     private var selectedItem = MenuItem() {
         willSet(newValue) {
@@ -25,8 +29,9 @@ class MenuBar: UIView {
         }
     }
     
-    fileprivate enum MenuItem: Int {
+    enum MenuItem: Int {
         case home = 0
+        case music
         case artist
         case album
         
@@ -52,35 +57,36 @@ class MenuBar: UIView {
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
         self.homeButton.addTarget(self, action: #selector(itemAction(_:)), for: .touchUpInside)
+        self.musicButton.addTarget(self, action: #selector(itemAction(_:)), for: .touchUpInside)
         self.artistButton.addTarget(self, action: #selector(itemAction(_:)), for: .touchUpInside)
         self.albumButton.addTarget(self, action: #selector(itemAction(_:)), for: .touchUpInside)
-        self.homeState.backgroundColor = UIColor.blue
     }
     
     fileprivate func itemStateUpdate(item: MenuItem) {
         switch item {
         case .home:
-            self.homeState.backgroundColor = UIColor.blue
-            self.artistState.backgroundColor = UIColor.clear
-            self.albumState.backgroundColor = UIColor.clear
+            itemStateleadingConstraint.constant = 0
+        case .music:
+            itemStateleadingConstraint.constant = itemWidth * 1
         case .artist:
-            self.homeState.backgroundColor = UIColor.clear
-            self.artistState.backgroundColor = UIColor.blue
-            self.albumState.backgroundColor = UIColor.clear
+            itemStateleadingConstraint.constant = itemWidth * 2
         case .album:
-            self.homeState.backgroundColor = UIColor.clear
-            self.artistState.backgroundColor = UIColor.clear
-            self.albumState.backgroundColor = UIColor.blue
+            itemStateleadingConstraint.constant = itemWidth * 3
             
         }
     }
     
-    @objc fileprivate func itemAction(_ sender: UIButton!) {
-        guard let newState = MenuItem(rawValue: sender.tag) else {
-            print("Error >> MenuBar >> itemAction: menuButton change type(Int -> Enum) ")
+    func selectItem(item newItem: Int) {
+        guard let newItem = MenuItem(rawValue: newItem) else {
+            print("Error >> MenuBar >> selectItem: menuButton change type(Int -> Enum) ")
             return
         }
-        selectedItem = newState
+        selectedItem = newItem
     }
+    
+    @objc fileprivate func itemAction(_ sender: UIButton!) {
+//        selectItem(item: sender.tag)
+    }
+    
 
 }

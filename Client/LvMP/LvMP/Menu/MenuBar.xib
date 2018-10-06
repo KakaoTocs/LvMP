@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MenuBar" customModule="LvMP" customModuleProvider="target">
+            <connections>
+                <outlet property="albumButton" destination="ba8-st-Q9W" id="MPX-DI-yYK"/>
+                <outlet property="artistButton" destination="CNS-ey-TxO" id="rNn-iS-xRn"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="WeC-72-cJP"/>
+                <outlet property="homeButton" destination="506-Bs-riA" id="MXP-I1-3cb"/>
+                <outlet property="itemState" destination="c4J-Tg-cnL" id="USl-t0-b4C"/>
+                <outlet property="itemStateleadingConstraint" destination="UdP-bs-Fwq" id="eWH-Zy-cBA"/>
+                <outlet property="musicButton" destination="h6a-gU-YFX" id="Rye-da-qYl"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="33"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qbS-px-hOK" userLabel="ButtonBar">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="506-Bs-riA">
+                            <rect key="frame" x="0.0" y="0.0" width="94" height="30"/>
+                            <state key="normal" title="Home"/>
+                        </button>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h6a-gU-YFX">
+                            <rect key="frame" x="94" y="0.0" width="93.5" height="30"/>
+                            <state key="normal" title="Music"/>
+                        </button>
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CNS-ey-TxO">
+                            <rect key="frame" x="187.5" y="0.0" width="94" height="30"/>
+                            <state key="normal" title="Artist"/>
+                        </button>
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ba8-st-Q9W">
+                            <rect key="frame" x="281.5" y="0.0" width="93.5" height="30"/>
+                            <state key="normal" title="Album"/>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="506-Bs-riA" firstAttribute="width" secondItem="ba8-st-Q9W" secondAttribute="width" id="9Vv-Mj-27t"/>
+                        <constraint firstAttribute="height" constant="30" id="FVf-F7-ICT"/>
+                        <constraint firstItem="506-Bs-riA" firstAttribute="width" secondItem="h6a-gU-YFX" secondAttribute="width" id="Nfl-Gg-HCy"/>
+                        <constraint firstItem="506-Bs-riA" firstAttribute="width" secondItem="CNS-ey-TxO" secondAttribute="width" id="VWU-vC-k2n"/>
+                    </constraints>
+                </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c4J-Tg-cnL" userLabel="ItemState">
+                    <rect key="frame" x="0.0" y="30" width="94" height="3"/>
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="3" id="gvc-3b-o6F"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="c4J-Tg-cnL" firstAttribute="width" secondItem="506-Bs-riA" secondAttribute="width" id="2i6-68-h6Q"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qbS-px-hOK" secondAttribute="trailing" id="4RI-tB-97X"/>
+                <constraint firstItem="c4J-Tg-cnL" firstAttribute="top" secondItem="qbS-px-hOK" secondAttribute="bottom" id="5Tk-DY-6Sa"/>
+                <constraint firstItem="qbS-px-hOK" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Lx9-Bd-Mop"/>
+                <constraint firstItem="c4J-Tg-cnL" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="UdP-bs-Fwq"/>
+                <constraint firstItem="c4J-Tg-cnL" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="lCs-Ba-C7f"/>
+                <constraint firstItem="c4J-Tg-cnL" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="upu-DZ-pv2"/>
+                <constraint firstItem="qbS-px-hOK" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="wF4-nk-3ek"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="33.5" y="-262.5"/>
+        </view>
+    </objects>
+</document>
