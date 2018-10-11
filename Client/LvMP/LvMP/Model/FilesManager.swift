@@ -46,6 +46,7 @@ class FilesManager {
         }
         return true
     }
+    
     func writeFile(at url: URL, file: Data) -> Bool {
         do {
             try file.write(to: url)

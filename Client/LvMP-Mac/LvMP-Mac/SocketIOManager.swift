@@ -7,12 +7,17 @@
 //
 
 import SocketIO
+import Alamofire
 
 class SocketIOManager: NSObject {
     static let shared = SocketIOManager()
-    static let stateUpdateNotificationKey = Notification.Name("paringStateUpdated")
+    static let serverConnectionstateUpdateNotificationKey = Notification.Name("connectionStateUpdated")
+    static let paringStateUpdateNotificationKey = Notification.Name("paringStateUpdated")
     
-//    let manager = SocketManager(socketURL: URL(string: "http://127.0.0.1:3000")!, config: [.log(true), .compress])
+    var isConnected: Bool = false
+    var isParing: Bool = false
+    
+    //    let manager = SocketManager(socketURL: URL(string: "http://127.0.0.1:3000")!, config: [.log(true), .compress])
     let manager = SocketManager(socketURL: URL(string: "http://127.0.0.1:3000")!)
     var socket: SocketIOClient?
     
@@ -22,17 +27,26 @@ class SocketIOManager: NSObject {
         
         socket?.on(clientEvent: .connect) { data, ack in
             print("Server Connected!")
+            self.isConnected = true
+            NotificationCenter.default.post(name: SocketIOManager.serverConnectionstateUpdateNotificationKey, object: nil)
         }
         
-        socket?.on("paringMac") { data, ack in
+        socket?.on("kind") { data, ack in
+            self.socket?.emit("kind", 0)
+        }
+        
+        socket?.on("paring") { data, ack in
             let state = data[0] as? Bool ?? false
-            print("Receive data: \(state)")
-            NotificationCenter.default.post(name: SocketIOManager.stateUpdateNotificationKey, object: nil, userInfo: ["state":state])
+            self.isParing = state
+            NotificationCenter.default.post(name: SocketIOManager.paringStateUpdateNotificationKey, object: nil)
         }
         
         socket?.on(clientEvent: .disconnect) { data, ack in
             print("-Server Disconnected!")
-            NotificationCenter.default.post(name: SocketIOManager.stateUpdateNotificationKey, object: nil, userInfo: ["state":false])
+            self.isConnected = false
+            self.isParing = false
+            NotificationCenter.default.post(name: SocketIOManager.paringStateUpdateNotificationKey, object: nil)
+            NotificationCenter.default.post(name: SocketIOManager.serverConnectionstateUpdateNotificationKey, object: nil)
         }
     }
     
@@ -45,19 +59,50 @@ class SocketIOManager: NSObject {
     }
     
     func sendFile(folder: Folder) {
-        let files: [Data] = readAllFileInFolder(folder: folder)
-        socket?.emit("data", files)
+        var files: [Data] = []
+        var types: [String] = []
+        (files, types) = readAllFileInFolder(folder: folder)
+        dump(files)
+        dump(types)
+        
+        var result = Data()
+        let json = ["types":types]
+        do {
+            result = try JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
+        } catch {
+            print("Error")
+        }
+        let temp = String(data: result, encoding: String.Encoding.utf8)!
+        print(temp)
+        let param: Parameters = ["data":temp]
+        Alamofire.request("http://127.0.0.1:3000/uploadFiles", method: .post, parameters: param, encoding: JSONEncoding.default, headers: ["Content-Type":"application/json", "Accept":"application/json"])
+            .validate(statusCode: 200..<300)
+            .responseJSON { res in
+                guard let value = res.result.value as? [String:Any] else {
+                    return
+                }
+                print(value["code"])
+                print(value["message"])
+        }
+//        socket?.emit("data", [files, types])
     }
     
-    func readAllFileInFolder(folder: Folder) -> [Data] {
+    func readAllFileInFolder(folder: Folder) -> ([Data], [String]) {
         var files: [Data] = []
+        var types: [String] = []
+        var filesTemp: [Data] = []
+        var typesTemp: [String] = []
+        
         files = folder.files.reduce([Data]()) { $0 + [$1.file] }
+        types = folder.files.reduce([String]()) { $0 + [$1.type] }
         
         for childFolder in folder.folders {
-            files += readAllFileInFolder(folder: childFolder)
+            (filesTemp, typesTemp) = readAllFileInFolder(folder: childFolder)
+            files += filesTemp
+            types += typesTemp
         }
         
-        return files
+        return (files, types)
     }
     
 }

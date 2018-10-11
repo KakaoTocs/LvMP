@@ -9,28 +9,32 @@
 import Cocoa
 import AVFoundation
 import SocketIO
+import Alamofire
 
 class ViewController: NSViewController {
     
     @IBOutlet weak var tableView: NSScrollView!
-    @IBOutlet weak var stateIcon: NSButton!
-    @IBOutlet weak var stateLabel: NSTextField!
+    @IBOutlet weak var connectionStateIcon: NSButton!
+    @IBOutlet weak var connectionStateLabel: NSTextField!
+    @IBOutlet weak var paringStateIcon: NSButton!
+    @IBOutlet weak var paringStateLabel: NSTextField!
     @IBOutlet weak var filePathTextField: NSTextField!
     @IBOutlet weak var outlineView: NSOutlineView!
     
     var rootFolder: Folder = Folder(name: "empty")
     let types = ["mp3", "flac", "m4a", "WAV", "folder"]
     var state = false
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.paringStateUpdated(_:)), name: SocketIOManager.stateUpdateNotificationKey, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.connectionStateUpdated(_:)), name: SocketIOManager.serverConnectionstateUpdateNotificationKey, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.paringStateUpdated(_:)), name: SocketIOManager.paringStateUpdateNotificationKey, object: nil)
     }
-
+    
     override var representedObject: Any? {
         didSet {
-        // Update the view, if already loaded.
+            // Update the view, if already loaded.
         }
     }
     
@@ -46,38 +50,86 @@ class ViewController: NSViewController {
         
         if openPanel.runModal() == NSApplication.ModalResponse.OK {
             let results = openPanel.urls
-            //            dump(results)
             rootFolder = readAllFiles(name: "root", urls: results)
             outlineView.reloadData()
-//            dump(rootFolder)
         } else {
             return
         }
     }
     
+    @objc func connectionStateUpdated(_ noti: Notification) {
+        self.connectionStateUpdate()
+    }
+    
     @objc func paringStateUpdated(_ noti: Notification) {
-        if let data = noti.userInfo?["state"] as? Bool {
-            self.state = data
-            self.stateUpdate()
+        if SocketIOManager.shared.isParing {
+            self.paringStateLabel.stringValue = "페어링됨"
+            self.paringStateIcon.image = NSImage(named: NSImage.Name(rawValue: "StateIcon_On.png"))
+        } else {
+            self.paringStateLabel.stringValue = "페어링안됨"
+            self.paringStateIcon.image = NSImage(named: NSImage.Name(rawValue: "StateIcon_Off.png"))
         }
-        
     }
     
     @IBAction func sendData(_ sender: NSButton) {
-        SocketIOManager.shared.sendFile(folder: rootFolder)
-    }
-
-    // MARK: - Custom Method
-    
-    func stateUpdate() {
-        if self.state {
-            self.stateLabel.stringValue = "연결됨"
-            self.stateIcon.image = NSImage(named: NSImage.Name(rawValue: "StateIcon_On"))
+        if SocketIOManager.shared.isConnected {
+            SocketIOManager.shared.sendFile(folder: rootFolder)
         } else {
-            self.stateLabel.stringValue = "연결안됨"
-            self.stateIcon.image = NSImage(named: NSImage.Name(rawValue: "StateIcon_Off"))
+            print("서버와 연결되지 않았습니다.")
+        }
+        
+//        var request = URLRequest(url: URL(string: "127.0.0.1:3000/test")!)
+//        request.httpMethod = "POST"
+//        let params = ["item":"HelloSwift"] as Dictionary
+//        do {
+//            try request.httpBody = JSONSerialization.data(withJSONObject: params, options: [])
+//        } catch {
+//            print("Network Error")
+//            return
+//        }
+//        URLSession.shared.dataTask(with: request) { (data, res, error) in
+//            dump(data)
+//        }
+        
+//        Alamofire.request
+        
+        // pairng true일때만 전송가능 -> 전송시 파일 전송 && 서버가 앱으로 socket.io로 요청하도록 요청 -> 앱 요청 -> 서버가 파일 전달
+//        Alamofire.request("http://127.0.0.1:3000/uploadFiles", method: .post, parameters: ["item":"Hello"] as [String: AnyObject], encoding: JSONEncoding.default, headers: ["Content-Type":"application/json", "Accept":"application/json"])
+//            .validate(statusCode: 200..<300)
+//            .responseJSON { res in
+//                guard let value = res.result.value as? [String:Any] else {
+//                    return
+//                }
+//                print(value["code"])
+//                print(value["message"])
+//        }
+    }
+    
+    @IBAction func stateButtonAction(_ sender: NSButton) {
+        if SocketIOManager.shared.isConnected {
+            SocketIOManager.shared.disconnect()
+        } else {
+            SocketIOManager.shared.connect()
         }
     }
+    
+    // MARK: - Custom Method
+    func connectionStateUpdate() {
+        if SocketIOManager.shared.isConnected {
+            self.connectionStateLabel.stringValue = "연결됨"
+            self.connectionStateIcon.image = NSImage(named: NSImage.Name(rawValue: "StateIcon_On.png"))
+        } else {
+            self.connectionStateLabel.stringValue = "연결안됨"
+            self.connectionStateIcon.image = NSImage(named: NSImage.Name(rawValue: "StateIcon_Off.png"))
+        }
+    }
+    
+    func pringStateUpdate() {
+        //        if SocketIOManager.shared.isParing {
+        //            self
+        //        }
+    }
+    
     func readAllFiles(name: String, urls: [URL]) -> Folder {
         let folder: Folder = Folder(name: name)
         var errorFiles: [String] = []
@@ -142,72 +194,6 @@ class ViewController: NSViewController {
         for item in metaData {
             switch item.commonKey?.rawValue {
             case "title":
-                let encoding = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingASCII)
-                let euc = item.stringValue?.cString(using: String.Encoding(rawValue: encoding))
-                print("1: \(String(utf8String: euc ?? [CChar(0)]))")
-                // ?? Data(bytes: [UInt8(0)])
-                
-                let string = item.stringValue ?? "0"
-                print(string)
-                print(try NSString(contentsOfFile: string, encoding: 0))
-//                let cp = String(data: string.data(using: String.Encoding.utf8)!, encoding: String.Encoding(rawValue: CFStringConvertEncodingToNSStringEncoding(0x422)))
-                let response = NSString(data: string.data(using: String.Encoding.utf8)!, encoding: String.Encoding.ascii.rawValue)
-                let a = response
-                print(a)
-                let result2 = response?.utf8String
-                let b = String(cString: result2!, encoding: String.Encoding(rawValue: CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingASCII)))
-                let c = String(cString: result2!, encoding: String.Encoding(rawValue: CFStringConvertEncodingToNSStringEncoding(0x422)))
-                
-                let gTemp = (c ?? "하이루").cString(using: String.Encoding.utf8)
-                let g = String(cString: gTemp ?? [0, 0, 0], encoding: String.Encoding(rawValue: CFStringConvertEncodingToNSStringEncoding(0x422)))
-//                let dTemp = c!.data(using: .utf8)
-//                let d = String(data: dTemp!, encoding: .ascii)
-                let e = euckrEncoding(item.stringValue!)
-                let fTemp = e.data(using: .ascii)
-                let f = String(data: fTemp!, encoding: .utf8)
-                
-//                let enco = CFStringConvertEncodingToNSStringEncoding(CFStringEncoding(CFStringEncodings.EUC_KR.rawValue))
-//                let enco = CFStringConvertEncodingToNSStringEncoding(CFStringEncoding(kCFStringEncodingASCII))
-//                let enco = String.Encoding.utf8
-                let enco = String.Encoding.utf16
-                print(enco)
-                print(string.cString(using: enco))
-                let encoData = string.data(using: enco) ?? Data()
-                print(encoData)
-                let attribu = try? NSAttributedString(data: encoData, options: [:], documentAttributes: nil)
-                print(attribu?.string ?? "NULL")
-                
-                let hTemp1 = Array(string)
-                print(hTemp1)
-                let temp3 = String(hTemp1).utf8.map{ String($0).unicodeScalars }
-                print(temp3)
-                let hTemp2 = String(hTemp1).utf8.map{ Int8($0) }
-                print(hTemp2)
-                let h = String(cString: UnsafePointer<Int8>(hTemp2), encoding: String.Encoding(rawValue: CFStringConvertEncodingToNSStringEncoding(0x422)))
-                // C7 D8 B9 D9 B6 F3 B1 E2
-                print("2-1: \(a)")
-                print("2-2: \(b)")
-                print("2-3: \(c), C: ")
-                print(gTemp)
-                print(g)
-                print("2-7: \(h)")
-//                for char in c {
-//                    print("\(char)-")
-//                }
-//                print("2-4: \(d)")
-                print("2-5: \(e)")
-                print("2-6: \(f)")
-                
-                
-                let encoding2 = String.Encoding(rawValue: CFStringConvertEncodingToNSStringEncoding(0x422))
-                let result3 = String(cString: item.stringValue!, encoding: encoding2)
-                print("3: \(result3)\n")
-                
-                let encodingEUCKR = CFStringConvertEncodingToNSStringEncoding(0x0422)
-                let size = (item.stringValue?.lengthOfBytes(using: String.Encoding(rawValue: encodingEUCKR)))! + 1
-                var buffer: [CChar] = [CChar](repeating: 0, count: size)
-                let result4 = item.stringValue?.getCString(&buffer, maxLength: size, encoding: String.Encoding(rawValue: encodingEUCKR))
-                print("4-1: \(buffer)")
                 title = item.stringValue ?? "제목 없음"
             case "artist":
                 artist = item.stringValue ?? "아티스트 없음"
@@ -225,29 +211,6 @@ class ViewController: NSViewController {
             }
         }
         return Music(title: title!, artist: artist!, album: album!, size: size, type: type, artwork: artwork ?? Data(bytes: [UInt8(0)]), playTime: playTime, file: fileData!)
-    }
-    
-    func euckrEncoding(_ query: String) -> String { //EUC-KR 인코딩
-        
-        let rawEncoding = CFStringConvertEncodingToNSStringEncoding(CFStringEncoding(CFStringEncodings.EUC_KR.rawValue))
-        let encoding = String.Encoding(rawValue: rawEncoding)
-        
-        let eucKRStringData = query.data(using: encoding) ?? Data()
-        let outputQuery = eucKRStringData.map {byte->String in
-            if byte >= UInt8(ascii: "A") && byte <= UInt8(ascii: "Z")
-                || byte >= UInt8(ascii: "a") && byte <= UInt8(ascii: "z")
-                || byte >= UInt8(ascii: "0") && byte <= UInt8(ascii: "9")
-                || byte == UInt8(ascii: "_") || byte == UInt8(ascii: ".") || byte == UInt8(ascii: "-")
-            {
-                return String(Character(UnicodeScalar(UInt32(byte))!))
-            } else if byte == UInt8(ascii: " ") {
-                return "+"
-            } else {
-                return String(format: "%%%02X", byte)
-            }
-            }.joined()
-        
-        return outputQuery
     }
 }
 

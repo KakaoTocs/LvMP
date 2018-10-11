@@ -24,8 +24,4 @@ class Artist: Object {
         self.init()
         self.name = name
     }
-    
-//    required init() {
-//        fatalError("init() has not been implemented")
-//    }
 }

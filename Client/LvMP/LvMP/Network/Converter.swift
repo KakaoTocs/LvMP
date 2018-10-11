@@ -13,18 +13,24 @@ func fileToMusic(at: URL) {
     let musicFile = AVPlayerItem(url: at)
     let metaData = musicFile.asset.metadata
     
+    var title: String
+    var artist: String
+    var albumName: String
+    var lyrics: String
+    var artwork: Data
+    
     for item in metaData {
         switch item.commonKey?.rawValue {
         case "title":
-            print("Title: \(item.stringValue)")
+            title = item.stringValue ?? "제목 없음"
         case "artist":
-            print("Artist: \(item.stringValue)")
+            artist = item.stringValue ?? "아티스트 없음"
         case "albumName":
-            print("albumName: \(item.stringValue)")
+            albumName = item.stringValue ?? "앨범명 없음"
         case "artwork":
-            print("Artwork")
+            artwork = item.dataValue ?? Data()
         case "ko":
-            print("lyric: \(item.stringValue)")
+            lyrics = item.stringValue ?? "가사 없음"
         default:
             print("\(item.commonKey?.rawValue): \(item.stringValue)")
         }

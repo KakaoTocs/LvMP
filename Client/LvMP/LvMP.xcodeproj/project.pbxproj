@@ -16,7 +16,7 @@
 		654DC8292164D89100633005 /* Album.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 654DC8282164D89100633005 /* Album.storyboard */; };
 		654DC82B2164D89700633005 /* Music.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 654DC82A2164D89700633005 /* Music.storyboard */; };
 		654DC82D2164D89F00633005 /* Player.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 654DC82C2164D89F00633005 /* Player.storyboard */; };
-		65547799215F27C500DA7BE9 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65547798215F27C500DA7BE9 /* Networking.swift */; };
+		65547799215F27C500DA7BE9 /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65547798215F27C500DA7BE9 /* SocketIOManager.swift */; };
 		65631F0D21649F8D00DFE750 /* MenuBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65631F0C21649F8D00DFE750 /* MenuBar.xib */; };
 		656D8C6621633913001D707C /* FilesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656D8C6521633913001D707C /* FilesManager.swift */; };
 		657C887A215D0FA900C10363 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C8879215D0FA900C10363 /* Artist.swift */; };
@@ -47,7 +47,7 @@
 		654DC8282164D89100633005 /* Album.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Album.storyboard; sourceTree = "<group>"; };
 		654DC82A2164D89700633005 /* Music.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Music.storyboard; sourceTree = "<group>"; };
 		654DC82C2164D89F00633005 /* Player.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Player.storyboard; sourceTree = "<group>"; };
-		65547798215F27C500DA7BE9 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		65547798215F27C500DA7BE9 /* SocketIOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
 		65631F0C21649F8D00DFE750 /* MenuBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuBar.xib; sourceTree = "<group>"; };
 		656D8C6521633913001D707C /* FilesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesManager.swift; sourceTree = "<group>"; };
 		657C8879215D0FA900C10363 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
@@ -115,7 +115,7 @@
 		657C8881215D204000C10363 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				65547798215F27C500DA7BE9 /* Networking.swift */,
+				65547798215F27C500DA7BE9 /* SocketIOManager.swift */,
 				65A146EF2166099400E8DE14 /* Converter.swift */,
 			);
 			path = Network;
@@ -333,6 +333,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-LvMP/Pods-LvMP-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
@@ -340,6 +341,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
@@ -362,7 +364,7 @@
 				65A146F02166099400E8DE14 /* Converter.swift in Sources */,
 				654DC8092164D4BD00633005 /* ArtistListViewController.swift in Sources */,
 				65C045E52165DD31009B946B /* PlayerViewController.swift in Sources */,
-				65547799215F27C500DA7BE9 /* Networking.swift in Sources */,
+				65547799215F27C500DA7BE9 /* SocketIOManager.swift in Sources */,
 				653FD26C2164FD46004DFB0E /* RootViewController.swift in Sources */,
 				656D8C6621633913001D707C /* FilesManager.swift in Sources */,
 				654DC8112164D54F00633005 /* MusicListViewController.swift in Sources */,
@@ -518,7 +520,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = KakaoTocs.LvMP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -537,7 +539,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = KakaoTocs.LvMP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
