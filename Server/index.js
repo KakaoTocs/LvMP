@@ -2,9 +2,31 @@ const express = require('express');
 const app = express();
 const server = require('http').Server(app);
 var io = require('socket.io').listen(server);
+const fs = require('fs');
+const path = require('path');
 const bodyParser = require('body-parser');
+const multer = require('multer');
+const upload = multer({
+  storage: multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, 'uploads/');
+    },
+    filename: (req, file, cb) => {
+      cb(null, file.originalname);
+    }
+  }),
+  limits: { fieldSize: 100 * 1024 *1024}
+});
+// const multiparty = require('multiparty');
 
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '500mb'}) );
+app.use(bodyParser.urlencoded({
+  limit: '500mb',
+  extended: true,
+  parameterLimit:50000
+}));
+
 var data = true;
 var filesData;
 var typesData;
@@ -20,25 +42,40 @@ app.post("/test", (req, res) => {
   res.status(200).json({code: 200, message: "Success"});
 });
 
-app.post("/uploadFiles", (req, res) => {
-  console.log("Get files");
-  const data = req.body.data;
-  console.log(data);
-  var obj = JSON.parse(data);
-  console.log(obj.types);
-  console.log(obj)
-  filesData = obj.files;
-  typesData = obj.types;
-  console.log(typesData);
+app.post("/uploadFiles", upload.array('files'), (req, res) => {
+  filesData = req.files;
+  typesData = req.body.types;
+  // console.log(req.files);
+  // console.log(req.body.types);
+  console.log("Received data count: " + filesData.length);
   io.emit("uploadReady", "");
-});
-
-app.get("/receiveFiles", (req, res) => {
   const result = {
-    files: filesData,
-    types: typesData
+    code: 200,
+    message: "Good"
   };
   res.status(200).json(result);
+});
+
+var directoryPath = path.join(__dirname, '/uploads');
+app.get("/receiveFiles", (req, res) => {
+  var files = [];
+  fs.readdir(directoryPath, (err, result) => {
+    if (err) {
+      return console.log("Unable to scan directory: " + err);
+    }
+    console.log("Sending files...");
+    result.forEach((file) => {
+      console.log(file);
+      var temp = fs.readFileSync(directoryPath + "/" + file);
+      files.push(temp);
+    });
+    const JSONData = {
+      files: files,
+      types: typesData
+    };
+    console.log("Send Data count: " + files.length);
+    res.status(200).json(JSONData);
+  });
 });
 
 // app.post("")

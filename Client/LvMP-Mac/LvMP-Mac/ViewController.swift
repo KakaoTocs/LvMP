@@ -77,32 +77,6 @@ class ViewController: NSViewController {
         } else {
             print("서버와 연결되지 않았습니다.")
         }
-        
-//        var request = URLRequest(url: URL(string: "127.0.0.1:3000/test")!)
-//        request.httpMethod = "POST"
-//        let params = ["item":"HelloSwift"] as Dictionary
-//        do {
-//            try request.httpBody = JSONSerialization.data(withJSONObject: params, options: [])
-//        } catch {
-//            print("Network Error")
-//            return
-//        }
-//        URLSession.shared.dataTask(with: request) { (data, res, error) in
-//            dump(data)
-//        }
-        
-//        Alamofire.request
-        
-        // pairng true일때만 전송가능 -> 전송시 파일 전송 && 서버가 앱으로 socket.io로 요청하도록 요청 -> 앱 요청 -> 서버가 파일 전달
-//        Alamofire.request("http://127.0.0.1:3000/uploadFiles", method: .post, parameters: ["item":"Hello"] as [String: AnyObject], encoding: JSONEncoding.default, headers: ["Content-Type":"application/json", "Accept":"application/json"])
-//            .validate(statusCode: 200..<300)
-//            .responseJSON { res in
-//                guard let value = res.result.value as? [String:Any] else {
-//                    return
-//                }
-//                print(value["code"])
-//                print(value["message"])
-//        }
     }
     
     @IBAction func stateButtonAction(_ sender: NSButton) {

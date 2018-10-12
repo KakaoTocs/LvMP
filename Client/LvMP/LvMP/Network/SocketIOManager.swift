@@ -33,7 +33,6 @@ class SocketIOManager: NSObject {
         
         socket?.on("paring") { data, ack in
             let state = data[0] as? Bool ?? false
-            print(state)
         }
         
         socket?.on("uploadReady") { data, ack in
@@ -43,10 +42,66 @@ class SocketIOManager: NSObject {
                     guard let value = res.result.value as? [String:AnyObject] else {
                         return
                     }
-                    guard let data = value as? [String: AnyObject] else {
+                    guard let data = value as? [String: Any] else {
                         return
                     }
-                    print(data["types"] as! [String])
+                    let temp2 = data["types"] as? [String]
+                    print(temp2)
+                    
+                    let filesAny = data["files"] as! [Any]
+                    let filesJSON = filesAny.map{ $0 as! [String:Any] }
+                    let fileTemp = filesJSON[0]["data"] as? [UInt8]
+                    let fileData = Data(bytes: fileTemp!)
+                    print(fileData)
+//                    print(filesAny)
+//                    dump(print(filesAny))
+//                    let dd = filesAny[0] as? String
+//                    print(dd?.count)
+                    
+                    
+//                    let da = filesJSON[0]["data"] as? Data
+//                    print(da)
+//                    dump(filesJSON)
+//                    print(filesJSON["type"])
+                    
+                    
+                    //                    let result = temp.map { String(data: $0, encoding: String.Encoding.utf8) }
+//                    print(temp2)
+//                    print(data["files"])
+//                    print(data["files"])
+//                    let temp6 = data["files"] as? Data
+//                    print(temp6?.count)
+//                    print(data["files"] as? [String])
+//                    let temp1 = data["files"] as? [Data]
+//                    print(temp1)
+//                    print(temp1?.count)
+                    
+                    
+//                    let temp3 = temp1?[0] as? [String:Any]
+//                    dump(temp3)
+//                    print(temp3?["buffer"] as? Data)
+//                    print(temp1?[0].count)
+//                    print(temp1?[1].count)
+//                    let temp3 = temp1?[0] as Any
+//                    let temp4 = temp3 as? Data
+//                    print(temp4)
+//                    print(temp1?[1].count)
+//                    let temp3 = (temp1?[0].map{UInt8(})! as [UInt8]
+//                    print(temp3)
+//                    print(temp1?[0].utf8.count)
+                    
+//                    print(Data())
+//                    print(temp4?.count)
+//                    let nsTemp = NSString(string: temp[0])
+//                    let nsData = nsTemp.data(using: String.Encoding.ascii.rawValue)
+//                    print(nsData)
+//                    let fileData = temp[0].data(using: String.Encoding.ascii)
+//                    print(fileData)e
+//                    let files = temp as! [Data]
+//                    dump(files)
+//                    let files = temp.map{ Data(bytes: $0.map{UInt8(String($0))!})  }
+//                    print(files.count)
+                    
             }
         }
         

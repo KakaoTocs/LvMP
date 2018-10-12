@@ -14,16 +14,19 @@
     4. RxSwift
     5. RxCocoa
     6. Socket.io
+    7. Alamofire
 
 - Desktop APP
     1. Swift
     2. Cocoa
     3. Socket.io
+    4. Alamofire
     
 - Server
     1. Node.js
     2. Express.js
     3. Socket.io
+    4. multer
 
 
 ## 3. 화면 구성
@@ -58,9 +61,11 @@ Model:
                     MenuBar에서 내부 설정을 위한 메서드들은 해당 파일 안에서만 쓰이기 때문에 fileprivate로 지정
 10월 4일: MenuBar클래스에 selectItem메서드 생성 및 Button의 tag값으로 Enum값으로 바꾸는 부분을  이동: 클래스내, 클래스밖(MenuBar를 사용하는 컨트롤러)에서 Button에 엑션함수 추가시 작업을 위해
 10월 5일: 옛날 파일에서 메타정보 추출시 인코딩문제 발생 ㅠ
+10월 12일: 파일 전송 속도문제 해결, MenuBar완성
 
 ## 7. 버그 수정
 **월 **일: **버그 수정
+10월 12일: 파일(음악파일)전송을 Socket.io로 처리시 속도가 많이 늦음 -> 파일전송은 HTTP네트워킹(Stream)으로 변경, 페어링은 Socket.io로 유지(http://toma0912.tistory.com/69, https://d2.naver.com/helloworld/1336)
 
 ## 8. 미니 프로젝트
 프로젝트 진행중 필요에 의해 구현해야할 기능, 컨포넌트가 생길경우 미니 프로젝트로 진행후 적용
@@ -87,7 +92,7 @@ Model:
     1. ClintJang(github): https://github.com/ClintJang/sample-swift-containerview
     
 - Project
-    1. AudioPlayer: 이 프로젝트의 시초의자 망한 프로젝트 -> 플레이어, 파일 읽기 기능 재활용
+    1. AudioPlayer: 이 프로젝트의 시초이자 망한 프로젝트 -> 플레이어, 파일 읽기, metadata추출 참고
     2. naver-music-for-mac: (https://github.com/kjisoo/naver-music-for-mac) mac용 naver music player
 
 - Cocoa

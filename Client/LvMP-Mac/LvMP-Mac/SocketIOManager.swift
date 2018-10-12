@@ -59,50 +59,44 @@ class SocketIOManager: NSObject {
     }
     
     func sendFile(folder: Folder) {
-        var files: [Data] = []
-        var types: [String] = []
-        (files, types) = readAllFileInFolder(folder: folder)
-        dump(files)
-        dump(types)
+        var files: [Music] = []
         
-        var result = Data()
-        let json = ["types":types]
-        do {
-            result = try JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
-        } catch {
-            print("Error")
+        files = readAllFileInFolder(folder: folder)
+        print("Send files count: \(files.count)")
+        
+        Alamofire.upload(multipartFormData: { multipartFormData in
+        for file in files {
+            multipartFormData.append(file.file, withName: "files", fileName: "\(file.title).\(file.type)", mimeType: "audio/\(file.type)")
+            multipartFormData.append(file.type.data(using: String.Encoding.utf8)!, withName: "types")
         }
-        let temp = String(data: result, encoding: String.Encoding.utf8)!
-        print(temp)
-        let param: Parameters = ["data":temp]
-        Alamofire.request("http://127.0.0.1:3000/uploadFiles", method: .post, parameters: param, encoding: JSONEncoding.default, headers: ["Content-Type":"application/json", "Accept":"application/json"])
-            .validate(statusCode: 200..<300)
-            .responseJSON { res in
-                guard let value = res.result.value as? [String:Any] else {
-                    return
+        }, to: "http://127.0.0.1:3000/uploadFiles") { encodingResult in
+            switch encodingResult {
+            case .success(let upload, _, _):
+                upload.responseJSON { res in
+                    guard let value = res.result.value as? [String:Any] else {
+                        return
+                    }
+                    print(value["code"])
+                    print(value["message"])
                 }
-                print(value["code"])
-                print(value["message"])
+            case .failure(let encodingError):
+                print(encodingError)
+            }
         }
-//        socket?.emit("data", [files, types])
     }
     
-    func readAllFileInFolder(folder: Folder) -> ([Data], [String]) {
-        var files: [Data] = []
-        var types: [String] = []
-        var filesTemp: [Data] = []
-        var typesTemp: [String] = []
+    func readAllFileInFolder(folder: Folder) -> [Music] {
+        var files: [Music] = []
+        var filesTemp: [Music] = []
         
-        files = folder.files.reduce([Data]()) { $0 + [$1.file] }
-        types = folder.files.reduce([String]()) { $0 + [$1.type] }
+        files = folder.files
         
         for childFolder in folder.folders {
-            (filesTemp, typesTemp) = readAllFileInFolder(folder: childFolder)
+            filesTemp = readAllFileInFolder(folder: childFolder)
             files += filesTemp
-            types += typesTemp
         }
         
-        return (files, types)
+        return files
     }
     
 }
