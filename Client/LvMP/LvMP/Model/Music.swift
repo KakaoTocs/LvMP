@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 class Music: Object {
-    @objc dynamic var id: String = UUID().uuidString
+    @objc dynamic var id: String = ""
     @objc dynamic var title: String = ""
     @objc dynamic var lyrics: String = ""
     @objc dynamic var playTime: UInt32 = 0
@@ -23,42 +23,48 @@ class Music: Object {
         return "id"
     }
     
-    convenience init(title: String, lyrics: String, url: String, artist: Artist, album: Album) {
+    convenience init(id: String, title: String, lyrics: String, playTime: UInt32, url: String, type: String, artist: Artist? = nil, album: Album? = nil) {
         self.init()
+        self.id = id
         self.title = title
         self.lyrics = lyrics
+        self.playTime = playTime
         self.url = url
+        self.type = type
         self.artist = artist
         self.album = album
     }
     
+    convenience init(id: String, at url: URL) {
+        self.init()
+    }
+    
     func save(file: Data) {
-        let realm: Realm! = try! Realm()
         var fileURL: URL = URL(string: self.id)!
         fileURL.appendPathComponent(id + ".\(type)")
         self.url = fileURL.absoluteString
         let result = FilesManager.shared.writeFile(at: fileURL, file: file)
-        if result {
-            do {
-                try realm.write {
-                    realm.add(self)
-                }
-            } catch {
-                print("Error >> Save >> Music >> save: db write error")
-            }
-        } else {
+        if !result {
             print("Error >> Music >> save: file write error")
         }
+        do {
+            try self.realm?.write {
+                realm?.add(self)
+            }
+        } catch {
+            print("Error >> Save >> Music >> save: db write error")
+        }
+
     }
     
     func delete() {
-        let realm: Realm! = try! Realm()
         do {
-            try realm.write {
-                realm.delete(self)
+            try self.realm?.write {
+                realm?.delete(self)
             }
         } catch {
             print("Error >> Delete >> Music")
         }
     }
+
 }

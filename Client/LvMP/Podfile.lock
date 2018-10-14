@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (4.7.3)
   - Realm (3.7.5):
     - Realm/Headers (= 3.7.5)
   - Realm/Headers (3.7.5)
@@ -9,22 +10,25 @@ PODS:
   - Starscream (3.0.5)
 
 DEPENDENCIES:
+  - Alamofire
   - RealmSwift
   - Socket.IO-Client-Swift
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Alamofire
     - Realm
     - RealmSwift
     - Socket.IO-Client-Swift
     - Starscream
 
 SPEC CHECKSUMS:
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   Realm: c286caf4dbf346ce24aad49ca76c7ce622d4a082
   RealmSwift: 2a9281e37d6de55f66f76254d49d28aeb1b729e4
   Socket.IO-Client-Swift: 0afb192a562db90d50e3f7f7421c06925a3f0179
   Starscream: faf918b2f2eff7d5dd21180646bf015a669673bd
 
-PODFILE CHECKSUM: 7683957db70617a00ee303f82322413f4c8f8676
+PODFILE CHECKSUM: 3adbf510a589f9fe1e494cf11eca0023e466baae
 
 COCOAPODS: 1.5.3
