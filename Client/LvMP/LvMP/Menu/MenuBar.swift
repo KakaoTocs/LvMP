@@ -8,24 +8,26 @@
 
 import UIKit
 
+@objc protocol MenuBarDelegate {
+    func selectedMenu(at index: Int)
+}
+
 class MenuBar: UIView {
-    
+    // MARK: - Property
     @IBOutlet var contentView: UIView!
-    
-    @IBOutlet weak var homeButton: UIButton!
-    @IBOutlet weak var musicButton: UIButton!
-    @IBOutlet weak var artistButton: UIButton!
-    @IBOutlet weak var albumButton: UIButton!
-    @IBOutlet weak var itemState: UIView!
+    @IBOutlet var menuButtons: [UIButton]!
+    @IBOutlet weak var selectedMenuHint: UIView!
     @IBOutlet var itemStateleadingConstraint: NSLayoutConstraint!
     
+    weak var delegate: MenuBarDelegate?
+    
     var itemWidth: CGFloat {
-        return homeButton.bounds.width
+        return menuButtons[0].bounds.width
     }
     
     private var selectedItem = MenuItem() {
         willSet(newValue) {
-            itemStateUpdate(item: newValue)
+            itemStateUpdate(menu: newValue)
         }
     }
     
@@ -40,6 +42,7 @@ class MenuBar: UIView {
         }
     }
     
+    // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -55,14 +58,19 @@ class MenuBar: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        
-        self.homeButton.addTarget(self, action: #selector(itemAction(_:)), for: .touchUpInside)
-        self.musicButton.addTarget(self, action: #selector(itemAction(_:)), for: .touchUpInside)
-        self.artistButton.addTarget(self, action: #selector(itemAction(_:)), for: .touchUpInside)
-        self.albumButton.addTarget(self, action: #selector(itemAction(_:)), for: .touchUpInside)
     }
     
-    fileprivate func itemStateUpdate(item: MenuItem) {
+    // MARK: - IBAction
+    @IBAction func touchMenu(_ sender: UIButton) {
+        if let index = menuButtons.firstIndex(of: sender) {
+            delegate?.selectedMenu(at: index)
+        } else {
+            print("Error >> MenuBar >> touchMenu: selected index invalid")
+        }
+    }
+    
+    // MARK: - Custom Method
+    fileprivate func itemStateUpdate(menu item: MenuItem) {
         switch item {
         case .home:
             itemStateleadingConstraint.constant = 0
@@ -76,17 +84,12 @@ class MenuBar: UIView {
         }
     }
     
-    func selectItem(item newItem: Int) {
-        guard let newItem = MenuItem(rawValue: newItem) else {
+    func selectItem(at index: Int) {
+        guard let newItem = MenuItem(rawValue: index) else {
             print("Error >> MenuBar >> selectItem: menuButton change type(Int -> Enum) ")
             return
         }
         selectedItem = newItem
     }
-    
-    @objc fileprivate func itemAction(_ sender: UIButton!) {
-//        selectItem(item: sender.tag)
-    }
-    
 
 }

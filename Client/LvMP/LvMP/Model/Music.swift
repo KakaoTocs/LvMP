@@ -23,13 +23,20 @@ class Music: Object {
         return "id"
     }
     
-    convenience init(title: String, lyrics: String, url: String, artist: Artist, album: Album) {
+    convenience init(id: String, title: String, lyrics: String, playTime: UInt32, url: String, type: String, artist: Artist? = nil, album: Album? = nil) {
         self.init()
+        self.id = id
         self.title = title
         self.lyrics = lyrics
+        self.playTime = playTime
         self.url = url
+        self.type = type
         self.artist = artist
         self.album = album
+    }
+    
+    convenience init(id: String, at url: URL) {
+        self.init()
     }
     
     func save(file: Data) {
@@ -59,4 +66,5 @@ class Music: Object {
             print("Error >> Delete >> Music")
         }
     }
+
 }

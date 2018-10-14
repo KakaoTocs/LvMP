@@ -10,30 +10,45 @@ import AVFoundation
 
 
 func fileToMusic(at: URL) {
+    print(at)
     let musicFile = AVPlayerItem(url: at)
     let metaData = musicFile.asset.metadata
     
-    var title: String
-    var artist: String
-    var albumName: String
-    var lyrics: String
-    var artwork: Data
+    var title = "제목 없음"
+    var artist = "아티스트 없음"
+    var albumName = "앨범명 없음"
+    var lyrics = "가사 없음"
+    var artwork = Data()
     
     for item in metaData {
         switch item.commonKey?.rawValue {
         case "title":
-            title = item.stringValue ?? "제목 없음"
+            if let titleValue = item.stringValue {
+                title = titleValue
+            }
         case "artist":
-            artist = item.stringValue ?? "아티스트 없음"
+            if let artistValue = item.stringValue {
+                artist = artistValue
+            }
         case "albumName":
-            albumName = item.stringValue ?? "앨범명 없음"
+            if let albumNameValue = item.stringValue {
+                albumName = albumNameValue
+            }
         case "artwork":
-            artwork = item.dataValue ?? Data()
+            if let artworkValue = item.dataValue {
+                artwork = artworkValue
+            }
         case "ko":
-            lyrics = item.stringValue ?? "가사 없음"
+            if let lyricsValue = item.stringValue {
+                lyrics = lyricsValue
+            }
         default:
             print("\(item.commonKey?.rawValue): \(item.stringValue)")
         }
     }
+    print(title)
+    print(artist)
+    print(albumName)
+    print(lyrics)
 //    return music
 }

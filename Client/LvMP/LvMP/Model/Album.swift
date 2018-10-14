@@ -18,6 +18,7 @@ class Album: Object {
     override static func primaryKey() -> String? {
         return "id"
     }
+    
     convenience init(name: String, artist: Artist) {
         self.init()
         self.name = name
