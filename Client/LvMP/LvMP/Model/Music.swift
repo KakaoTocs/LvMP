@@ -39,6 +39,7 @@ class Music: Object {
         self.init()
     }
     
+    // pc에서 파일+확장자명 전달 -> 앱에서 UUID+확장자로 저장 -> 읽어서 Music객체 생성 -> 인스턴스+경로 Realm에 저장 ->
     func save(file: Data) {
         var fileURL: URL = URL(string: self.id)!
         fileURL.appendPathComponent(id + ".\(type)")
@@ -67,4 +68,17 @@ class Music: Object {
         }
     }
 
+    static func saveDataList(dataList files: [Data], dataInfoList types: [String]) {
+        for index in 0..<files.count {
+            let url = FilesManager.shared.rootDirectory.appendingPathComponent(UUID().uuidString + "." + types[index])
+            let result = FilesManager.shared.writeFile(at: url, file: files[index])
+            if result {
+                fileToMusic(at: url)
+            } else {
+                print("SocketIOManager >> addMusicFiles: File write error")
+            }
+        }
+
+    }
+    
 }

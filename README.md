@@ -62,6 +62,7 @@ Model:
 10월 4일: MenuBar클래스에 selectItem메서드 생성 및 Button의 tag값으로 Enum값으로 바꾸는 부분을  이동: 클래스내, 클래스밖(MenuBar를 사용하는 컨트롤러)에서 Button에 엑션함수 추가시 작업을 위해
 10월 5일: 옛날 파일에서 메타정보 추출시 인코딩문제 발생 ㅠ
 10월 12일: 파일 전송 속도문제 해결, MenuBar완성
+10월 14일: MenuBar DelegatePattern 적용
 
 ## 7. 버그 수정
 **월 **일: **버그 수정
@@ -70,6 +71,7 @@ Model:
 ## 8. 미니 프로젝트
 프로젝트 진행중 필요에 의해 구현해야할 기능, 컨포넌트가 생길경우 미니 프로젝트로 진행후 적용
 9월 27일: [탐색바] 화면전환을 스와이프외 터치로 넘길수 있는 컨트롤러 필요. 기존의 탭바, 세그컨트롤러와 목적이 맞지않음
+-> MenuBar와 RootVIewController의 ScrollView를 합쳐 라이브러리 만들기
 
 ## 9. 기타
 1. 파일 읽기 쓰기시 에러 처리, 실패시 처리
@@ -98,3 +100,6 @@ Model:
 - Cocoa
     1. 关于 Cocoa Programming For OSX 中文第五版(gitbook): https://josercc.gitbooks.io/cocoa-programming-for-osx/content/
     2. Warren Burton(raywenderlich): https://www.raywenderlich.com/830-macos-nstableview-tutorial
+
+- Delegate
+    1. 마기의 개발 블로그(Git Page): https://magi82.github.io/ios-delegate/, https://github.com/KakaoTocs/iOS_Example/tree/master/DelegatePattern
