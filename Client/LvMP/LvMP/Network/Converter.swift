@@ -46,6 +46,18 @@ func fileToMusic(at: URL) {
             print("\(item.commonKey?.rawValue): \(item.stringValue)")
         }
     }
+    
+    do {
+        let audioPlayer = try AVAudioPlayer(contentsOf: url)
+        playTime = UInt64(audioPlayer.duration)
+        fileData = try Data(contentsOf: url)
+    } catch {
+        playTime = 0
+        if fileData == nil {
+            return nil
+        }
+    }
+    
     print(title)
     print(artist)
     print(albumName)

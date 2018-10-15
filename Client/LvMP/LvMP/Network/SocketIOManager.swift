@@ -74,7 +74,7 @@ class SocketIOManager: NSObject {
         socket?.disconnect()
     }
     
-    // pc에서 파일+확장자명 전달 -> 앱에서 UUID+확장자로 저장 -> 읽어서 Music객체 생성 -> 인스턴스+경로 Realm에 저장 ->
+    
     func addMusicFiles(files: [Data], types: [String]) {
         for index in 0..<files.count {
             let url = FilesManager.shared.rootDirectory.appendingPathComponent(UUID().uuidString + "." + types[index])

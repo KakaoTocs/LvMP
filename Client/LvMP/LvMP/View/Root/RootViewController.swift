@@ -16,9 +16,9 @@ class RootViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        menuBar.delegate = self
         print(FilesManager.shared.rootDirectory)
         scrollViewContainerViewWidth.constant = UIScreen.main.bounds.size.width * 4
-        menuBar.delegate = self
         
     }
 
