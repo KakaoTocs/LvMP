@@ -63,11 +63,13 @@ Model:
 10월 5일: 옛날 파일에서 메타정보 추출시 인코딩문제 발생 ㅠ
 10월 12일: 파일 전송 속도문제 해결, MenuBar완성
 10월 14일: MenuBar DelegatePattern 적용
+10월 15일: File에서 metadata추출시 Album or Artist정보가 없을시 빈 인스턴스로 모두 연결고리를 만들어 줌(즉 모든 Music은 Album과 Artist를 가지고 있다)
 
-## 7. 버그 수정
+## 7. 버그/오류 수정
 **월 **일: **버그 수정
 10월 12일: 파일(음악파일)전송을 Socket.io로 처리시 속도가 많이 늦음 -> 파일전송은 HTTP네트워킹(Stream)으로 변경, 페어링은 Socket.io로 유지(http://toma0912.tistory.com/69, https://d2.naver.com/helloworld/1336)
 10월 15일: DB구조상 중복저장 문제 발견: Music에 Album, Artist저장, Album에 Artist저장 =>  Artist가 두군데저장됨 -> File에서 metadata추출시 Album != nil or Artist != nil일때 최대한 정보를 사용하기위해 따로 저장 즉 "현재 구조 유지"
+10월 15일: Music생성 불가 -> Realm에서 UInt64 미지원 => playTime을 Int로 변경
 
 ## 8. 미니 프로젝트
 프로젝트 진행중 필요에 의해 구현해야할 기능, 컨포넌트가 생길경우 미니 프로젝트로 진행후 적용
@@ -85,7 +87,8 @@ Model:
 ## 10. 참고
 - Naming
     1. Apple 가이드라인: https://swift.org/documentation/api-design-guidelines/
-    2. 부스트캠프 네이밍 수정 사항: https://github.com/yoonhg84/boostcamp_iOS_5InQueue
+    2. 노수진(Swift 개발자처럼 변수 이름 짓기): https://soojin.ro/?fbclid=IwAR19z0rIgb5cPiYY3803g-yUv82EGoUmP5F8zhGC0c2uekPbG7z9xxxPbFM
+    3. 부스트캠프 네이밍 수정 사항: https://github.com/yoonhg84/boostcamp_iOS_5InQueue
     
 - RxSwift
     1. pilgwon's blog(github Page):  https://pilgwon.github.io/blog/2017/09/26/RxSwift-By-Examples-1-The-Basics.html

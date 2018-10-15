@@ -48,14 +48,17 @@ class SocketIOManager: NSObject {
                     
                     let filesTemp = resJSON["files"] as! [Any]
                     let filesTempJSON = filesTemp.map{ $0 as! [String:Any] }
-                    let filesData:[[UInt8]] = filesTempJSON.map{ ($0["data"] as? [UInt8])! }
+//                    let filesData:[Data] = filesTempJSON.map{ ($0["data"] as! Data) }
+//                    let files = filesData
+                    let filesData:[[UInt8]] = filesTempJSON.map{ ($0["data"] as? [UInt8])! } //
                     let files: [Data] = filesData.map { Data(bytes: $0) }
                     
                     if types.count != files.count {
                         return
                     }
                     print("Received data count: \(files.count)")
-                    self.addMusicFiles(files: files, types: types)
+                    Music.saves(files: files, with: types)
+//                    self.addMusicFiles(files: files, types: types)
                     print("Write finish!")
             }
         }
@@ -75,15 +78,15 @@ class SocketIOManager: NSObject {
     }
     
     
-    func addMusicFiles(files: [Data], types: [String]) {
-        for index in 0..<files.count {
-            let url = FilesManager.shared.rootDirectory.appendingPathComponent(UUID().uuidString + "." + types[index])
-            let result = FilesManager.shared.writeFile(at: url, file: files[index])
-            if result {
-                fileToMusic(at: url)
-            } else {
-                print("SocketIOManager >> addMusicFiles: File write error")
-            }
-        }
-    }
+//    func addMusicFiles(files: [Data], types: [String]) {
+//        for index in 0..<files.count {
+//            let url = FilesManager.shared.rootDirectory.appendingPathComponent(UUID().uuidString + "." + types[index])
+//            let result = FilesManager.shared.writeFile(at: url, file: files[index])
+//            if result {
+//                fileToMusic(at: url)
+//            } else {
+//                print("SocketIOManager >> addMusicFiles: File write error")
+//            }
+//        }
+//    }
 }

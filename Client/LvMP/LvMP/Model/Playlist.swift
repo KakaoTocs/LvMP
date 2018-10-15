@@ -14,7 +14,7 @@ typealias MusicList = PlayList
 class PlayList: Object {
     @objc dynamic var id: String = UUID().uuidString
     @objc dynamic var name: String = ""
-    @objc dynamic var musicsID: [String] = []
+    let musicsID = List<String>()
     
     override static func primaryKey() -> String? {
         return "id"

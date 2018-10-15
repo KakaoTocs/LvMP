@@ -29,15 +29,15 @@
 namespace realm {
 namespace sync {
 
-using InternStrings = std::unordered_map<uint32_t, StringBufferRange>;
+using InternStrings = std::vector<StringBufferRange>;
 
-struct BadChangesetError : std::exception {
-    const char* message;
+struct BadChangesetError : ExceptionWithBacktrace<std::exception> {
+    const char* m_message;
     BadChangesetError() : BadChangesetError("Bad changeset") {}
-    BadChangesetError(const char* msg) : message(msg) {}
-    const char* what() const noexcept override
+    BadChangesetError(const char* msg) : m_message(msg) {}
+    const char* message() const noexcept override
     {
-        return message;
+        return m_message;
     }
 };
 
@@ -168,6 +168,7 @@ private:
     struct MultiInstruction {
         std::vector<Instruction> instructions;
     };
+    static_assert(sizeof(MultiInstruction) <= Instruction::max_instruction_size, "Instruction::max_instruction_size too low");
 
     // In order to achieve iterator semi-stability (just enough to be able to
     // run the merge algorithm while maintaining a ChangesetIndex), a Changeset
@@ -393,7 +394,9 @@ struct Changeset::Printer : Changeset::Reflector::Tracer {
 
 private:
     std::ostream& m_out;
+    bool m_first = true;
     void pad_or_ellipsis(StringData, int width) const;
+    void print_field(StringData name, std::string value);
 };
 #endif // REALM_DEBUG
 
@@ -451,10 +454,9 @@ inline void Changeset::clear() noexcept
 
 inline util::Optional<StringBufferRange> Changeset::try_get_intern_string(InternString string) const noexcept
 {
-    auto it = m_strings->find(string.value);
-    if (it == m_strings->end())
+    if (string.value >= m_strings->size())
         return util::none;
-    return it->second;
+    return (*m_strings)[string.value];
 }
 
 inline StringBufferRange Changeset::get_intern_string(InternString string) const noexcept

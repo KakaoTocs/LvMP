@@ -7,16 +7,35 @@
 //
 
 import UIKit
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        let defaults = UserDefaults.standard
+        let state = defaults.object(forKey: "launch") as? Bool ?? false
+        if !state {
+            let realm = try! Realm()
+            let emptyArtist = Artist(name: "아티스트가 없습니다.")
+            let emptyAlbum = Album(name: "앨범이 없습니다.", artist: emptyArtist)
+            do {
+                try realm.write {
+                    realm.add(emptyArtist)
+                    realm.add(emptyAlbum)
+                }
+                defaults.set(true, forKey: "launch")
+                defaults.set(emptyArtist.id, forKey: "emptyArtistID")
+                defaults.set(emptyAlbum.id, forKey: "emptyAlbumID")
+            } catch {
+                let alert = warringAlert(title: "에러가 발생했습니다", message: "앱을 다시 실행해주세요")
+                self.window?.rootViewController?.present(alert, animated: true)
+            }
+        }
         SocketIOManager.shared.connect()
+        
         return true
     }
 

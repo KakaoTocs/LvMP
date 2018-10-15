@@ -23,12 +23,17 @@ class Artist: Object {
     let musics = LinkingObjects(fromType: Music.self, property: "artist")
     let albums = LinkingObjects(fromType: Album.self, property: "artist")
     
-    static let emptyArtist = Artist(name: "아티스트가 없습니다.")
-    
     override static func primaryKey() -> String? {
         return "id"
     }
     
+    static let emptyArtist: Artist = {
+        let defaults = UserDefaults.standard
+        let emptyArtistID = defaults.object(forKey: "emptyArtistID") as! String
+        let realm = try! Realm()
+        return realm.object(ofType: Artist.self, forPrimaryKey: emptyArtistID)!
+    }()
+
     convenience init(name: String) {
         self.init()
         self.name = name

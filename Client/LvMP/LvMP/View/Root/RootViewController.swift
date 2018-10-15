@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class RootViewController: UIViewController {
     
@@ -17,9 +18,10 @@ class RootViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         menuBar.delegate = self
-        print(FilesManager.shared.rootDirectory)
+        print(FilesManager.shared.rootDirectory.absoluteString)
         scrollViewContainerViewWidth.constant = UIScreen.main.bounds.size.width * 4
-        
+        print(Album.emptyAlbum.id)
+        print(Artist.emptyArtist.id)
     }
 
     override func didReceiveMemoryWarning() {
