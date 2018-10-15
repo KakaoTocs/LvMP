@@ -27,19 +27,58 @@ class Artist: Object {
         return "id"
     }
     
-    static let emptyArtist: Artist = {
-        let defaults = UserDefaults.standard
-        let emptyArtistID = defaults.object(forKey: "emptyArtistID") as! String
-        let realm = try! Realm()
-        return realm.object(ofType: Artist.self, forPrimaryKey: emptyArtistID)!
-    }()
+//    static let emptyArtist: Artist = {
+//        let defaults = UserDefaults.standard
+//        let emptyArtistID = defaults.object(forKey: "emptyArtistID") as! String
+//        let realm = try! Realm()
+//        return realm.object(ofType: Artist.self, forPrimaryKey: emptyArtistID)!
+//    }()
 
     convenience init(name: String) {
         self.init()
         self.name = name
     }
     
-    func updateProfile(file data: Data) {
+    func updateProfile(imageData data: Data) {
         // TODO - 받은 데이터 Realm에 저장
+        do {
+            try self.realm?.write {
+                self.profile = data
+            }
+        } catch {
+            print("Error >> Artist >> updateProfile(imageData data: Data): Realm write error")
+        }
     }
+    
+    static func save(artist: Artist) {
+        let realm = try! Realm()
+        do {
+            try realm.write {
+                realm.add(artist)
+            }
+        } catch {
+            print("Error >> Artist >> save(): Realm write error")
+        }
+    }
+    
+    static func delete(artist: Artist) {
+        let realm = try! Realm()
+        do {
+            try realm.write {
+                realm.add(artist)
+            }
+        } catch {
+            print("Error >> Album >> delete(): Realm delete error")
+        }
+    }
+    
+    static func getArtist(name: String) -> Artist? {
+        let realm = try! Realm()
+        if let artist = realm.objects(Artist.self).filter("name = %@", name).first {
+            return artist
+        } else {
+            return nil
+        }
+    }
+    
 }

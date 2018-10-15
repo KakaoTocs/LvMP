@@ -109,10 +109,9 @@ class Music: Object {
         guard let urlTemp = URL(string: url) else {
             return
         }
-//        let urlTemp = FilesManager.shared.rootDirectory.appendingPathComponent(id + ".\(type)")
         var artworkTemp = Data()
-        var artistTemp = Artist.emptyArtist
-        var albumTemp = Album.emptyAlbum
+        var artistTemp = Artist.getArtist(name: "아티스트가 없습니다.")!
+        var albumTemp = Album.getAlbum(name: "앨범이 없습니다.")!
         var albumNameTemp: String?
 
         let musicFile = AVPlayerItem(url: urlTemp)
@@ -130,11 +129,19 @@ class Music: Object {
                 }
             case "artist":
                 if let artistName = item.stringValue {
-                    artistTemp = Artist(name: artistName)
+                    if let gotArtist = Artist.getArtist(name: artistName) {
+                        artistTemp = gotArtist
+                    } else {
+                        artistTemp = Artist(name: artistName)
+                    }
                 }
             case "albumName":
                 if let albumName = item.stringValue {
-                    albumNameTemp = albumName
+                    if let gotAlbum = Album.getAlbum(name: albumName) {
+                        albumTemp = gotAlbum
+                    } else {
+                        albumNameTemp = albumName
+                    }
                 }
             case "artwork":
                 artworkTemp = item.dataValue!
@@ -159,7 +166,8 @@ class Music: Object {
         self.url = url
         self.artwork = artworkTemp
         self.type = type
-//        artistTem
+        Artist.save(artist: artistTemp)
+        Album.save(album: albumTemp)
         self.artist = artistTemp
         self.album = albumTemp
 
@@ -173,7 +181,7 @@ class Music: Object {
             let result = FilesManager.shared.writeFile(at: url, file: datas[index])
             if result {
                 if let music = Music(id: newID, url: url.absoluteString, type: types[index]) {
-                    music.save()
+                    Music.save(music: music)
                 } else {
                     print("Error >> Music >> saves(files datas: [Data], with types: [String]): Create Music instance error")
                 }
@@ -188,38 +196,35 @@ class Music: Object {
         }
     }
     
-    func save() {
+    // TODO - 저장 성공여부 반환 -> Bool
+    static func save(music: Music) {
+        let realm = try! Realm()
         do {
             dump(self)
-            try self.realm?.write {
-                self.realm?.add(self)
+            try realm.write {
+                realm.add(music)
             }
         } catch {
-            print("Error >> Save >> Music >> save: db write error")
+            print("Error >> Music >> save(): Realm write error")
         }
-//        let url = FilesManager.shared.rootDirectory.appendingPathComponent(self.id + ".\(type)")
-//        let result = FilesManager.shared.writeFile(at: url, file: file)
-//        if result {
-//            do {
-//                try self.realm?.write {
-//                    realm?.add(self)
-//                }
-//            } catch {
-//                print("Error >> Save >> Music >> save: db write error")
-//            }
-//        } else {
-//            print("Error >> Music >> save: file write error")
-//        }
     }
     
-    func delete() {
+    func delete() -> Bool {
         // TODO: - 파일삭제후 완료시 림에서 삭제
-        do {
-            try self.realm?.write {
-                realm?.delete(self)
+        let result = FilesManager.shared.removeFile(at: URL(string: self.url)!)
+        if result {
+            do {
+                try self.realm?.write {
+                    self.realm?.delete(self)
+                }
+            } catch {
+                print("Error >> Music >> delete(): Realm delete error")
+                return  false
             }
-        } catch {
-            print("Error >> Delete >> Music")
+            return  true
+        } else {
+            print("Error >> Music >> delete(): File delete error")
+            return  false
         }
     }
 

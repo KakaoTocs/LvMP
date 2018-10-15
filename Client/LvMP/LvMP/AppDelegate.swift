@@ -27,8 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     realm.add(emptyAlbum)
                 }
                 defaults.set(true, forKey: "launch")
-                defaults.set(emptyArtist.id, forKey: "emptyArtistID")
-                defaults.set(emptyAlbum.id, forKey: "emptyAlbumID")
+//                defaults.set(emptyArtist.id, forKey: "emptyArtistID")
+//                defaults.set(emptyAlbum.id, forKey: "emptyAlbumID")
             } catch {
                 let alert = warringAlert(title: "에러가 발생했습니다", message: "앱을 다시 실행해주세요")
                 self.window?.rootViewController?.present(alert, animated: true)
