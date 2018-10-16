@@ -13,7 +13,7 @@ class SocketIOManager: NSObject {
     static let shared = SocketIOManager()
     static let stateUpdateNotificationKey = Notification.Name("paringStateUpdated")
     
-    let manager = SocketManager(socketURL: URL(string: "http://127.0.0.1:3000")!)
+    let manager = SocketManager(socketURL: URL(string: "http://10.80.163.248:3000")!)
     lazy var socket: SocketIOClient = {
         return manager.defaultSocket
     }()
@@ -37,7 +37,7 @@ class SocketIOManager: NSObject {
         }
         
         socket.on("uploadReady") { data, ack in
-            Alamofire.request("http://127.0.0.1:3000/receiveFiles", method: .get, parameters: ["":""], encoding: URLEncoding.default, headers: nil)
+            Alamofire.request("http://10.80.163.248:3000/receiveFiles", method: .get, parameters: ["":""], encoding: URLEncoding.default, headers: nil)
                 .validate(statusCode: 200..<300)
                 .responseJSON { response in
                     guard let resJSON = response.result.value as? [String:Any] else {

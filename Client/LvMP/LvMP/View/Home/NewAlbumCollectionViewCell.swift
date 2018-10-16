@@ -15,4 +15,16 @@ class NewAlbumCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var artworkImageView: UIImageView!
+    
+    let imageMaskView: UIImageView = {
+        let maskView = UIImageView()
+        maskView.image = UIImage(named: "Mask.png")
+        return maskView
+    }()
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        imageMaskView.frame = self.artworkImageView.bounds
+    }
 }

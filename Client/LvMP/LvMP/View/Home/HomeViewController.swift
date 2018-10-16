@@ -20,8 +20,8 @@ class HomeViewController: UIViewController {
     // realm데이터 삭제시 파일 삭제후 realm에서 삭제
     // 서버에서 받은 후 데이터 저장
     // 노래정보를 저장할 싱글톤 필요없음 -> Realm으로 실시간으로 새로고침해 사용가능e
-    @IBOutlet weak var newAlbumCollectionView: UICollectionView!
-    @IBOutlet weak var playlistTableView: UITableView!
+    @IBOutlet weak var newAlbumsCollectionView: UICollectionView!
+    @IBOutlet weak var playlistsTableView: UITableView!
     
     private var realm: Realm!
     private var albums: Results<Album>!
@@ -32,14 +32,14 @@ class HomeViewController: UIViewController {
         // 노래 ㅓ장시 경로 확인 파일 url렘에 저장후 url로 노재 재생
         // Do any additional setup after loading the view.
 //        FilesManager.shared.test()
-        self.newAlbumCollectionView.delegate = self
-        self.newAlbumCollectionView.dataSource = self
+        self.newAlbumsCollectionView.delegate = self
+        self.newAlbumsCollectionView.dataSource = self
 //        self.navigationController?.navigationBar.barTintColor = UIColor.clear
         realm = try! Realm()
         albums = realm.objects(Album.self).sorted(byKeyPath: "saveDate", ascending: true)
         
         token = albums.observe({ change in
-            self.newAlbumCollectionView.reloadData()
+            self.newAlbumsCollectionView.reloadData()
         })
     }
 
@@ -79,13 +79,14 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         // TODO: Album생성시 Artist없이 생성될 수 있는지 확인!!
         cell.artistLabel.text = album.artist!.name
         cell.artworkImageView.image = album.musics.first?.getArtworkImage()
+        cell.artworkImageView.mask = cell.imageMaskView
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (self.newAlbumCollectionView.frame.width - 20) / 3
-        let height = self.newAlbumCollectionView.frame.height - 10
+        let width = (self.newAlbumsCollectionView.frame.width - 20) / 3
+        let height = self.newAlbumsCollectionView.frame.height - 10
         return CGSize(width: width, height: height)
     }
     

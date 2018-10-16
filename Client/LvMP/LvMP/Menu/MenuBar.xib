@@ -31,28 +31,36 @@
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="506-Bs-riA">
                             <rect key="frame" x="0.0" y="0.0" width="94" height="30"/>
-                            <state key="normal" title="Home"/>
+                            <state key="normal" title="Home">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
                             <connections>
                                 <action selector="touchMenu:" destination="-1" eventType="touchUpInside" id="bX3-8B-kus"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h6a-gU-YFX">
                             <rect key="frame" x="94" y="0.0" width="93.5" height="30"/>
-                            <state key="normal" title="Music"/>
+                            <state key="normal" title="Music">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
                             <connections>
                                 <action selector="touchMenu:" destination="-1" eventType="touchUpInside" id="SDv-w8-DZJ"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CNS-ey-TxO">
                             <rect key="frame" x="187.5" y="0.0" width="94" height="30"/>
-                            <state key="normal" title="Artist"/>
+                            <state key="normal" title="Artist">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
                             <connections>
                                 <action selector="touchMenu:" destination="-1" eventType="touchUpInside" id="qja-df-pWF"/>
                             </connections>
                         </button>
                         <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ba8-st-Q9W">
                             <rect key="frame" x="281.5" y="0.0" width="93.5" height="30"/>
-                            <state key="normal" title="Album"/>
+                            <state key="normal" title="Album">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
                             <connections>
                                 <action selector="touchMenu:" destination="-1" eventType="touchUpInside" id="RWM-3G-onm"/>
                             </connections>
@@ -67,13 +75,14 @@
                 </stackView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c4J-Tg-cnL" userLabel="ItemState">
                     <rect key="frame" x="0.0" y="30" width="94" height="3"/>
-                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="3" id="gvc-3b-o6F"/>
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="c4J-Tg-cnL" firstAttribute="width" secondItem="506-Bs-riA" secondAttribute="width" id="2i6-68-h6Q"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qbS-px-hOK" secondAttribute="trailing" id="4RI-tB-97X"/>
