@@ -33,6 +33,7 @@
 		65C5C7EF2146299B0061F884 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65C5C7EE2146299B0061F884 /* Assets.xcassets */; };
 		65C5C7F22146299B0061F884 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65C5C7F02146299B0061F884 /* LaunchScreen.storyboard */; };
 		65DE80A0215CEC2600D4EEB4 /* Root.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65DE809F215CEC2600D4EEB4 /* Root.storyboard */; };
+		65FE7C7C21757198002DE3E0 /* NewAlbumCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FE7C7B21757198002DE3E0 /* NewAlbumCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		65C5C7F12146299B0061F884 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		65C5C7F32146299B0061F884 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65DE809F215CEC2600D4EEB4 /* Root.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Root.storyboard; sourceTree = "<group>"; };
+		65FE7C7B21757198002DE3E0 /* NewAlbumCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAlbumCollectionViewCell.swift; sourceTree = "<group>"; };
 		D2F16CE1EB45C20E1AF67012 /* Pods-LvMP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LvMP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LvMP/Pods-LvMP.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,6 +142,7 @@
 			children = (
 				653FD26D216500BB004DFB0E /* Home.storyboard */,
 				657C8883215D206400C10363 /* HomeViewController.swift */,
+				65FE7C7B21757198002DE3E0 /* NewAlbumCollectionViewCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				656D8C6621633913001D707C /* FilesManager.swift in Sources */,
 				654DC8112164D54F00633005 /* MusicListViewController.swift in Sources */,
 				657C887E215D0FE300C10363 /* Music.swift in Sources */,
+				65FE7C7C21757198002DE3E0 /* NewAlbumCollectionViewCell.swift in Sources */,
 				65C5C7E82146299A0061F884 /* AppDelegate.swift in Sources */,
 				657C887C215D0FAE00C10363 /* Album.swift in Sources */,
 				657C8888215D207C00C10363 /* AlbumListViewController.swift in Sources */,

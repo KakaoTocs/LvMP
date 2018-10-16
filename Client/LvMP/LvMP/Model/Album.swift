@@ -12,6 +12,7 @@ import RealmSwift
 class Album: Object {
     @objc dynamic var id: String = UUID().uuidString
     @objc dynamic var name: String = ""
+    @objc dynamic var saveDate: Date = Date()
     @objc dynamic var artist: Artist?
     let musics = LinkingObjects(fromType: Music.self, property: "album")
     

@@ -62,8 +62,13 @@ app.get("/receiveFiles", (req, res) => {
     result.forEach((file) => {
       console.log(file);
       var temp = fs.readFileSync(uploadDirectoryPath + "/" + file);
-      filesTemp.push(temp);
+      var temp1 = temp.toString('base64');
+      console.log(temp1.length);
+      // console.log(temp);
+      // var file = JSON.parse(temp);
+      filesTemp.push(temp1);
     });
+    console.log(filesTemp.length);
     const JSONData = {
       files: filesTemp,
       types: typesData
