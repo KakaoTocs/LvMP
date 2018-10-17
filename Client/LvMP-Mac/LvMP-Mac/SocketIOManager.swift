@@ -7,7 +7,7 @@
 //
 
 import SocketIO
-import Alamofire
+//import Alamofire
 
 class SocketIOManager: NSObject {
     // MARK: - Static Property
@@ -73,25 +73,37 @@ class SocketIOManager: NSObject {
         files = readAllFileInFolder(folder: folder)
         print("Send files count: \(files.count)")
         
-        Alamofire.upload(multipartFormData: { multipartFormData in
-        for file in files {
-            multipartFormData.append(file.file, withName: "files", fileName: "\(file.title).\(file.type)", mimeType: "audio/\(file.type)")
-            multipartFormData.append(file.type.data(using: String.Encoding.utf8)!, withName: "types")
+        guard let url = URL(string: "http://127.0.0.1:3000/uploadFilesTest") else {
+            return
         }
-        }, to: "http://127.0.0.1:3000/uploadFiles") { encodingResult in
-            switch encodingResult {
-            case .success(let upload, _, _):
-                upload.responseJSON { res in
-                    guard let value = res.result.value as? [String:Any] else {
-                        return
-                    }
-                    print(value["code"])
-                    print(value["message"])
+        
+        let session: URLSession = URLSession(configuration: .default)
+        
+        var urlRequest: URLRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "POST"
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        do {
+            let requestFiles = RequestFileType(files: files.map{ $0.file }, types: files.map{ $0.type })
+            let jsonData = try JSONEncoder().encode(requestFiles)
+            urlRequest.httpBody = jsonData
+        } catch {
+            print("Error >> SocketIOManager >> sendFile(folder: Folder): jsonFormatting error")
+        }
+        
+        let uploadTask: URLSessionDataTask = session.uploadTask(with: urlRequest, from: nil) { (data: Data?, response: URLResponse?, error: Error?) in
+            if let jsonData = data {
+                do {
+                    print("Uploading finish!")
+                    let dataStruct = try JSONDecoder().decode(NetworkResponse.self, from: jsonData)
+                    print(dataStruct.code)
+                    print(dataStruct.message)
+                } catch {
+                    print("Error >> SocketIOManager >> sendFile(folder: Folder): dataTask error: \(error.localizedDescription)")
                 }
-            case .failure(let encodingError):
-                print(encodingError)
             }
         }
+        uploadTask.resume()
     }
     
     // 루트디렉토리안에 있는 모든 파일을 배열로 반환하는 메소드

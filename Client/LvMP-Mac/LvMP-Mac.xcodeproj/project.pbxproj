@@ -15,6 +15,8 @@
 		6515D309216114D10073763C /* StateIcon_Off.png in Resources */ = {isa = PBXBuildFile; fileRef = 6515D307216114D10073763C /* StateIcon_Off.png */; };
 		6515D30A216114D10073763C /* StateIcon_On.png in Resources */ = {isa = PBXBuildFile; fileRef = 6515D308216114D10073763C /* StateIcon_On.png */; };
 		6515D30C216118760073763C /* OutlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6515D30B216118760073763C /* OutlineView.swift */; };
+		6556D6E62177843B001D3527 /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6556D6E52177843B001D3527 /* NetworkResponse.swift */; };
+		6556D6E82177849C001D3527 /* RequestFileType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6556D6E72177849C001D3527 /* RequestFileType.swift */; };
 		657FEA3F2161A76000664BC5 /* Folder.png in Resources */ = {isa = PBXBuildFile; fileRef = 657FEA3E2161A76000664BC5 /* Folder.png */; };
 		658635A92161BBBC007CE164 /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658635A82161BBBC007CE164 /* SocketIOManager.swift */; };
 		D1B0EBD74D8D7F6948EDF6AC /* Pods_LvMP_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5AE03A5E2CE092096A7EA3 /* Pods_LvMP_Mac.framework */; };
@@ -32,6 +34,8 @@
 		6515D307216114D10073763C /* StateIcon_Off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StateIcon_Off.png; sourceTree = "<group>"; };
 		6515D308216114D10073763C /* StateIcon_On.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StateIcon_On.png; sourceTree = "<group>"; };
 		6515D30B216118760073763C /* OutlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineView.swift; sourceTree = "<group>"; };
+		6556D6E52177843B001D3527 /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
+		6556D6E72177849C001D3527 /* RequestFileType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestFileType.swift; sourceTree = "<group>"; };
 		657FEA3E2161A76000664BC5 /* Folder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Folder.png; sourceTree = "<group>"; };
 		658635A82161BBBC007CE164 /* SocketIOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
 		86CC3A6285F68E2E1AEF1088 /* Pods-LvMP-Mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LvMP-Mac.release.xcconfig"; path = "Pods/Target Support Files/Pods-LvMP-Mac/Pods-LvMP-Mac.release.xcconfig"; sourceTree = "<group>"; };
@@ -86,6 +90,8 @@
 				6515D2F22161125E0073763C /* ViewController.swift */,
 				6515D30B216118760073763C /* OutlineView.swift */,
 				658635A82161BBBC007CE164 /* SocketIOManager.swift */,
+				6556D6E52177843B001D3527 /* NetworkResponse.swift */,
+				6556D6E72177849C001D3527 /* RequestFileType.swift */,
 				6515D300216113640073763C /* DataType.swift */,
 				6515D2F42161125E0073763C /* Assets.xcassets */,
 				6515D2F62161125E0073763C /* Main.storyboard */,
@@ -233,9 +239,11 @@
 			files = (
 				6515D2F32161125E0073763C /* ViewController.swift in Sources */,
 				658635A92161BBBC007CE164 /* SocketIOManager.swift in Sources */,
+				6556D6E82177849C001D3527 /* RequestFileType.swift in Sources */,
 				6515D301216113640073763C /* DataType.swift in Sources */,
 				6515D2F12161125E0073763C /* AppDelegate.swift in Sources */,
 				6515D30C216118760073763C /* OutlineView.swift in Sources */,
+				6556D6E62177843B001D3527 /* NetworkResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

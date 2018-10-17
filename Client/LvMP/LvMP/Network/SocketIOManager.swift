@@ -7,7 +7,7 @@
 //
 
 import  SocketIO
-import Alamofire
+//import Alamofire
 
 class SocketIOManager: NSObject {
     static let shared = SocketIOManager()
@@ -37,47 +37,33 @@ class SocketIOManager: NSObject {
         }
         
         socket.on("uploadReady") { data, ack in
-            Alamofire.request("http://10.80.163.248:3000/receiveFiles", method: .get, parameters: ["":""], encoding: URLEncoding.default, headers: nil)
-                .validate(statusCode: 200..<300)
-                .responseJSON { response in
-                    guard let resJSON = response.result.value as? [String:Any] else {
-                        return
-                    }
-                    
-                    var types: [String] = []
-                    if let typesTemp = resJSON["types"] as? [String] {
-                        types = typesTemp
-                    } else {
-                        types = [(resJSON["types"] as! String)]
-                    }
-                    
-                    let temp = resJSON["files"] as! [String]
-                    print(temp.count)
-                    var files: [Data] = []
-                    
-                    // TODO - 메모리가 폭발하는 지점 찾기 && 수정하기
-                    for fileData in temp {
-                        files.append(Data(base64Encoded: fileData)!)
-                    }
-//                    temp.map { Data(base64Encoded: $0)! }
-                    
-                    //
-                    /*
-                    let filesTemp = resJSON["files"] as! [Any]
-                    let filesTempJSON = filesTemp.map{ $0 as! [String:Any] }
-//                    let filesData:[Data] = filesTempJSON.map{ ($0["data"] as! Data) }
-//                    let files = filesData
-                    let filesData:[[UInt8]] = filesTempJSON.map{ ($0["data"] as? [UInt8])! } //
-                    let files: [Data] = filesData.map { Data(bytes: $0) }
-                    */
-                    if types.count != files.count {
-                        return
-                    }
-                    print("Received data count: \(files.count)")
-                    Music.saves(files: files, with: types)
-//                    self.addMusicFiles(files: files, types: types)
-                    print("Write finish!")
+            guard let url = URL(string: "http://127.0.0.1:3000/receiveFilesTest") else {
+                return
             }
+            let session = URLSession(configuration: .default)
+            let dataTask = session.dataTask(with: url) { (data: Data?, response: URLResponse?, error: Error?) in
+                if let error = error {
+                    print("Error >> SocketIOManager >> socket.on(\"uploadReady\"): Request error: \(error.localizedDescription)")
+                    return
+                }
+                
+                guard let jsonData = data else {
+                    return
+                }
+                do {
+                    //                    print(String(data: data, encoding: .utf8))
+                    print(jsonData)
+                    let apiResponse: ResponseFiles = try JSONDecoder().decode(ResponseFiles.self, from: jsonData)
+                    print(apiResponse.files.count)
+                    Music.saves(files: apiResponse.files, with: apiResponse.types)
+                } catch {
+                    print("Error >> SocketIOManager >> socket.on(\"uploadReady\"): Response error:\(error.localizedDescription)")
+                }
+                
+                
+            }
+            dataTask.resume()
+            print("Write finish!")
         }
         
         socket.on(clientEvent: .disconnect) { data, ack in
