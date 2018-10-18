@@ -100,6 +100,9 @@
                                                             <subviews>
                                                                 <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PEs-t7-eDc">
                                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="614"/>
+                                                                    <connections>
+                                                                        <segue destination="BIT-IB-Rqm" kind="embed" id="1n2-sd-2un"/>
+                                                                    </connections>
                                                                 </containerView>
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -207,10 +210,10 @@
             </objects>
             <point key="canvasLocation" x="3223" y="1336"/>
         </scene>
-        <!--Storyboard Reference-->
+        <!--AlbumViewController-->
         <scene sceneID="6QU-1q-ohy">
             <objects>
-                <viewControllerPlaceholder id="BIT-IB-Rqm" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Album" referencedIdentifier="AlbumViewController" id="BIT-IB-Rqm" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nqP-kJ-Uog" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3756" y="1336"/>

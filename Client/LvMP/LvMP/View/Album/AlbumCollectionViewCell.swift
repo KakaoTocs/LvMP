@@ -1,16 +1,16 @@
 //
-//  NewAlbumCollectionViewCell.swift
+//  AlbumCollectionViewCell.swift
 //  LvMP
 //
-//  Created by Jinu Kim on 16/10/2018.
+//  Created by Jinu Kim on 18/10/2018.
 //  Copyright © 2018 Jinu Kim. All rights reserved.
 //
 
 import UIKit
 
-class NewAlbumCollectionViewCell: UICollectionViewCell {
+class AlbumCollectionViewCell: UICollectionViewCell {
     
-    static let identifier = "NewAlbumCollectionViewCell"
+    static let identifier = "AlbumCollectionViewCell"
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var artistLabel: UILabel!

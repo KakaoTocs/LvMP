@@ -90,6 +90,7 @@
                                             <outlet property="artistLabel" destination="aMV-eR-ukh" id="Pwq-AA-qbo"/>
                                             <outlet property="artworkImageView" destination="6Jt-CF-MtZ" id="1E9-SO-J2h"/>
                                             <outlet property="nameLabel" destination="HgG-d5-7ha" id="6qI-ll-HbS"/>
+                                            <segue destination="Sk1-vX-QOi" kind="show" identifier="AlbumInfoSegue" id="bcx-95-gq9"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -201,6 +202,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Duo-Qf-XPR" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2012" y="131.78410794602701"/>
+        </scene>
+        <!--AlbumInfoViewController-->
+        <scene sceneID="Xz0-jQ-dfN">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AlbumInfo" referencedIdentifier="AlbumInfoViewController" id="Sk1-vX-QOi" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mmX-sV-z4D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2714" y="131"/>
         </scene>
     </scenes>
 </document>

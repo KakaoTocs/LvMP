@@ -34,6 +34,16 @@ class ArtistListViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == AlbumInfoViewController.segueIdentifier {
+            if let albumInfoVC = segue.destination as? AlbumInfoViewController,
+                let index = self.artistsTableView.indexPathsForSelectedRows?.first {
+                print(artists[index.item].albums )
+                albumInfoVC.albums = artists[index.item].al
+            }
+        }
+    }
 
 }
 

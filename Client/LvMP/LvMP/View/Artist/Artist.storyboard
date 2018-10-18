@@ -91,6 +91,7 @@
                                             <outlet property="nameLabel" destination="gvo-q1-Jfa" id="vTo-u2-E3z"/>
                                             <outlet property="playtimeLabel" destination="58Z-vA-iMH" id="eMG-M2-Miy"/>
                                             <outlet property="profileImageView" destination="Ajt-ZG-EIU" id="ehM-v8-whb"/>
+                                            <segue destination="XEv-gP-dbf" kind="show" identifier="AlbumInfoSegue" id="O3d-Jg-Uou"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -112,6 +113,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IjZ-O2-7G0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="87" y="119"/>
+        </scene>
+        <!--AlbumInfoViewController-->
+        <scene sceneID="kCf-18-GPl">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AlbumInfo" referencedIdentifier="AlbumInfoViewController" id="XEv-gP-dbf" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EAU-85-UM3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="810" y="118"/>
         </scene>
     </scenes>
 </document>

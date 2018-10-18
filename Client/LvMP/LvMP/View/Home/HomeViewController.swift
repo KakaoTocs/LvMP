@@ -34,13 +34,23 @@ class HomeViewController: UIViewController {
 //        FilesManager.shared.test()
         self.newAlbumsCollectionView.delegate = self
         self.newAlbumsCollectionView.dataSource = self
+        self.newAlbumsCollectionView.allowsMultipleSelection = false
 //        self.navigationController?.navigationBar.barTintColor = UIColor.clear
         realm = try! Realm()
-        albums = realm.objects(Album.self).sorted(byKeyPath: "saveDate", ascending: true)
+        albums = realm.objects(Album.self).sorted(byKeyPath: "saveDate", ascending: false)
         
         token = albums.observe({ change in
             self.newAlbumsCollectionView.reloadData()
         })
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == AlbumInfoViewController.segueIdentifier {
+            let albumInfoVC = segue.destination as! AlbumInfoViewController
+            if let index = self.newAlbumsCollectionView.indexPathsForSelectedItems?.first {
+                albumInfoVC.albums = [albums[index.item]]
+            }
+        }
     }
 
 }
@@ -79,7 +89,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         cell.nameLabel.text = album.name
         // TODO: Album생성시 Artist없이 생성될 수 있는지 확인!!
-        cell.artistLabel.text = album.artist!.name
+        cell.artistLabel.text = album.artist?.name
         cell.artworkImageView.image = album.musics.first?.getArtworkImage()
         cell.artworkImageView.mask = cell.imageMaskView
         
@@ -96,11 +106,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 5.0
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        return 10.0
-//    }
-//
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
     }
