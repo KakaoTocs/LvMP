@@ -2,21 +2,7 @@ const express = require('express');
 const app = express();
 const server = require('http').Server(app);
 var io = require('socket.io').listen(server);
-const fs = require('fs');
-const path = require('path');
 const bodyParser = require('body-parser');
-// const multer = require('multer');
-// const upload = multer({
-//   storage: multer.diskStorage({
-//     destination: (req, file, cb) => {
-//       cb(null, 'uploads/');
-//     },
-//     filename: (req, file, cb) => {
-//       cb(null, file.originalname);
-//     }
-//   }),
-//   limits: { fieldSize: 200 * 1024 *1024}
-// });
 
 // 초기 설정
 app.use(bodyParser.json({limit: '500mb'}) );
@@ -30,7 +16,6 @@ app.use(bodyParser.urlencoded({
 var filesData;
 var typesData;
 var connectTable = ["", ""];
-let uploadDirectoryPath = path.join(__dirname, '/uploads');
 const result = {
   code: 200,
   message: "Good"
@@ -42,40 +27,17 @@ app.get("/", (req, res) => {
 });
 
 // Mac -> Server로 파일 전송
-app.post("/uploadFiles", upload.array('files'), (req, res) => {
-filesData = req.body.files;
-typesData = req.body.types;
-io.emit("uploadReady", "");
-console.log("Upload Finishi");
-res.status(200).json(result);
+// app.post("/uploadFiles", upload.array('files'), (req, res) => {
+app.post("/uploadFiles", (req, res) => {
+  filesData = req.body.files;
+  typesData = req.body.types;
+  io.emit("uploadReady", "");
+  console.log("Upload Finishi");
+  res.status(200).json(result);
 });
 
 // iPhone -> Server로 파일 요청
 app.get("/receiveFiles", (req, res) => {
-  // var filesTemp = [];
-  // fs.readdir(uploadDirectoryPath, (err, result) => {
-  //   if (err) {
-  //     return console.log("Unable to scan directory: " + err);
-  //   }
-  //   console.log("Sending files...");
-  //   result.forEach((file) => {
-  //     console.log(file);
-  //     var temp = fs.readFileSync(uploadDirectoryPath + "/" + file);
-  //     var temp1 = temp.toString('base64');
-  //     console.log(temp1.length);
-  //     // console.log(temp);
-  //     // var file = JSON.parse(temp);
-  //     filesTemp.push(temp1);
-  //   });
-  //   console.log(filesTemp.length);
-  //   const JSONData = {
-  //     files: filesTemp,
-  //     types: typesData
-  //   };
-  //   console.log("- Send Data count: " + JSONData.files.length);
-  //   res.status(200).json(JSONData);
-  // });
-  // console.log("Finsish");
     console.log("Download Finishi");
     res.status(200).json({files: filesData, types: typesData});
 });

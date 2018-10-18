@@ -71,9 +71,8 @@ class SocketIOManager: NSObject {
         var files: [Music] = []
         
         files = readAllFileInFolder(folder: folder)
-        print("Send files count: \(files.count)")
         
-        guard let url = URL(string: "http://127.0.0.1:3000/uploadFilesTest") else {
+        guard let url = URL(string: "http://127.0.0.1:3000/uploadFiles") else {
             return
         }
         
@@ -94,10 +93,8 @@ class SocketIOManager: NSObject {
         let uploadTask: URLSessionDataTask = session.uploadTask(with: urlRequest, from: nil) { (data: Data?, response: URLResponse?, error: Error?) in
             if let jsonData = data {
                 do {
-                    print("Uploading finish!")
                     let dataStruct = try JSONDecoder().decode(NetworkResponse.self, from: jsonData)
-                    print(dataStruct.code)
-                    print(dataStruct.message)
+                    print("Count: \(files.count), Code: \(dataStruct.code), Message: \(dataStruct.message)")
                 } catch {
                     print("Error >> SocketIOManager >> sendFile(folder: Folder): dataTask error: \(error.localizedDescription)")
                 }
