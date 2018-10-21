@@ -49,6 +49,7 @@ class HomeViewController: UIViewController {
             let albumInfoVC = segue.destination as! AlbumInfoViewController
             if let index = self.newAlbumsCollectionView.indexPathsForSelectedItems?.first {
                 albumInfoVC.albums = [albums[index.item]]
+                albumInfoVC.view.backgroundColor = UIColor.red
             }
         }
     }

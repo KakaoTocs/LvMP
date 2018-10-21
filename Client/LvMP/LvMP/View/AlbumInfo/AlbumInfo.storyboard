@@ -141,7 +141,7 @@
                                 </items>
                             </navigationBar>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="3ar-fU-XZA" firstAttribute="top" secondItem="vVb-lH-Cts" secondAttribute="bottom" id="Chi-ek-woc"/>
                             <constraint firstItem="zOP-d2-d5B" firstAttribute="trailing" secondItem="3ar-fU-XZA" secondAttribute="trailing" id="KT3-pY-6Pf"/>

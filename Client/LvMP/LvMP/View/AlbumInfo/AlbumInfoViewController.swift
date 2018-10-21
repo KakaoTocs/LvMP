@@ -23,6 +23,9 @@ class AlbumInfoViewController: UIViewController {
         self.albumInfoTableView.delegate = self
         self.albumInfoTableView.dataSource = self
         self.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.view.backgroundColor = UIColor.clear
+        self.view.backgroundColor = UIColor.clear
+        self.navigationController?.view.backgroundColor = UIColor.green
     }
     
     @IBAction func popViewBuatton(_ sender: UIBarButtonItem) {

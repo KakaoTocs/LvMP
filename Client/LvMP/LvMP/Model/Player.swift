@@ -7,11 +7,44 @@
 //
 
 import Foundation
+import AVFoundation
+
+@objc protocol PlayerDelegate: class {
+    func playtimeUpdated()
+}
 
 class Player {
+    
     static let shared = Player()
     
-    init() {
-        
+    var audioPlayer : AVAudioPlayer!
+    var url: String? {
+        didSet {
+            do {
+                audioPlayer = try AVAudioPlayer(contentsOf: URL(string: self.url!)!)
+            } catch {
+                print("Error >> Player >> url: String? >> didSet: AudioPlayer init error")
+            }
+        }
     }
+    var value: Float = 1.0 {
+        didSet {
+            self.audioPlayer.volume = self.value
+        }
+    }
+    var time: Timer!
+    
+    func play() {
+        self.audioPlayer.play()
+    }
+    
+    func pasue() {
+        self.audioPlayer.pause()
+    }
+    
+    func stop() {
+        self.audioPlayer.stop()
+    }
+    
+    
 }

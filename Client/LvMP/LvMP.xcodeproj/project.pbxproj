@@ -261,9 +261,9 @@
 			isa = PBXGroup;
 			children = (
 				65FE7C7E2175AF11002DE3E0 /* AlbumInfo.storyboard */,
+				65FE7C802175AF21002DE3E0 /* AlbumInfoViewController.swift */,
 				651A84F221784C78004CB4C4 /* AlbumInfoTableViewCell.swift */,
 				651A84F421784C85004CB4C4 /* AlbumInfoTableViewHeader.swift */,
-				65FE7C802175AF21002DE3E0 /* AlbumInfoViewController.swift */,
 			);
 			path = AlbumInfo;
 			sourceTree = "<group>";
@@ -382,7 +382,6 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-LvMP/Pods-LvMP-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
@@ -390,7 +389,6 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",

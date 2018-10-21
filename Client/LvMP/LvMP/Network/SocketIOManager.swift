@@ -7,13 +7,12 @@
 //
 
 import  SocketIO
-//import Alamofire
 
 class SocketIOManager: NSObject {
     static let shared = SocketIOManager()
     static let stateUpdateNotificationKey = Notification.Name("paringStateUpdated")
 //    10.80.163.248
-    let manager = SocketManager(socketURL: URL(string: "http://10.80.163.248:3000")!)
+    let manager = SocketManager(socketURL: URL(string: "http://127.0.0.1:3000")!)
     lazy var socket: SocketIOClient = {
         return manager.defaultSocket
     }()
@@ -37,7 +36,7 @@ class SocketIOManager: NSObject {
         }
         
         socket.on("uploadReady") { data, ack in
-            guard let url = URL(string: "http://10.80.163.248:3000/receiveFiles") else {
+            guard let url = URL(string: "http://127.0.0.1:3000/receiveFiles") else {
                 return
             }
             let session = URLSession(configuration: .default)

@@ -33,6 +33,7 @@ class RootViewController: UIViewController {
 extension RootViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let currentPage = Int(round(scrollView.contentOffset.x / scrollView.frame.size.width))
+        print(currentPage)
         menuBar.selectItem(at: currentPage)
     }
 }

@@ -9,7 +9,6 @@
 import Cocoa
 import AVFoundation
 import SocketIO
-import Alamofire
 
 class ViewController: NSViewController {
     

@@ -39,8 +39,11 @@ class ArtistListViewController: UIViewController {
         if segue.identifier == AlbumInfoViewController.segueIdentifier {
             if let albumInfoVC = segue.destination as? AlbumInfoViewController,
                 let index = self.artistsTableView.indexPathsForSelectedRows?.first {
-                print(artists[index.item].albums )
-                albumInfoVC.albums = artists[index.item].al
+//                print(artists[index.item].albums )
+//                albumInfoVC.albums = artists[index.item]
+//                print()
+//                self.artists[index.item].albums.
+                albumInfoVC.albums = self.artists[index.item].albums.filter{ _ in true }
             }
         }
     }

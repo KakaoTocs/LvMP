@@ -7,7 +7,6 @@ target 'LvMP' do
 
   # Networking
   pod 'Socket.IO-Client-Swift'
-  pod 'Alamofire'
   
   # Database
   pod 'RealmSwift'
