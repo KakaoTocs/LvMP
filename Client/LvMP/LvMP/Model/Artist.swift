@@ -26,13 +26,6 @@ class Artist: Object {
     override static func primaryKey() -> String? {
         return "id"
     }
-    
-//    static let emptyArtist: Artist = {
-//        let defaults = UserDefaults.standard
-//        let emptyArtistID = defaults.object(forKey: "emptyArtistID") as! String
-//        let realm = try! Realm()
-//        return realm.object(ofType: Artist.self, forPrimaryKey: emptyArtistID)!
-//    }()
 
     convenience init(name: String) {
         self.init()
@@ -40,7 +33,6 @@ class Artist: Object {
     }
     
     func updateProfile(imageData data: Data) {
-        // TODO - 받은 데이터 Realm에 저장
         do {
             try self.realm?.write {
                 self.profile = data

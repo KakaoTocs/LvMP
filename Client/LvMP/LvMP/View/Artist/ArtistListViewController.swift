@@ -12,7 +12,9 @@ import RealmSwift
 class ArtistListViewController: UIViewController {
     
     private var realm: Realm!
-    private var artists: Results<Artist>!
+    private lazy var artists: Results<Artist>! = {
+        realm.objects(Artist.self).sorted(byKeyPath: "name", ascending: true)
+    }()
     private var token: NotificationToken!
 
     @IBOutlet weak var artistsTableView: UITableView!
@@ -24,26 +26,16 @@ class ArtistListViewController: UIViewController {
         
         
         realm = try! Realm()
-        artists = realm.objects(Artist.self).sorted(byKeyPath: "name", ascending: true)
         token = artists.observe({ change in
             self.artistsTableView.reloadData()
         })
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == AlbumInfoViewController.segueIdentifier {
             if let albumInfoVC = segue.destination as? AlbumInfoViewController,
                 let index = self.artistsTableView.indexPathsForSelectedRows?.first {
-//                print(artists[index.item].albums )
-//                albumInfoVC.albums = artists[index.item]
-//                print()
-//                self.artists[index.item].albums.
-                albumInfoVC.albums = self.artists[index.item].albums.filter{ _ in true }
+                albumInfoVC.albumsID = self.artists[index.item].albums.filter{ _ in true }.map{ $0.id }
             }
         }
     }

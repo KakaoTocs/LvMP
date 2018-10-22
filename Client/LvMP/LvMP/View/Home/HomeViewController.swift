@@ -24,20 +24,18 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var playlistsTableView: UITableView!
     
     private var realm: Realm!
-    private var albums: Results<Album>!
+    private lazy var albums: Results<Album>! = {
+        realm.objects(Album.self).sorted(byKeyPath: "saveDate", ascending: false)
+    }()
     private var token: NotificationToken!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // 노래 ㅓ장시 경로 확인 파일 url렘에 저장후 url로 노재 재생
-        // Do any additional setup after loading the view.
 //        FilesManager.shared.test()
         self.newAlbumsCollectionView.delegate = self
         self.newAlbumsCollectionView.dataSource = self
         self.newAlbumsCollectionView.allowsMultipleSelection = false
-//        self.navigationController?.navigationBar.barTintColor = UIColor.clear
         realm = try! Realm()
-        albums = realm.objects(Album.self).sorted(byKeyPath: "saveDate", ascending: false)
         
         token = albums.observe({ change in
             self.newAlbumsCollectionView.reloadData()
@@ -48,8 +46,10 @@ class HomeViewController: UIViewController {
         if segue.identifier == AlbumInfoViewController.segueIdentifier {
             let albumInfoVC = segue.destination as! AlbumInfoViewController
             if let index = self.newAlbumsCollectionView.indexPathsForSelectedItems?.first {
-                albumInfoVC.albums = [albums[index.item]]
-                albumInfoVC.view.backgroundColor = UIColor.red
+                albumInfoVC.albumsID = [albums[index.item].id]
+                if let superView = self.parent as? RootViewController {
+                    superView.backgroundImageToFront()
+                }
             }
         }
     }

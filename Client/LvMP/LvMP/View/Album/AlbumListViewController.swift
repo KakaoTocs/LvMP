@@ -14,7 +14,9 @@ class AlbumListViewController: UIViewController {
     @IBOutlet weak var albumsCollectionView: UICollectionView!
     
     private var realm: Realm!
-    private var albums: Results<Album>!
+    private lazy var albums: Results<Album>! = {
+        realm.objects(Album.self).sorted(byKeyPath: "name", ascending: true)
+    }()
     private var token: NotificationToken!
 
     override func viewDidLoad() {
@@ -25,7 +27,6 @@ class AlbumListViewController: UIViewController {
         self.albumsCollectionView.allowsMultipleSelection = false
         
         realm = try! Realm()
-        albums = realm.objects(Album.self).sorted(byKeyPath: "name", ascending: true)
         
         token = albums.observe({ change in
             self.albumsCollectionView.reloadData()
@@ -36,7 +37,7 @@ class AlbumListViewController: UIViewController {
         if segue.identifier == AlbumInfoViewController.segueIdentifier {
             let albumInfoVC = segue.destination as! AlbumInfoViewController
             if let index = self.albumsCollectionView.indexPathsForSelectedItems?.first {
-                albumInfoVC.albums = [albums[index.item]]
+                albumInfoVC.albumsID = [albums[index.item].id]
             }
         }
     }

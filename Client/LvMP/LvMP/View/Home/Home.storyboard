@@ -194,6 +194,7 @@
                         <viewLayoutGuide key="safeArea" id="b3S-eL-jAD"/>
                     </view>
                     <navigationItem key="navigationItem" title="홈" id="3ET-aS-Mc5"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="newAlbumsCollectionView" destination="Fwl-do-Qt6" id="AC4-OU-Rwq"/>
                         <outlet property="playlistsTableView" destination="2wF-uw-mow" id="aPR-8j-yV4"/>
@@ -201,7 +202,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Duo-Qf-XPR" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2012" y="131.78410794602701"/>
+            <point key="canvasLocation" x="2951.1999999999998" y="131.78410794602701"/>
         </scene>
         <!--AlbumInfoViewController-->
         <scene sceneID="Xz0-jQ-dfN">
@@ -209,7 +210,7 @@
                 <viewControllerPlaceholder storyboardName="AlbumInfo" referencedIdentifier="AlbumInfoViewController" id="Sk1-vX-QOi" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mmX-sV-z4D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2714" y="131"/>
+            <point key="canvasLocation" x="3652.8000000000002" y="130.43478260869566"/>
         </scene>
     </scenes>
 </document>

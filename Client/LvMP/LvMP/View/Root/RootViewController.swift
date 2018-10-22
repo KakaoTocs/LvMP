@@ -14,17 +14,32 @@ class RootViewController: UIViewController {
     @IBOutlet weak var menuBar: MenuBar!
     @IBOutlet weak var scrollViewContainerViewWidth: NSLayoutConstraint!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var backgroundImage: UIImageView!
+    @IBOutlet weak var backgroundImageEffectView: UIVisualEffectView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         menuBar.delegate = self
         print(FilesManager.shared.rootDirectory.absoluteString)
         scrollViewContainerViewWidth.constant = UIScreen.main.bounds.size.width * 4
+        self.navigationController?.navigationBar.isHidden = true
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        self.backgroundImageToBack()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+    
+    func backgroundImageToFront() {
+        self.view.bringSubviewToFront(self.backgroundImage)
+        self.view.bringSubviewToFront(self.backgroundImageEffectView)
+    }
+    
+    func backgroundImageToBack() {
+        self.view.sendSubviewToBack(self.backgroundImageEffectView)
+        self.view.sendSubviewToBack(self.backgroundImage)
     }
 
 }
@@ -33,7 +48,6 @@ class RootViewController: UIViewController {
 extension RootViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let currentPage = Int(round(scrollView.contentOffset.x / scrollView.frame.size.width))
-        print(currentPage)
         menuBar.selectItem(at: currentPage)
     }
 }

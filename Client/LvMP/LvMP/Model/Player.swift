@@ -33,6 +33,7 @@ class Player {
         }
     }
     var time: Timer!
+    private var playlist: [String] = []
     
     func play() {
         self.audioPlayer.play()
@@ -44,6 +45,20 @@ class Player {
     
     func stop() {
         self.audioPlayer.stop()
+    }
+    
+    func appendList(url: String) {
+        self.playlist.append(url)
+    }
+    
+    func removeList(at index: Int) {
+        self.playlist.remove(at: index)
+    }
+    
+    func changeOrder(at: Int, to: Int) {
+        let a = self.playlist[at]
+        self.playlist[at] = self.playlist[to]
+        self.playlist[to] = a
     }
     
     

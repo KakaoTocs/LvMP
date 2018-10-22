@@ -7,29 +7,28 @@
 //
 
 import UIKit
+import RealmSwift
 
 class AlbumInfoViewController: UIViewController {
     
     static let segueIdentifier = "AlbumInfoSegue"
     
     @IBOutlet weak var albumInfoTableView: UITableView!
-    @IBOutlet weak var navigationBar: UINavigationBar!
     
-    var albums: [Album] = []
+    var albumsID: [String] = []
+    private var realm: Realm!
+    private lazy var albums: Results<Album>! = {
+        realm.objects(Album.self).filter("id IN %@", albumsID)
+    }()
+    private var token: NotificationToken!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.albumInfoTableView.delegate = self
         self.albumInfoTableView.dataSource = self
-        self.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        self.navigationController?.view.backgroundColor = UIColor.clear
-        self.view.backgroundColor = UIColor.clear
-        self.navigationController?.view.backgroundColor = UIColor.green
-    }
-    
-    @IBAction func popViewBuatton(_ sender: UIBarButtonItem) {
-        self.navigationController?.popViewController(animated: true)
+        
+        realm = try! Realm()
     }
 }
 

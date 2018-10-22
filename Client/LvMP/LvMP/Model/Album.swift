@@ -20,14 +20,6 @@ class Album: Object {
         return "id"
     }
     
-//    static let emptyAlbum: Album = {
-//        let defaults = UserDefaults.standard
-//        let emptyAlbumID = defaults.object(forKey: "emptyAlbumID") as! String
-//        let realm = try! Realm()
-//        return realm.object(ofType: Album.self, forPrimaryKey: emptyAlbumID)!
-//    }()
-    
-    
     convenience init(name: String, artist: Artist) {
         self.init()
         self.name = name

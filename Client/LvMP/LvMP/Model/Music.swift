@@ -38,7 +38,6 @@ class Music: Object {
 
     private convenience init(id: String, title: String, lyrics: String, playTime: Int, url: String, type: String, artwork: Data, artist: Artist, album: Album) {
         self.init(id: id, title: title, lyrics: lyrics, playTime: playTime, url: url, type: type)
-//        String(format: "%2d분 %2d초", file.playTime / 60, file.playTime % 60)
         self.artwork = artwork
         self.artist = artist
         self.album = album

@@ -104,7 +104,9 @@
         <!--AlbumInfoViewController-->
         <scene sceneID="tjh-C0-lhu">
             <objects>
-                <viewControllerPlaceholder storyboardName="AlbumInfo" referencedIdentifier="AlbumInfoViewController" id="F8N-2S-WQW" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="AlbumInfo" referencedIdentifier="AlbumInfoViewController" id="F8N-2S-WQW" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="gBn-7e-N7n"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TYl-3K-YLd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="795" y="121"/>

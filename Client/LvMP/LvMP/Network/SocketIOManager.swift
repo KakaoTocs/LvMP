@@ -34,7 +34,6 @@ class SocketIOManager: NSObject {
         socket.on("paring") { data, ack in
             self.isParing = data[0] as? Bool ?? false
         }
-        
         socket.on("uploadReady") { data, ack in
             guard let url = URL(string: "http://127.0.0.1:3000/receiveFiles") else {
                 return
@@ -52,12 +51,16 @@ class SocketIOManager: NSObject {
                 do {
                     let apiResponse: ResponseFiles = try JSONDecoder().decode(ResponseFiles.self, from: jsonData)
                     print("Received data count: \(apiResponse.files.count)")
-                    Music.saves(files: apiResponse.files, with: apiResponse.types)
+                    DispatchQueue.main.async {
+                        Music.saves(files: apiResponse.files, with: apiResponse.types)
+                    }
                 } catch {
                     print("Error >> SocketIOManager >> socket.on(\"uploadReady\"): Response error:\(error.localizedDescription)")
                 }
             }
-            dataTask.resume()
+            DispatchQueue.global().async {
+                dataTask.resume()
+            }
         }
         
         socket.on(clientEvent: .disconnect) { data, ack in
