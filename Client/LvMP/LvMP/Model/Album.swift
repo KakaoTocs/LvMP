@@ -10,6 +10,7 @@ import Foundation
 import RealmSwift
 
 class Album: Object {
+    // MARK: - Property
     @objc dynamic var id: String = UUID().uuidString
     @objc dynamic var name: String = ""
     @objc dynamic var saveDate: Date = Date()
@@ -20,12 +21,14 @@ class Album: Object {
         return "id"
     }
     
+    // MARK: - Initalizer
     convenience init(name: String, artist: Artist) {
         self.init()
         self.name = name
         self.artist = artist
     }
     
+    // MARK: - Method
     static func save(album: Album) {
         let realm = try! Realm()
         do {

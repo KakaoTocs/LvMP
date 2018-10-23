@@ -8,6 +8,7 @@
 
 import Foundation
 
+// 서버와 통신을 위한 타입
 struct ResponseFiles: Codable {
     let files: [Data]
     let types: [String]

@@ -10,6 +10,7 @@ import Foundation
 import RealmSwift
 
 class Artist: Object {
+    // MARK: - Property
     @objc dynamic var id: String = UUID().uuidString
     @objc dynamic var name: String = ""
     @objc dynamic var profile: Data?
@@ -22,16 +23,24 @@ class Artist: Object {
     }
     let musics = LinkingObjects(fromType: Music.self, property: "artist")
     let albums = LinkingObjects(fromType: Album.self, property: "artist")
+    var totalPlaytime: String {
+        get {
+            let totalTime = self.musics.reduce(0) { $0 + $1.playtime }
+            return playtimeToString(total: totalTime)
+        }
+    }
     
     override static func primaryKey() -> String? {
         return "id"
     }
 
+    // MARK: - Initailizer
     convenience init(name: String) {
         self.init()
         self.name = name
     }
     
+    // MARK: - Method
     func updateProfile(imageData data: Data) {
         do {
             try self.realm?.write {

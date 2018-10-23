@@ -33,8 +33,9 @@ class Player {
         }
     }
     var time: Timer!
-    private var playlist: [String] = []
+    private var musiclist: [String] = []
     
+    // MARK: - Method
     func play() {
         self.audioPlayer.play()
     }
@@ -47,18 +48,19 @@ class Player {
         self.audioPlayer.stop()
     }
     
+    // TODO:- 여러개 음악 추가/삭제 메소드 만들기
     func appendList(url: String) {
-        self.playlist.append(url)
+        self.musiclist.append(url)
     }
     
     func removeList(at index: Int) {
-        self.playlist.remove(at: index)
+        self.musiclist.remove(at: index)
     }
     
     func changeOrder(at: Int, to: Int) {
-        let a = self.playlist[at]
-        self.playlist[at] = self.playlist[to]
-        self.playlist[to] = a
+        let a = self.musiclist[at]
+        self.musiclist[at] = self.musiclist[to]
+        self.musiclist[to] = a
     }
     
     

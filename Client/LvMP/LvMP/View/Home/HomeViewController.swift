@@ -17,9 +17,6 @@ class HomeViewController: UIViewController {
         self.navigationController?.pushViewController(VC, animated: true)
     }
     // file은 파일로 쓰고 폴더를 따로 만들지말고 해당 결로에 쓸때 폴더 생성인자를 true로 구현
-    // realm데이터 삭제시 파일 삭제후 realm에서 삭제
-    // 서버에서 받은 후 데이터 저장
-    // 노래정보를 저장할 싱글톤 필요없음 -> Realm으로 실시간으로 새로고침해 사용가능e
     @IBOutlet weak var newAlbumsCollectionView: UICollectionView!
     @IBOutlet weak var playlistsTableView: UITableView!
     
@@ -31,10 +28,11 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        FilesManager.shared.test()
+        
         self.newAlbumsCollectionView.delegate = self
         self.newAlbumsCollectionView.dataSource = self
         self.newAlbumsCollectionView.allowsMultipleSelection = false
+        
         realm = try! Realm()
         
         token = albums.observe({ change in

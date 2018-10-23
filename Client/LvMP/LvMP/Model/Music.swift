@@ -11,10 +11,11 @@ import RealmSwift
 import AVFoundation
 
 class Music: Object {
+    // MARK: - Property
     @objc dynamic var id: String = ""
     @objc dynamic var title: String = "제목 없음"
     @objc dynamic var lyrics: String = "가사 없음"
-    @objc dynamic var playTime: Int = 0
+    @objc dynamic var playtime: Int = 0
     @objc dynamic var url: String = ""
     @objc dynamic var type: String = ""
     @objc dynamic var artwork: Data?
@@ -22,16 +23,23 @@ class Music: Object {
     @objc dynamic var artist: Artist?
     @objc dynamic var album: Album?
     
+    var playtimeString: String {
+        get {
+            return playtimeToString(total: playtime)
+        }
+    }
+    
     override static func primaryKey() -> String? {
         return "id"
     }
     
+    // MARK: - Initalizer
     private convenience init(id: String, title: String, lyrics: String, playTime: Int, url: String, type: String) {
         self.init()
         self.id = id
         self.title = title
         self.lyrics = lyrics
-        self.playTime = playTime
+        self.playtime = playTime
         self.url = url
         self.type = type
     }
@@ -106,6 +114,7 @@ class Music: Object {
 
     }
     
+    // MARK: - Method
     func getArtworkImage() -> UIImage? {
         if let artworkData = self.artwork {
             return UIImage(data: artworkData)
@@ -149,13 +158,14 @@ class Music: Object {
         }
     }
     
-    func delete() -> Bool {
+    static func delete(music: Music) -> Bool {
         // TODO: - 파일삭제후 완료시 림에서 삭제
-        let result = FilesManager.shared.removeFile(at: URL(string: self.url)!)
+        let realm = try! Realm()
+        let result = FilesManager.shared.removeFile(at: URL(string: music.url)!)
         if result {
             do {
-                try self.realm?.write {
-                    self.realm?.delete(self)
+                try realm.write {
+                    realm.delete(music)
                 }
             } catch {
                 print("Error >> Music >> delete(): Realm delete error")

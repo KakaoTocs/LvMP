@@ -16,7 +16,6 @@ class MusicListViewController: UIViewController {
     private var token: NotificationToken!
     
     @IBOutlet weak var musicsTableView: UITableView!
-//    @IBOutlet weak var artworkImageViewWidth: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,12 +28,6 @@ class MusicListViewController: UIViewController {
             self.musicsTableView.reloadData()
         })
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 }
 
 extension MusicListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -50,7 +43,7 @@ extension MusicListViewController: UITableViewDelegate, UITableViewDataSource {
         }
         cell.titleLabel.text = music.title
         cell.artistLabel.text = music.artist?.name
-        cell.playtimeLabel.text = String(format: "%2d분 %2d초", music.playTime / 60, music.playTime % 60)
+        cell.playtimeLabel.text = music.playtimeString
         cell.artworkImageView.image = music.getArtworkImage()
         cell.artworkImageView.mask = cell.imageMaskView
         

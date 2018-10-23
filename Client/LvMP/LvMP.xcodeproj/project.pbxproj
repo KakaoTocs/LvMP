@@ -30,7 +30,6 @@
 		657C8880215D0FF600C10363 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C887F215D0FF600C10363 /* Playlist.swift */; };
 		657C8884215D206400C10363 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C8883215D206400C10363 /* HomeViewController.swift */; };
 		657C8888215D207C00C10363 /* AlbumListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657C8887215D207C00C10363 /* AlbumListViewController.swift */; };
-		65C045DC21659502009B946B /* OST.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 65C045DB21659502009B946B /* OST.jpg */; };
 		65C045E32165DD1C009B946B /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C045E22165DD1C009B946B /* MenuBar.swift */; };
 		65C045E52165DD31009B946B /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C045E42165DD31009B946B /* PlayerViewController.swift */; };
 		65C5C7E82146299A0061F884 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C5C7E72146299A0061F884 /* AppDelegate.swift */; };
@@ -71,7 +70,6 @@
 		657C887F215D0FF600C10363 /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
 		657C8883215D206400C10363 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		657C8887215D207C00C10363 /* AlbumListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumListViewController.swift; sourceTree = "<group>"; };
-		65C045DB21659502009B946B /* OST.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = OST.jpg; path = ../../../../../../Desktop/LvMP/Sketch/Album_Art/OST.jpg; sourceTree = "<group>"; };
 		65C045E22165DD1C009B946B /* MenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
 		65C045E42165DD31009B946B /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		65C5C7E42146299A0061F884 /* LvMP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LvMP.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,6 +78,7 @@
 		65C5C7F12146299B0061F884 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		65C5C7F32146299B0061F884 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65DE809F215CEC2600D4EEB4 /* Root.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Root.storyboard; sourceTree = "<group>"; };
+		65DF103F217F5F410030F7BA /* OST.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = OST.jpg; sourceTree = "<group>"; };
 		65FE7C7B21757198002DE3E0 /* NewAlbumCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAlbumCollectionViewCell.swift; sourceTree = "<group>"; };
 		65FE7C7E2175AF11002DE3E0 /* AlbumInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AlbumInfo.storyboard; sourceTree = "<group>"; };
 		65FE7C802175AF21002DE3E0 /* AlbumInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumInfoViewController.swift; sourceTree = "<group>"; };
@@ -236,13 +235,10 @@
 			children = (
 				65FE7C872175D6D0002DE3E0 /* Utillity */,
 				65C045E62165DD54009B946B /* View */,
-				65C045DB21659502009B946B /* OST.jpg */,
 				657C8882215D205100C10363 /* Menu */,
 				657C8881215D204000C10363 /* Network */,
 				657C8878215D0F7F00C10363 /* Model */,
-				65C5C7E72146299A0061F884 /* AppDelegate.swift */,
-				65C5C7EE2146299B0061F884 /* Assets.xcassets */,
-				65C5C7F02146299B0061F884 /* LaunchScreen.storyboard */,
+				65DF1040217F5F610030F7BA /* Other */,
 				65C5C7F32146299B0061F884 /* Info.plist */,
 			);
 			path = LvMP;
@@ -255,6 +251,16 @@
 				65C045E42165DD31009B946B /* PlayerViewController.swift */,
 			);
 			path = Player;
+			sourceTree = "<group>";
+		};
+		65DF1040217F5F610030F7BA /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				65C5C7E72146299A0061F884 /* AppDelegate.swift */,
+				65C5C7EE2146299B0061F884 /* Assets.xcassets */,
+				65C5C7F02146299B0061F884 /* LaunchScreen.storyboard */,
+			);
+			path = Other;
 			sourceTree = "<group>";
 		};
 		65FE7C7D2175AEF0002DE3E0 /* AlbumInfo */ = {
@@ -273,6 +279,7 @@
 			children = (
 				65FE7C892175D6F1002DE3E0 /* Mask.png */,
 				65FE7C882175D6F1002DE3E0 /* Utility.swift */,
+				65DF103F217F5F410030F7BA /* OST.jpg */,
 			);
 			name = Utillity;
 			path = "New Group";
@@ -346,7 +353,6 @@
 				65C5C7EF2146299B0061F884 /* Assets.xcassets in Resources */,
 				654DC82B2164D89700633005 /* Music.storyboard in Resources */,
 				654DC8292164D89100633005 /* Album.storyboard in Resources */,
-				65C045DC21659502009B946B /* OST.jpg in Resources */,
 				65DE80A0215CEC2600D4EEB4 /* Root.storyboard in Resources */,
 				654DC82D2164D89F00633005 /* Player.storyboard in Resources */,
 				65631F0D21649F8D00DFE750 /* MenuBar.xib in Resources */,

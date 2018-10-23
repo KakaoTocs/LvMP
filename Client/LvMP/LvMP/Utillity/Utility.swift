@@ -16,6 +16,14 @@ func warringAlert(title: String, message: String) -> UIAlertController {
     return alertController
 }
 
+func playtimeToString(total time: Int) -> String{
+    if time < 3600 {
+        return String(format: "%02d:%02d", time / 60, time % 60)
+    } else {
+        return String(format: "%02d:%02d:%02d", time / 3600,time / 60, time % 60)
+    }
+}
+
 
 //extension UIViewController {
 //    

@@ -8,10 +8,9 @@
 
 import Foundation
 import RealmSwift
-typealias MusicList = PlayList
-// MusicList, PlayList 2개가 필요한 이유는 한개는 재생목록, 나머지 하나는 현제 재생중인 음악들의 목록
 
 class PlayList: Object {
+    // MARK: - Property
     @objc dynamic var id: String = UUID().uuidString
     @objc dynamic var name: String = ""
     let musicsID = List<String>()
@@ -20,6 +19,7 @@ class PlayList: Object {
         return "id"
     }
     
+    // MARK: - Initalizer
     convenience init(name: String) {
         self.init()
         self.name = name

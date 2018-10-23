@@ -70,7 +70,7 @@ extension AlbumInfoViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.trackNumberLabel.text = "\(indexPath.item)"
         cell.titleLabel.text = music.title
-        cell.playtimeLabel.text = "\(music.playTime / 60):\(music.playTime % 60)"
+        cell.playtimeLabel.text = music.playtimeString
         
         return cell
     }
