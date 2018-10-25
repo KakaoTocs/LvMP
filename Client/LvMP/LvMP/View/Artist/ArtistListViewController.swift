@@ -54,10 +54,7 @@ extension ArtistListViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.nameLabel.text = artist.name
-        cell.albumCountLabel.text = "앨범 \(artist.albums.count)개"
-        cell.musicCountLabel.text = "곡 \(artist.musics.count)개"
-        cell.playtimeLabel.text = artist.totalPlaytime
+        cell.refresh(with: artist)
         
         return cell
     }

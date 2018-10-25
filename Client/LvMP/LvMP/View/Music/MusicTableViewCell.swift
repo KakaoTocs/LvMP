@@ -23,6 +23,14 @@ class MusicTableViewCell: UITableViewCell {
         return maskView
     }()
     
+    func refresh(with music: Music) {
+        self.titleLabel.text = music.title
+        self.artistLabel.text = music.artist?.name
+        self.playtimeLabel.text = music.playtimeString
+        self.artworkImageView.image = music.getArtworkImage()
+        self.artworkImageView.mask = self.imageMaskView
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         

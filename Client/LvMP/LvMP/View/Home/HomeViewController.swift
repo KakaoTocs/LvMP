@@ -83,14 +83,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let album = self.albums[indexPath.item]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewAlbumCollectionViewCell.identifier, for: indexPath) as! NewAlbumCollectionViewCell
-        cell.layoutSubviews()
-        cell.contentView.layoutSubviews()
         
-        cell.nameLabel.text = album.name
         // TODO: Album생성시 Artist없이 생성될 수 있는지 확인!!
-        cell.artistLabel.text = album.artist?.name
-        cell.artworkImageView.image = album.musics.first?.getArtworkImage()
-        cell.artworkImageView.mask = cell.imageMaskView
+        cell.refresh(with: album)
         
         return cell
         

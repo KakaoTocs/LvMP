@@ -41,11 +41,8 @@ extension MusicListViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = self.musicsTableView.dequeueReusableCell(withIdentifier: MusicTableViewCell.identifier, for: indexPath) as? MusicTableViewCell else {
             return UITableViewCell()
         }
-        cell.titleLabel.text = music.title
-        cell.artistLabel.text = music.artist?.name
-        cell.playtimeLabel.text = music.playtimeString
-        cell.artworkImageView.image = music.getArtworkImage()
-        cell.artworkImageView.mask = cell.imageMaskView
+        
+        cell.refresh(with: music)
         
         return cell
     }

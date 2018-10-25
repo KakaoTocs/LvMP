@@ -22,6 +22,16 @@ class NewAlbumCollectionViewCell: UICollectionViewCell {
         return maskView
     }()
     
+    func refresh(with album: Album) {
+        self.layoutSubviews()
+        self.contentView.layoutSubviews()
+        
+        self.nameLabel.text = album.name
+        self.artistLabel.text = album.artist?.name
+        self.artworkImageView.image = album.musics.first?.getArtworkImage()
+        self.artworkImageView.mask = self.imageMaskView
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         

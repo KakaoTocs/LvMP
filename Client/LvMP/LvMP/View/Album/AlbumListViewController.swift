@@ -52,13 +52,8 @@ extension AlbumListViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let album = self.albums[indexPath.item]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AlbumCollectionViewCell.identifier, for: indexPath) as! AlbumCollectionViewCell
-        cell.layoutSubviews()
-        cell.contentView.layoutSubviews()
         
-        cell.nameLabel.text = album.name
-        cell.artistLabel.text = album.artist?.name
-        cell.artworkImageView.image = album.musics.first?.getArtworkImage()
-        cell.artworkImageView.mask = cell.imageMaskView
+        cell.refresh(with: album)
         
         return cell
     }

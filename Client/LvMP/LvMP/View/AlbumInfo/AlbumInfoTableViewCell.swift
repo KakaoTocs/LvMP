@@ -20,6 +20,12 @@ class AlbumInfoTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    func refresh(with music: Music, at index: Int) {
+        self.trackNumberLabel.text = String(index)
+        self.titleLabel.text = music.title
+        self.playtimeLabel.text = music.playtimeString
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

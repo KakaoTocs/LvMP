@@ -24,6 +24,13 @@ class ArtistTableViewCell: UITableViewCell {
         return maskView
     }()
     
+    func refresh(with artist: Artist) {
+        self.nameLabel.text = artist.name
+        self.albumCountLabel.text = "앨범 \(artist.albums.count)개"
+        self.musicCountLabel.text = "곡 \(artist.musics.count)개"
+        self.playtimeLabel.text = artist.totalPlaytime
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         

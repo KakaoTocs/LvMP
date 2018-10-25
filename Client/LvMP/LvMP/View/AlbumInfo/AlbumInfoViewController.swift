@@ -68,9 +68,7 @@ extension AlbumInfoViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.trackNumberLabel.text = "\(indexPath.item)"
-        cell.titleLabel.text = music.title
-        cell.playtimeLabel.text = music.playtimeString
+        cell.refresh(with: music, at: indexPath.item)
         
         return cell
     }
