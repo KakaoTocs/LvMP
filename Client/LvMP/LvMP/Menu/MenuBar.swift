@@ -58,6 +58,7 @@ class MenuBar: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        selectedMenuHint.layer.cornerRadius = 1.5
     }
     
     // MARK: - IBAction

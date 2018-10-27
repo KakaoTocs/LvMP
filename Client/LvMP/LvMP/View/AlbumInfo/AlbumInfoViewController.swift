@@ -47,12 +47,8 @@ extension AlbumInfoViewController: UITableViewDelegate, UITableViewDataSource {
         guard let headerCell = albumInfoTableView.dequeueReusableCell(withIdentifier: AlbumInfoTableViewHeader.identifier) as? AlbumInfoTableViewHeader else {
             return nil
         }
-        headerCell.layoutSubviews()
-        headerCell.contentView.layoutSubviews()
         
-        headerCell.artworkImageView.image = album.musics.first?.getArtworkImage()
-        headerCell.artworkImageView.mask = headerCell.imageMaskView
-        headerCell.nameLabel.text = album.name
+        headerCell.refresh(with: album)
         
         return headerCell
     }

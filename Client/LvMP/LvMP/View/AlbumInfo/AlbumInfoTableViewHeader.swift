@@ -22,6 +22,15 @@ class AlbumInfoTableViewHeader: UITableViewCell {
         return maskView
     }()
     
+    func refresh(with album: Album) {
+        self.layoutSubviews()
+        self.contentView.layoutSubviews()
+        
+        self.artworkImageView.image = album.musics.first?.getArtworkImage()
+        self.artworkImageView.mask = self.imageMaskView
+        self.nameLabel.text = album.name
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         

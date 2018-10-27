@@ -11,6 +11,7 @@ import AVFoundation
 
 @objc protocol PlayerDelegate: class {
     func playtimeUpdated()
+    func platStateChanged()
 }
 
 class Player {
@@ -34,6 +35,9 @@ class Player {
     }
     var time: Timer!
     private var musiclist: [String] = []
+//    var isPlaying: Bool {
+//        return self.audioPlayer.isPlaying
+//    }
     
     // MARK: - Method
     func play() {
@@ -46,6 +50,14 @@ class Player {
     
     func stop() {
         self.audioPlayer.stop()
+    }
+    
+    func toggle() {
+        if audioPlayer.isPlaying {
+            pause()
+        } else {
+            play()
+        }
     }
     
     // TODO:- 여러개 음악 추가/삭제 메소드 만들기
