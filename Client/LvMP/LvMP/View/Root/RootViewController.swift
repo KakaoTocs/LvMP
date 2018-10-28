@@ -12,7 +12,7 @@ import RealmSwift
 class RootViewController: UIViewController {
     
     @IBOutlet weak var menuBar: MenuBar!
-    @IBOutlet weak var playerBar: UIView!
+    @IBOutlet weak var playerBar: PlayerBar!
     @IBOutlet weak var scrollViewContainerViewWidth: NSLayoutConstraint!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var backgroundImage: UIImageView!

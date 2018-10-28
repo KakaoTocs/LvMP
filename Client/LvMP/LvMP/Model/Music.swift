@@ -16,7 +16,7 @@ class Music: Object {
     @objc dynamic var title: String = "제목 없음"
     @objc dynamic var lyrics: String = "가사 없음"
     @objc dynamic var playtime: Int = 0
-    @objc dynamic var url: String = ""
+    @objc dynamic var fileURL: String = ""
     @objc dynamic var type: String = ""
     @objc dynamic var artwork: Data?
     @objc dynamic var saveDate: Date = Date()
@@ -27,6 +27,10 @@ class Music: Object {
         get {
             return playtimeToString(total: playtime)
         }
+    }
+    
+    var url: String {
+        return String(fileURL[fileURL.index(fileURL.startIndex, offsetBy: 7)..<fileURL.endIndex])
     }
     
     override static func primaryKey() -> String? {
@@ -40,7 +44,7 @@ class Music: Object {
         self.title = title
         self.lyrics = lyrics
         self.playtime = playTime
-        self.url = url
+        self.fileURL = url
         self.type = type
     }
 
@@ -127,16 +131,16 @@ class Music: Object {
     static func saves(files datas: [Data], with types: [String]) {
         for index in datas.indices {
             let newID = UUID().uuidString
-            let url = FilesManager.shared.rootDirectory.appendingPathComponent(newID + ".\(types[index])")
-            let result = FilesManager.shared.writeFile(at: url, file: datas[index])
+            let fileUrl = FilesManager.shared.rootDirectory.appendingPathComponent(newID + ".\(types[index])")
+            let result = FilesManager.shared.writeFile(at: fileUrl, file: datas[index])
             if result {
-                if let music = Music(id: newID, url: url.absoluteString, type: types[index]) {
+                if let music = Music(id: newID, url: fileUrl.absoluteString, type: types[index]) {
                     Music.save(music: music)
                 } else {
                     print("Error >> Music >> saves(files datas: [Data], with types: [String]): Create Music instance error")
                 }
             } else {
-                let result = FilesManager.shared.removeFile(at: url)
+                let result = FilesManager.shared.removeFile(at: fileUrl)
                 if !result {
                     print("Error >> Music >> saves(files datas: [Data], with types: [String]): Create Music instance error -> remove file error")
                 }
@@ -161,7 +165,7 @@ class Music: Object {
     static func delete(music: Music) -> Bool {
         // TODO: - 파일삭제후 완료시 림에서 삭제
         let realm = try! Realm()
-        let result = FilesManager.shared.removeFile(at: URL(string: music.url)!)
+        let result = FilesManager.shared.removeFile(at: URL(string: music.fileURL)!)
         if result {
             do {
                 try realm.write {

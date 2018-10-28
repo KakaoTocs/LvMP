@@ -8,60 +8,140 @@
 
 import Foundation
 import AVFoundation
+import RealmSwift
+
+
 
 @objc protocol PlayerDelegate: class {
-    func playtimeUpdated()
-    func platStateChanged()
+    func currentTimeUpdated(current time: Int)
+    func playStateChanged(state: Player.State)
+    func currentMusicChanged()
 }
 
-class Player {
+class Player: NSObject {
     
     static let shared = Player()
+    weak var delegate: PlayerDelegate?
+    private var realm: Realm!
     
-    var audioPlayer : AVAudioPlayer!
-    var url: String? {
+    var currentMusic: Music?
+    private var audioPlayer : AVAudioPlayer?
+    private var currentID: String? {
         didSet {
-            do {
-                audioPlayer = try AVAudioPlayer(contentsOf: URL(string: self.url!)!)
-            } catch {
-                print("Error >> Player >> url: String? >> didSet: AudioPlayer init error")
+            self.currentMusic = realm.object(ofType: Music.self, forPrimaryKey: self.currentID)
+            if let url = self.currentMusic?.url {
+                do {
+                    print(url)
+                    audioPlayer = try AVAudioPlayer(contentsOf: URL(string: url)!)
+                } catch {
+                    print("Error >> Player >> url: String? >> didSet: AudioPlayer init error")
+                }
+                audioPlayer?.volume = self.value
             }
         }
     }
-    var value: Float = 1.0 {
+    private var value: Float = 1.0 {
         didSet {
-            self.audioPlayer.volume = self.value
+            self.audioPlayer?.volume = self.value
         }
     }
-    var time: Timer!
+    private var timer: Timer!
     private var musiclist: [String] = []
+    
+    @objc enum State: Int {
+        case play
+        case pause
+        case stop
+    }
 //    var isPlaying: Bool {
 //        return self.audioPlayer.isPlaying
 //    }
     
+    override init() {
+        super.init()
+        realm = try! Realm()
+    }
+    
     // MARK: - Method
+    func play(music id: String) {
+        self.audioPlayer?.stop()
+        self.currentID = id
+        guard let audioPlayer = audioPlayer else {
+            return
+        }
+        audioPlayer.play()
+        makeAndFireTimer()
+        self.delegate?.currentMusicChanged()
+        self.delegate?.playStateChanged(state: .play)
+    }
+    
     func play() {
-        self.audioPlayer.play()
+        self.audioPlayer?.play()
+        self.delegate?.playStateChanged(state: .play)
+        makeAndFireTimer()
     }
     
     func pasue() {
-        self.audioPlayer.pause()
+        self.audioPlayer?.pause()
+        self.delegate?.playStateChanged(state: .pause)
+        invalidateTimer()
     }
     
     func stop() {
-        self.audioPlayer.stop()
+        self.audioPlayer?.stop()
+        invalidateTimer()
+        self.delegate?.playStateChanged(state: .stop)
     }
     
-    func toggle() {
-        if audioPlayer.isPlaying {
-            pause()
+    func next() {
+        if let musicID = musiclist.first {
+            self.play(music: musicID)
         } else {
-            play()
+            self.stop()
         }
     }
     
+    func before() {
+        
+    }
+//
+//    func toggle() {
+//        // TODO: Optional Unwrapping
+//        guard let audioPlayer = self.audioPlayer else {
+//            stop()
+//            return
+//        }
+//        if audioPlayer.isPlaying {
+//            pause()
+//        } else {
+//            play()
+//        }
+//    }
+    
+    private func makeAndFireTimer() {
+        self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [unowned self]
+            (timer: Timer) in
+            
+            // TODO: progressBar is Tracking -> false
+            if false {
+                return
+            }
+            
+            guard let audioPlayer = self.audioPlayer else {
+                return
+            }
+            self.delegate?.currentTimeUpdated(current: Int(audioPlayer.currentTime))
+        })
+        self.timer.fire()
+    }
+    
+    private func invalidateTimer() {
+        self.timer.invalidate()
+        self.timer = nil
+    }
+    
     // TODO:- 여러개 음악 추가/삭제 메소드 만들기
-    func appendList(url: String) {
+    func appendList(music url: String) {
         self.musiclist.append(url)
     }
     
@@ -75,5 +155,36 @@ class Player {
         self.musiclist[to] = a
     }
     
+}
+
+extension Player: AVAudioPlayerDelegate {
     
+    func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
+        guard let error: Error = error else {
+            print("오디오 플레이어 디코드 오류발생")
+            let alert: UIAlertController = UIAlertController(title: "에러", message: "앱을 종료후 다시 실행해 주세요", preferredStyle: UIAlertController.Style.alert)
+            let okAction: UIAlertAction = UIAlertAction(title: "확인", style: .cancel, handler: nil)
+            alert.addAction(okAction)
+            DispatchQueue.main.async {
+                UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+            }
+            
+            return
+        }
+        
+        let message: String
+        message = "오디오 플레이어 오류 발생 \(error.localizedDescription)"
+        
+        let alert: UIAlertController = UIAlertController(title: "알림", message: message, preferredStyle: UIAlertController.Style.alert)
+        let okAction: UIAlertAction = UIAlertAction(title: "확인", style: .cancel, handler: nil)
+        
+        alert.addAction(okAction)
+        DispatchQueue.main.async {
+            UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        self.stop()
+    }
 }
