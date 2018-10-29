@@ -13,9 +13,7 @@
     1. Swift
     2. UIKit
     3. Realm
-    4. RxSwift
-    5. RxCocoa
-    6. Socket.io
+    4. Socket.io
 
 - Desktop APP
     1. Swift
