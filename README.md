@@ -5,7 +5,7 @@
 
 ## 2. 기능
 컴퓨터에서 음악 파일들을 선택시 서버(네트워크)를 통해 앱에서 받아 저장 및 재생
-<iframe width="640" height="360" src="https://github.com/KakaoTocs/LvMP/blob/master/ETC/DEMO.mov" frameborder="0" gesture="media" allowfullscreen=""></iframe>
+![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
 
 ## 3. 사용 기술
 - Moblie APP
