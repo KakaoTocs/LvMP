@@ -21,6 +21,10 @@ class PlayerBar: UIView {
     
     var player = Player.shared
     
+    private lazy var tapGesuture = {
+        UITapGestureRecognizer(target: self, action: #selector(tapAction(_:)))
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -37,7 +41,15 @@ class PlayerBar: UIView {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         player.delegate = self
+        self.contentView.addGestureRecognizer(tapGesuture)
         currentProgressViewWidthConstraint.constant = 0
+    }
+    
+    @objc func tapAction(_ sender: UITapGestureRecognizer) {
+        let playerStoryBoard = UIStoryboard(name: "Player", bundle: nil)
+        if let playerViewController = playerStoryBoard.instantiateViewController(withIdentifier: "playerView") as? PlayerViewController {
+            UIApplication.shared.keyWindow?.rootViewController?.present(playerViewController, animated: true, completion: nil)
+        }
     }
     
     @IBAction func playButtonAction(_ sender: UIButton) {
@@ -66,6 +78,7 @@ extension PlayerBar: PlayerDelegate {
             break
         case .stop:
             self.playButton.isSelected = false
+            playerBarClear()
             break
         }
     }
@@ -76,11 +89,12 @@ extension PlayerBar: PlayerDelegate {
             return
         }
         let width = Float(totalProgressView.frame.width) * (Float(current) / Float(self.player.currentMusic!.playtime))
-        print("\(width)")
         currentProgressViewWidthConstraint.constant = CGFloat(width)
     }
     
     func playerBarClear() {
-        
+        self.artworkImageView.image = nil
+        self.titleLabel.text = "재생 중이 아님"
+        currentProgressViewWidthConstraint.constant = 0
     }
 }

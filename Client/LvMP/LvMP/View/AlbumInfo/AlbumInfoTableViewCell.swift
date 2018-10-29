@@ -18,7 +18,6 @@ class AlbumInfoTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
     func refresh(with music: Music, at index: Int) {

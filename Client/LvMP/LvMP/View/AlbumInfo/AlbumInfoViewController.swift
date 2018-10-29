@@ -14,21 +14,24 @@ class AlbumInfoViewController: UIViewController {
     static let segueIdentifier = "AlbumInfoSegue"
     
     @IBOutlet weak var albumInfoTableView: UITableView!
+    @IBOutlet weak var backgroundImage: UIImageView!
     
     var albumsID: [String] = []
     private var realm: Realm!
-    private lazy var albums: Results<Album>! = {
-        realm.objects(Album.self).filter("id IN %@", albumsID)
-    }()
+    private var albums: Results<Album>!
     private var token: NotificationToken!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        realm = try! Realm()
+        albums = realm.objects(Album.self).filter("id IN %@", albumsID)
+        self.backgroundImage.image = albums.first?.musics.first?.getArtworkImage()
+        // TODO: imageView bounds with screen
+        self.backgroundImage.layer.masksToBounds = true
+        
         self.albumInfoTableView.delegate = self
         self.albumInfoTableView.dataSource = self
         
-        realm = try! Realm()
     }
 }
 
@@ -71,5 +74,10 @@ extension AlbumInfoViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        Player.shared.play(music: albums[indexPath.section].musics[indexPath.row].id)
+        self.navigationController?.popViewController(animated: true)
     }
 }

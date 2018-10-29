@@ -10,12 +10,6 @@ import UIKit
 import RealmSwift
 
 class HomeViewController: UIViewController {
-    @IBAction func test(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Player", bundle: nil)
-        let VC = storyboard.instantiateViewController(withIdentifier: "playerView") as! PlayerViewController
-        
-        self.navigationController?.pushViewController(VC, animated: true)
-    }
     // file은 파일로 쓰고 폴더를 따로 만들지말고 해당 결로에 쓸때 폴더 생성인자를 true로 구현
     @IBOutlet weak var newAlbumsCollectionView: UICollectionView!
     @IBOutlet weak var playlistsTableView: UITableView!
@@ -45,9 +39,9 @@ class HomeViewController: UIViewController {
             let albumInfoVC = segue.destination as! AlbumInfoViewController
             if let index = self.newAlbumsCollectionView.indexPathsForSelectedItems?.first {
                 albumInfoVC.albumsID = [albums[index.item].id]
-                if let superView = self.parent as? RootViewController {
-                    superView.backgroundImageToFront()
-                }
+//                if let superView = self.parent as? RootViewController {
+//                    superView.backgroundImageToFront()
+//                }
             }
         }
     }

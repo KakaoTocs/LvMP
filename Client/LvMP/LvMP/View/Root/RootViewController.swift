@@ -24,10 +24,12 @@ class RootViewController: UIViewController {
         print(FilesManager.shared.rootDirectory.absoluteString)
         scrollViewContainerViewWidth.constant = UIScreen.main.bounds.size.width * 4
         self.navigationController?.navigationBar.isHidden = true
+        NotificationCenter.default.addObserver(self, selector: #selector(backgroundImageNoti(_:)), name: Player.BackgroundImageNotificationKey, object: nil)
     }
 
     override func viewDidAppear(_ animated: Bool) {
         self.backgroundImageToBack()
+        Player.shared.delegate = playerBar
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -41,6 +43,10 @@ class RootViewController: UIViewController {
     func backgroundImageToBack() {
         self.view.sendSubviewToBack(self.backgroundImageEffectView)
         self.view.sendSubviewToBack(self.backgroundImage)
+    }
+    
+    @objc func backgroundImageNoti(_ noti: Notification) {
+        self.backgroundImage.image = Player.shared.currentMusic?.getArtworkImage()
     }
 
 }

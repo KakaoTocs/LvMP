@@ -20,7 +20,9 @@ func playtimeToString(total time: Int) -> String{
     if time < 3600 {
         return String(format: "%02d:%02d", time / 60, time % 60)
     } else {
-        return String(format: "%02d:%02d:%02d", time / 3600,time / 60, time % 60)
+        let hour = time / 1440
+        let minute = time / 60 - hour * 24
+        return String(format: "%02d:%02d:%02d", hour,  minute, time % 60)
     }
 }
 

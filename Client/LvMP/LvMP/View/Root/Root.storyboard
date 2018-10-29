@@ -46,23 +46,23 @@
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c48-OJ-kp8">
-                                <rect key="frame" x="0.0" y="98" width="375" height="519"/>
+                                <rect key="frame" x="0.0" y="98" width="375" height="518"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L2Z-2J-ENN">
-                                        <rect key="frame" x="0.0" y="0.0" width="1500" height="519"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="1500" height="518"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="1500" id="YCa-DB-STP"/>
                                         </constraints>
                                     </containerView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3az-5g-Wm8">
-                                        <rect key="frame" x="0.0" y="0.0" width="1500" height="519"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="1500" height="518"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e3X-Cg-Rwc" userLabel="MainView">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="519"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="518"/>
                                                 <subviews>
                                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zu5-uK-P2Y">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="519"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="518"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <connections>
                                                             <segue destination="qDt-v1-P1J" kind="embed" id="B53-03-bpe"/>
@@ -78,10 +78,10 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bkr-kZ-03o" userLabel="MusicView">
-                                                <rect key="frame" x="375" y="0.0" width="375" height="519"/>
+                                                <rect key="frame" x="375" y="0.0" width="375" height="518"/>
                                                 <subviews>
                                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0vi-cU-K8Q">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="519"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="518"/>
                                                         <connections>
                                                             <segue destination="qWo-oT-hKe" kind="embed" id="i3P-61-ckw"/>
                                                         </connections>
@@ -96,10 +96,10 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dSU-81-gI0" userLabel="ArtistView">
-                                                <rect key="frame" x="750" y="0.0" width="375" height="519"/>
+                                                <rect key="frame" x="750" y="0.0" width="375" height="518"/>
                                                 <subviews>
                                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eJb-BF-kSZ">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="519"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="518"/>
                                                         <connections>
                                                             <segue destination="0xr-AJ-IuW" kind="embed" id="sDP-28-vkW"/>
                                                         </connections>
@@ -114,10 +114,10 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rqP-IM-Yf2" userLabel="AlbumView">
-                                                <rect key="frame" x="1125" y="0.0" width="375" height="519"/>
+                                                <rect key="frame" x="1125" y="0.0" width="375" height="518"/>
                                                 <subviews>
                                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eY2-6m-lxe">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="519"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="518"/>
                                                         <connections>
                                                             <segue destination="BIT-IB-Rqm" kind="embed" id="Q7v-HS-Etp"/>
                                                         </connections>
@@ -142,7 +142,6 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="3az-5g-Wm8" secondAttribute="bottom" id="5gE-6H-t7c"/>
                                     <constraint firstAttribute="trailing" secondItem="L2Z-2J-ENN" secondAttribute="trailing" id="T6F-pt-CIo"/>
                                     <constraint firstAttribute="trailing" secondItem="3az-5g-Wm8" secondAttribute="trailing" id="XE0-xt-alH"/>
                                     <constraint firstItem="3az-5g-Wm8" firstAttribute="leading" secondItem="c48-OJ-kp8" secondAttribute="leading" id="a2L-vM-S2Y"/>
@@ -150,12 +149,20 @@
                                     <constraint firstItem="L2Z-2J-ENN" firstAttribute="top" secondItem="c48-OJ-kp8" secondAttribute="top" id="dD9-BJ-7Qf"/>
                                     <constraint firstItem="3az-5g-Wm8" firstAttribute="top" secondItem="c48-OJ-kp8" secondAttribute="top" id="ig6-pM-Hcq"/>
                                     <constraint firstItem="L2Z-2J-ENN" firstAttribute="leading" secondItem="c48-OJ-kp8" secondAttribute="leading" id="noB-ST-Hp6"/>
-                                    <constraint firstAttribute="bottom" secondItem="L2Z-2J-ENN" secondAttribute="bottom" id="xeu-SD-u9d"/>
+                                    <constraint firstAttribute="bottom" secondItem="L2Z-2J-ENN" secondAttribute="bottom" id="nt7-KC-XOq"/>
+                                    <constraint firstAttribute="bottom" secondItem="3az-5g-Wm8" secondAttribute="bottom" id="w3j-aD-DSl"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="delegate" destination="xAz-Xs-4kV" id="1n5-M0-GGU"/>
                                 </connections>
                             </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I3g-p2-3GC" userLabel="Line">
+                                <rect key="frame" x="0.0" y="616" width="375" height="1"/>
+                                <color key="backgroundColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="Lxo-9d-znB"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YkY-Hm-aQE" customClass="PlayerBar" customModule="LvMP" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -164,15 +171,18 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="QuO-BR-BEt" firstAttribute="bottom" secondItem="Wb2-Cf-RS8" secondAttribute="bottom" id="4mR-8p-j9I"/>
+                            <constraint firstItem="YkY-Hm-aQE" firstAttribute="top" secondItem="I3g-p2-3GC" secondAttribute="bottom" id="1C0-f7-ejB"/>
+                            <constraint firstItem="QuO-BR-BEt" firstAttribute="bottom" secondItem="MgY-ad-qfE" secondAttribute="bottom" id="4mR-8p-j9I"/>
                             <constraint firstItem="mMB-6P-Kg8" firstAttribute="top" secondItem="MCQ-k8-zEf" secondAttribute="top" id="5Nw-m3-e6i"/>
-                            <constraint firstItem="QuO-BR-BEt" firstAttribute="leading" secondItem="Wb2-Cf-RS8" secondAttribute="leading" id="5Z0-kM-YDm"/>
+                            <constraint firstItem="QuO-BR-BEt" firstAttribute="leading" secondItem="MgY-ad-qfE" secondAttribute="leading" id="5Z0-kM-YDm"/>
                             <constraint firstAttribute="bottom" secondItem="Wb2-Cf-RS8" secondAttribute="bottom" id="Bif-nd-6ra"/>
                             <constraint firstItem="MCQ-k8-zEf" firstAttribute="trailing" secondItem="eB8-rN-Tta" secondAttribute="trailing" constant="5" id="CyC-bb-yWj"/>
-                            <constraint firstItem="YkY-Hm-aQE" firstAttribute="top" secondItem="c48-OJ-kp8" secondAttribute="bottom" id="S4C-o6-O0q"/>
-                            <constraint firstItem="QuO-BR-BEt" firstAttribute="top" secondItem="Wb2-Cf-RS8" secondAttribute="top" id="SfN-SP-Z52"/>
+                            <constraint firstItem="I3g-p2-3GC" firstAttribute="top" secondItem="c48-OJ-kp8" secondAttribute="bottom" id="D2M-65-gAp"/>
+                            <constraint firstItem="I3g-p2-3GC" firstAttribute="leading" secondItem="MCQ-k8-zEf" secondAttribute="leading" id="K3u-g6-oCj"/>
+                            <constraint firstItem="MCQ-k8-zEf" firstAttribute="trailing" secondItem="I3g-p2-3GC" secondAttribute="trailing" id="SVW-Id-JLW"/>
+                            <constraint firstItem="QuO-BR-BEt" firstAttribute="top" secondItem="MgY-ad-qfE" secondAttribute="top" id="SfN-SP-Z52"/>
                             <constraint firstItem="c48-OJ-kp8" firstAttribute="leading" secondItem="MCQ-k8-zEf" secondAttribute="leading" id="XuM-ys-3yD"/>
                             <constraint firstItem="MCQ-k8-zEf" firstAttribute="trailing" secondItem="YkY-Hm-aQE" secondAttribute="trailing" id="Yw6-aD-gj9"/>
                             <constraint firstItem="eB8-rN-Tta" firstAttribute="top" secondItem="mMB-6P-Kg8" secondAttribute="bottom" id="ZPk-Et-FqG"/>
@@ -186,7 +196,7 @@
                             <constraint firstItem="Wb2-Cf-RS8" firstAttribute="leading" secondItem="MgY-ad-qfE" secondAttribute="leading" id="qvo-MZ-MAz"/>
                             <constraint firstItem="MCQ-k8-zEf" firstAttribute="trailing" secondItem="mMB-6P-Kg8" secondAttribute="trailing" id="yfL-ld-4CO"/>
                             <constraint firstItem="Wb2-Cf-RS8" firstAttribute="top" secondItem="MgY-ad-qfE" secondAttribute="top" id="ygv-YZ-5ir"/>
-                            <constraint firstItem="QuO-BR-BEt" firstAttribute="trailing" secondItem="Wb2-Cf-RS8" secondAttribute="trailing" id="zk8-5l-ktC"/>
+                            <constraint firstItem="QuO-BR-BEt" firstAttribute="trailing" secondItem="MgY-ad-qfE" secondAttribute="trailing" id="zk8-5l-ktC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MCQ-k8-zEf"/>
                     </view>
@@ -210,7 +220,7 @@
                 <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="HomeViewController" id="qDt-v1-P1J" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Db0-ZU-SBB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2012" y="1336"/>
+            <point key="canvasLocation" x="3383" y="1336"/>
         </scene>
         <!--MusicViewController-->
         <scene sceneID="d7C-g2-3FK">
@@ -218,7 +228,7 @@
                 <viewControllerPlaceholder storyboardName="Music" referencedIdentifier="MusicViewController" id="qWo-oT-hKe" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="biS-Xg-Ors" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2646" y="1336"/>
+            <point key="canvasLocation" x="3717" y="1336"/>
         </scene>
         <!--ArtistViewController-->
         <scene sceneID="dgI-07-c7O">
@@ -226,7 +236,7 @@
                 <viewControllerPlaceholder storyboardName="Artist" referencedIdentifier="ArtistViewController" id="0xr-AJ-IuW" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K8E-qH-5c6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3223" y="1336"/>
+            <point key="canvasLocation" x="4065" y="1336"/>
         </scene>
         <!--AlbumViewController-->
         <scene sceneID="6QU-1q-ohy">
@@ -234,7 +244,7 @@
                 <viewControllerPlaceholder storyboardName="Album" referencedIdentifier="AlbumViewController" id="BIT-IB-Rqm" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nqP-kJ-Uog" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3756" y="1336"/>
+            <point key="canvasLocation" x="4406" y="1336"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ay9-9b-gqk">

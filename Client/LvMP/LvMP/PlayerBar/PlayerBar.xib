@@ -91,7 +91,8 @@
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" white="0.0" alpha="0.2033390410958904" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <gestureRecognizers/>
             <constraints>
                 <constraint firstItem="mQX-YV-Zdq" firstAttribute="centerY" secondItem="4zL-u3-pAA" secondAttribute="centerY" constant="1" id="4wC-Bc-eGS"/>
                 <constraint firstItem="bbU-wX-4KK" firstAttribute="leading" secondItem="tpz-Yw-K1S" secondAttribute="trailing" constant="2" id="Cop-fY-rFJ"/>

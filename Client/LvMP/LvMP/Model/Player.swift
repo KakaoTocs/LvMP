@@ -10,8 +10,6 @@ import Foundation
 import AVFoundation
 import RealmSwift
 
-
-
 @objc protocol PlayerDelegate: class {
     func currentTimeUpdated(current time: Int)
     func playStateChanged(state: Player.State)
@@ -20,6 +18,7 @@ import RealmSwift
 
 class Player: NSObject {
     
+    static let BackgroundImageNotificationKey = Notification.Name("backgroundImageUpdate")
     static let shared = Player()
     weak var delegate: PlayerDelegate?
     private var realm: Realm!
@@ -31,12 +30,23 @@ class Player: NSObject {
             self.currentMusic = realm.object(ofType: Music.self, forPrimaryKey: self.currentID)
             if let url = self.currentMusic?.url {
                 do {
-                    print(url)
                     audioPlayer = try AVAudioPlayer(contentsOf: URL(string: url)!)
                 } catch {
                     print("Error >> Player >> url: String? >> didSet: AudioPlayer init error")
+                    if audioPlayer != nil {
+                        audioPlayer?.play()
+                    }
+                    let alert = warringAlert(title: "재생할 수 없습니다.", message: "파일을 찾을 수 없습니다.")
+                    UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+                    return
                 }
+                audioPlayer?.delegate = self
                 audioPlayer?.volume = self.value
+                NotificationCenter.default.post(name: Player.BackgroundImageNotificationKey, object: nil)
+                audioPlayer?.play()
+                makeAndFireTimer()
+                self.delegate?.playStateChanged(state: .play)
+                self.delegate?.currentMusicChanged()
             }
         }
     }
@@ -69,10 +79,6 @@ class Player: NSObject {
         guard let audioPlayer = audioPlayer else {
             return
         }
-        audioPlayer.play()
-        makeAndFireTimer()
-        self.delegate?.currentMusicChanged()
-        self.delegate?.playStateChanged(state: .play)
     }
     
     func play() {
@@ -93,17 +99,17 @@ class Player: NSObject {
         self.delegate?.playStateChanged(state: .stop)
     }
     
-    func next() {
-        if let musicID = musiclist.first {
-            self.play(music: musicID)
-        } else {
-            self.stop()
-        }
-    }
-    
-    func before() {
-        
-    }
+//    func next() {
+//        if let musicID = musiclist.first {
+//            self.play(music: musicID)
+//        } else {
+//            self.stop()
+//        }
+//    }
+//
+//    func before() {
+//
+//    }
 //
 //    func toggle() {
 //        // TODO: Optional Unwrapping
@@ -117,6 +123,10 @@ class Player: NSObject {
 //            play()
 //        }
 //    }
+    
+    func currentTime() -> Int {
+        return Int(self.audioPlayer?.currentTime ?? 0)
+    }
     
     private func makeAndFireTimer() {
         self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [unowned self]
@@ -141,19 +151,19 @@ class Player: NSObject {
     }
     
     // TODO:- 여러개 음악 추가/삭제 메소드 만들기
-    func appendList(music url: String) {
-        self.musiclist.append(url)
-    }
-    
-    func removeList(at index: Int) {
-        self.musiclist.remove(at: index)
-    }
-    
-    func changeOrder(at: Int, to: Int) {
-        let a = self.musiclist[at]
-        self.musiclist[at] = self.musiclist[to]
-        self.musiclist[to] = a
-    }
+//    func appendList(music url: String) {
+//        self.musiclist.append(url)
+//    }
+//
+//    func removeList(at index: Int) {
+//        self.musiclist.remove(at: index)
+//    }
+//
+//    func changeOrder(at: Int, to: Int) {
+//        let a = self.musiclist[at]
+//        self.musiclist[at] = self.musiclist[to]
+//        self.musiclist[to] = a
+//    }
     
 }
 
