@@ -9,6 +9,10 @@
 import SocketIO
 //import Alamofire
 
+let localhost = "http:127.0.0.1:3000"
+let amazonhost = "http://lvmp.us-east-2.elasticbeanstalk.com"
+let goormhost = "http://lvmpserver.run.goorm.io"
+
 class SocketIOManager: NSObject {
     // MARK: - Static Property
     static let shared = SocketIOManager()
@@ -16,7 +20,7 @@ class SocketIOManager: NSObject {
     static let paringStateUpdateNotificationKey = Notification.Name("paringStateUpdated")
     
     // MARK: - Property
-    let manager = SocketManager(socketURL: URL(string: "http://127.0.0.1:3000")!)
+    let manager = SocketManager(socketURL: URL(string: goormhost)!)
     var socket: SocketIOClient?
     var isConnected: Bool = false
     var isParing: Bool = false
@@ -72,7 +76,7 @@ class SocketIOManager: NSObject {
         
         files = readAllFileInFolder(folder: folder)
         
-        guard let url = URL(string: "http://127.0.0.1:3000/uploadFiles") else {
+        guard let url = URL(string: goormhost + "/uploadFiles") else {
             return
         }
         
@@ -93,6 +97,7 @@ class SocketIOManager: NSObject {
         let uploadTask: URLSessionDataTask = session.uploadTask(with: urlRequest, from: nil) { (data: Data?, response: URLResponse?, error: Error?) in
             if let jsonData = data {
                 do {
+                    print(String(data: jsonData, encoding: .utf8))
                     let dataStruct = try JSONDecoder().decode(NetworkResponse.self, from: jsonData)
                     print("Count: \(files.count), Code: \(dataStruct.code), Message: \(dataStruct.message)")
                 } catch {
