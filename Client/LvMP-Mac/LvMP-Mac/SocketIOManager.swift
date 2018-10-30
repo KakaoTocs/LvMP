@@ -12,6 +12,7 @@ import SocketIO
 let localhost = "http:127.0.0.1:3000"
 let amazonhost = "http://lvmp.us-east-2.elasticbeanstalk.com"
 let goormhost = "http://lvmpserver.run.goorm.io"
+let currentHost = goormhost
 
 class SocketIOManager: NSObject {
     // MARK: - Static Property
@@ -20,7 +21,7 @@ class SocketIOManager: NSObject {
     static let paringStateUpdateNotificationKey = Notification.Name("paringStateUpdated")
     
     // MARK: - Property
-    let manager = SocketManager(socketURL: URL(string: goormhost)!)
+    let manager = SocketManager(socketURL: URL(string: currentHost)!)
     var socket: SocketIOClient?
     var isConnected: Bool = false
     var isParing: Bool = false
@@ -76,7 +77,7 @@ class SocketIOManager: NSObject {
         
         files = readAllFileInFolder(folder: folder)
         
-        guard let url = URL(string: goormhost + "/uploadFiles") else {
+        guard let url = URL(string: currentHost + "/uploadFiles") else {
             return
         }
         
