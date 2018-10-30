@@ -12,12 +12,12 @@
 1. LvMP 프로젝트 통째로 download 후 압축 풀기
 2. (Mac, Xcode: 9.4.1) LvMP/Client/LvMP-Mac에서 "LvMP-Mac.xcworkspace" 실행 후 빌드
 3. (iOS, Xcode: 10) LvMP/Client/LvMP에서 "LvMP.xcworkspace" 실행 후 빌드
-4. ![Alt Text](https://github.com/KakaoTocs/LvMP/blob/master/ETC/Mac_paring) Mac 실행모습
-5. ![Alt Text](https://github.com/KakaoTocs/LvMP/blob/master/ETC/iPhone_run) iPhone 실행모습
-6. ![Alt Text](https://github.com/KakaoTocs/LvMP/blob/master/ETC/Mac_paring) 페어링 부분 상태 확인
-7. ![Alt Text](https://github.com/KakaoTocs/LvMP/blob/master/ETC/Mac_fileSelecting) Mac에서 파일 또는 폴더 선택
-8. ![Alt Text](https://github.com/KakaoTocs/LvMP/blob/master/ETC/Mac_fileSelected) Mac에서 선택한 파일(폴더) 확인 후 전송
-9. ![Alt Text](https://github.com/KakaoTocs/LvMP/blob/master/ETC/iPhone_download) iPhone에서 다운로드한 파일 확인
+4. ![Alt Text](https://github.com/KakaoTocs/LvMP/blob/master/ETC/Mac_paring.png) Mac 실행모습
+5. ![Alt Text](https://github.com/KakaoTocs/LvMP/blob/master/ETC/iPhone_run.png) iPhone 실행모습
+6. ![Alt Text](https://github.com/KakaoTocs/LvMP/blob/master/ETC/Mac_paring.png) 페어링 부분 상태 확인
+7. ![Alt Text](https://github.com/KakaoTocs/LvMP/blob/master/ETC/Mac_fileSelecting.png) Mac에서 파일 또는 폴더 선택
+8. ![Alt Text](https://github.com/KakaoTocs/LvMP/blob/master/ETC/Mac_fileSelected.png) Mac에서 선택한 파일(폴더) 확인 후 전송
+9. ![Alt Text](https://github.com/KakaoTocs/LvMP/blob/master/ETC/iPhone_download.png) iPhone에서 다운로드한 파일 확인
 ❗️많은 파일일 전송시 아직 "다운로드 중인 상태 확인" UI가 구현 되지 않아 많이 지루할 수 있습니다. 
 
 ## 4. 사용 기술
