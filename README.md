@@ -18,7 +18,8 @@
 7. ![Alt Text](https://github.com/KakaoTocs/LvMP/blob/master/ETC/Mac_fileSelecting.png) Mac에서 파일 또는 폴더 선택
 8. ![Alt Text](https://github.com/KakaoTocs/LvMP/blob/master/ETC/Mac_fileSelected.png) Mac에서 선택한 파일(폴더) 확인 후 전송
 9. ![Alt Text](https://github.com/KakaoTocs/LvMP/blob/master/ETC/iPhone_download.png) iPhone에서 다운로드한 파일 확인
-❗️많은 파일일 전송시 아직 "다운로드 중인 상태 확인" UI가 구현 되지 않아 많이 지루할 수 있습니다. 
+❗️많은 파일일 전송시 아직 "다운로드 중인 상태 확인" UI가 구현 되지 않아 많이 지루할 수 있습니다.
+(http://lvmpserver.run.goorm.io/)에서 "Server is running..."중인지 확인해 서버가 작동중인지 확인 필요!!
 
 ## 4. 사용 기술
 - Moblie APP
