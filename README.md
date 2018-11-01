@@ -11,7 +11,7 @@
 
 ## 3. 실행 방법
 ❗️많은 파일일 전송시 아직 "다운로드 중인 상태 확인" UI가 구현 되지 않아 많이 지루할 수 있습니다.  
-(http://18.223.169.157/)에서 "Server is running..."중인지 확인해 서버가 작동중인지 확인 필요!!  
+(http://18.223.169.157)에서 "Server is running..."중인지 확인해 서버가 작동중인지 확인 필요!!  
 1. LvMP 프로젝트 통째로 download 후 압축 풀기
 2. (Mac, Xcode: 9.4.1) LvMP/Client/LvMP-Mac에서 "LvMP-Mac.xcworkspace" 실행 후 빌드
 3. (iOS, Xcode: 10) LvMP/Client/LvMP에서 "LvMP.xcworkspace" 실행 후 빌드
