@@ -40,9 +40,12 @@ class PlayerViewController: UIViewController {
         guard let music = Player.shared.currentMusic else {
             return
         }
-        self.artworkImageView.layoutSubviews()
         self.backgroundImageView.image = music.getArtworkImage()
         self.artworkImageView.image = music.getArtworkImage()
+        self.artworkImageView.layoutSubviews()
+        print(artworkImageView.frame.width)
+        print(artworkImageView.frame.height)
+        print(UIScreen.main.bounds.width)
         self.imageMaskView.frame = self.artworkImageView.bounds
         self.artworkImageView.mask = self.imageMaskView
         self.titleLabel.text = music.title
