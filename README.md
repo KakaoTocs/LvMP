@@ -55,10 +55,10 @@ Album: 앨범 목록 -> 하위 노래 목록 -> 재생
 
 Model:
 1. Music: 앨범, 아티스트와 연결되 프로퍼티를 가지고 있음
-2. Album: 앨범 선택시 앨범 하위 노래목록을 보는 뷰로 전환
-3. Artist:
-4. PlayList
-6. ResponseFiles
+2. Album: 아티스트와 연결된 프로퍼티를 가지고 있음
+3. Artist: 기본 정보만 가지고 있음
+4. PlayList: 재생목록에 포함된 음악들의 id를 가지고 있음
+6. ResponseFiles: 서버로 데이터를 받기위해 사용
 
 Class:
 1. FilesManager: 서버로 받은 파일(음원)을 메모리에 쓰고 지우는 클래스
