@@ -29,6 +29,9 @@ class ArtistTableViewCell: UITableViewCell {
         self.albumCountLabel.text = "앨범 \(artist.albums.count)개"
         self.musicCountLabel.text = "곡 \(artist.musics.count)개"
         self.playtimeLabel.text = artist.totalPlaytime
+        self.profileImageView.image = artist.profileImage
+        self.profileImageView.mask = imageMaskView
+        
     }
     
     override func layoutSubviews() {

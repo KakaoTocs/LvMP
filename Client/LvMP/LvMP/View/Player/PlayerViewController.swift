@@ -10,12 +10,21 @@ import UIKit
 
 class PlayerViewController: UIViewController {
 
+    @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var backgroundImageEffectView: UIVisualEffectView!
+    
     @IBOutlet weak var artworkImageView: UIImageView!
     @IBOutlet weak var currentTimeProgressbar: UIProgressView!
     @IBOutlet weak var currentTimeLabel: UILabel!
     @IBOutlet weak var totalTimeLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
+    
+    let imageMaskView: UIImageView = {
+        let maskView = UIImageView()
+        maskView.image = UIImage(named: "Mask.png")
+        return maskView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +40,11 @@ class PlayerViewController: UIViewController {
         guard let music = Player.shared.currentMusic else {
             return
         }
+        self.artworkImageView.layoutSubviews()
+        self.backgroundImageView.image = music.getArtworkImage()
         self.artworkImageView.image = music.getArtworkImage()
+        self.imageMaskView.frame = self.artworkImageView.bounds
+        self.artworkImageView.mask = self.imageMaskView
         self.titleLabel.text = music.title
         self.infoLabel.text = "\(music.artist!.name) - \(music.album!.name)"
         self.totalTimeLabel.text = String(format: "%02d:%02d", (music.playtime  / 60), (music.playtime % 60))

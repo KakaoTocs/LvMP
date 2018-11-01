@@ -9,9 +9,9 @@
 import  SocketIO
 
 let localhost = "http://127.0.0.1:3000"
-let amazonhost = "http://lvmp.us-east-2.elasticbeanstalk.com"
+let amazonhost = "http://18.223.169.157"
 let goormhost = "http://lvmpserver.run.goorm.io"
-let currentHost = goormhost
+let currentHost = amazonhost
 
 class SocketIOManager: NSObject {
     static let shared = SocketIOManager()
